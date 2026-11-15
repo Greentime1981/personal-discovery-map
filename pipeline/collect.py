@@ -201,6 +201,31 @@ class Geocoder:
                 return r["lat"], r["lng"], "street"
         return None
 
+    def locate_poi(self, name: str, city: str):
+        """沒有地址時，用「店名 縣市」查詢；只接受結果確實是餐廳／商店類的地點，避免誤配到路名。"""
+        q = f"{name} {city}"
+        key = "poi:" + q
+        if key in self.cache:
+            r = self.cache[key]
+        elif self.offline:
+            return None
+        else:
+            wait = 1.1 - (time.time() - self.last)
+            if wait > 0:
+                time.sleep(wait)
+            self.last = time.time()
+            url = "https://nominatim.openstreetmap.org/search?" + urllib.parse.urlencode(
+                {"q": q, "format": "jsonv2", "limit": 3, "countrycodes": "tw", "addressdetails": 1})
+            r = None
+            for row in http_json(url, {"Accept-Language": "zh-TW"}):
+                if row.get("category") in ("amenity", "shop") and city[:2] in (row.get("display_name") or "").replace("臺", "台"):
+                    a = row.get("address", {})
+                    r = {"lat": round(float(row["lat"]), 6), "lng": round(float(row["lon"]), 6),
+                         "district": a.get("suburb") or a.get("city_district") or a.get("town") or ""}
+                    break
+            self.cache[key] = r
+        return r
+
     def save(self):
         save(self.path, self.cache)
 
@@ -261,8 +286,27 @@ def main():
     place_ids = {p["place_id"] for p in places}
     content_ids = {c["content_id"] for c in contents}
 
-    def add_source(name, address, category, cont):
-        """地理編碼 → 去重（找既有地點或建立新地點）→ 加上一筆推薦來源。回傳地點。"""
+    def new_place(name, address, category, loc, city="", district="", id_key=None):
+        if not city:
+            city, district = split_admin(address)
+        # 以地址（沒有地址時用店名＋縣市）產生固定 ID：重建資料時 ID 不變，個人收藏不會失效
+        pid = "pl-" + short_hash(id_key or key_addr(address))
+        while pid in place_ids:
+            pid += "x"
+        place_ids.add(pid)
+        p = {"place_id": pid, "name": name, "category": category,
+             "city": city, "district": district, "address": address,
+             "latitude": loc[0] if loc else None, "longitude": loc[1] if loc else None,
+             "geo_precision": loc[2] if loc else None,
+             "price_range": None, "description": "", "sources": [],
+             "created_at": TODAY, "updated_at": TODAY, "last_verified_at": "",
+             "confidence_score": 0.8 if loc and loc[2] == "house" else 0.5 if loc else 0.3}
+        places.append(p)
+        run["new_places"] += 1
+        return p
+
+    def ensure_place(name, address, category):
+        """地理編碼 → 去重（找既有地點或建立新地點）。回傳地點。"""
         try:
             loc = geo.locate(address)
         except Exception as e:
@@ -271,25 +315,16 @@ def main():
         coords = (loc[0], loc[1]) if loc else None
         p = find_existing(places, name, address, coords)
         if p is None:
-            city, district = split_admin(address)
-            # 以地址產生固定 ID：重建資料時 ID 不變，個人收藏不會失效
-            pid = "pl-" + short_hash(key_addr(address))
-            while pid in place_ids:
-                pid += "x"
-            place_ids.add(pid)
-            p = {"place_id": pid, "name": name, "category": category,
-                 "city": city, "district": district, "address": address,
-                 "latitude": coords[0] if coords else None, "longitude": coords[1] if coords else None,
-                 "geo_precision": loc[2] if loc else None,
-                 "price_range": None, "description": "", "sources": [],
-                 "created_at": TODAY, "updated_at": TODAY, "last_verified_at": "",
-                 "confidence_score": 0.8 if loc and loc[2] == "house" else 0.5 if loc else 0.3}
-            places.append(p)
-            run["new_places"] += 1
+            p = new_place(name, address, category, loc)
             if not loc:
                 run["skipped"].append(f"{name}：查不到座標，暫不顯示在地圖（{address}）")
         else:
             run["merged_places"] += 1
+        return p
+
+    def add_source(name, address, category, cont):
+        """建立 / 找到地點後，加上一筆推薦來源。回傳地點。"""
+        p = ensure_place(name, address, category)
         cont = {**cont, "place_id": p["place_id"]}
         if cont["content_id"] in content_ids:  # 已存在：更新內容（例如手動清單的備註改了）
             for i, c in enumerate(contents):
@@ -402,6 +437,59 @@ def main():
                 if f.get(field):
                     p[field] = f[field]
 
+    # ---- 米其林／必比登／台灣500碗（awards_source.json，每次重新產生 awards.json）----
+    awards = []
+    award_src = load(PIPE / "awards_source.json", {})
+    entries = list(award_src.get("entries", []))
+    # 台灣500碗：使用者自行整理的 CSV（name,city,address,year,bowls,source_url），程式只做格式轉換
+    csv_path = PIPE / "awards_500_import.csv"
+    if csv_path.exists():
+        import csv
+        with csv_path.open(encoding="utf-8-sig", newline="") as f:
+            for row in csv.DictReader(f):
+                try:
+                    if not (row.get("name") and row.get("city") and row.get("year")):
+                        continue
+                    entries.append({"name": row["name"].strip(), "city": normalize(row["city"].strip()),
+                                    "address": (row.get("address") or "").strip(), "award_type": "taiwan_500",
+                                    "award_year": int(row["year"]), "level": int(row["bowls"]) if (row.get("bowls") or "").strip() else None,
+                                    "source_url": (row.get("source_url") or "").strip()})
+                except ValueError as ex:
+                    run["errors"].append(f"500碗 CSV 格式錯誤：{row}（{ex}）")
+    for e in entries:
+        name, city = e["name"], e["city"]
+        base = re.split(r"\s*[（(]", name)[0].strip()
+        if e.get("address"):
+            p = ensure_place(name, normalize(e["address"]), "food")
+        else:
+            # 先找同縣市、同店名的既有地點（含部落客推薦或前一年度已建立的）
+            # 連鎖店名稱含分店（如「鼎泰豐（信義路）」），只做完整名稱比對，避免配到別家分店
+            p = next((x for x in places if x.get("city") == city and key_name(x["name"]) == key_name(name)), None)
+            if p is None:
+                try:
+                    r = geo.locate_poi(name, city) or (geo.locate_poi(base, city) if base == name else None)
+                except Exception as ex:
+                    run["errors"].append(f"地點查詢失敗 {name}：{ex}")
+                    r = None
+                loc = (r["lat"], r["lng"], "poi") if r else None
+                p = new_place(name, "", "food", loc, city=city, district=(r or {}).get("district", ""),
+                              id_key="award:" + key_name(name) + city)
+                if not r:
+                    run["skipped"].append(f"{name}（{city}）：獎項名單沒有地址，查不到位置，暫不顯示在地圖")
+        if p.get("category") != "food":
+            p["category"] = "food"
+        awards.append({"award_id": "aw-" + short_hash(f"{p['place_id']}|{e['award_type']}|{e['award_year']}"),
+                       "place_id": p["place_id"], "award_type": e["award_type"], "award_year": e["award_year"],
+                       "source_url": e.get("source_url", ""), "verified_at": award_src.get("verified_at", ""),
+                       **({"level": e["level"]} if e.get("level") else {})})
+    # 同一地點同年同獎項只留一筆
+    awards = list({a["award_id"]: a for a in awards}.values())
+    if award_src or entries:
+        save(DATA / "awards.json", awards)
+        meta_notes = award_src.get("notes", {})
+    else:
+        meta_notes = {}
+
     save(DATA / "places.json", places)
     save(DATA / "contents.json", contents)
     save(PIPE / "state.json", state)
@@ -409,6 +497,7 @@ def main():
     meta = load(DATA / "meta.json", {})
     meta["last_updated"] = TODAY
     meta["note"] = "地點由 YouTube 影片說明與部落格文章中的地址自動整理（規則式，未經 AI 推論）。標示「範例資料」者為未驗證的示範地點。"
+    meta["award_notes"] = meta_notes
     save(DATA / "meta.json", meta)
     log.append(run)
     save(PIPE / "log.json", log[-60:])  # 保留最近 60 次
