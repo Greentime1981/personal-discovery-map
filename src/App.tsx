@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import GuideList, { type Video } from './components/GuideList';
 import MapView from './components/MapView';
 import PlaceCard from './components/PlaceCard';
 import PlaceList, { type Row } from './components/PlaceList';
@@ -7,7 +8,7 @@ import { CATEGORY_META, DEFAULT_CENTER, RADIUS_OPTIONS } from './config';
 import { loadPublicData, type PublicData } from './lib/data';
 import { distanceKm } from './lib/geo';
 import { useUserData } from './lib/userData';
-import type { Category, Destination, LatLng } from './types';
+import type { Category, Destination, LatLng, Place } from './types';
 
 type Mode = 'destination' | 'trip' | 'blogger' | 'guide';
 type Filter = 'all' | Category | 'favorites';
@@ -16,7 +17,7 @@ type Sort = 'distance' | 'sources' | 'category';
 const MODES: { id: Mode; label: string; phase?: string }[] = [
   { id: 'destination', label: '目的地探索' },
   { id: 'trip', label: '旅遊路線', phase: '第五階段' },
-  { id: 'blogger', label: '部落客攻略', phase: '第三階段' },
+  { id: 'blogger', label: '部落客攻略' },
   { id: 'guide', label: '米其林/500碗', phase: '第四階段' },
 ];
 
@@ -32,6 +33,8 @@ export default function App() {
   const [mode, setMode] = useState<Mode>('destination');
   const [userPos, setUserPos] = useState<LatLng | null>(null);
   const [toast, setToast] = useState('');
+  const [channel, setChannel] = useState('all');
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const user = useUserData();
 
@@ -92,6 +95,41 @@ export default function App() {
     return out;
   }, [data, filter, center, radius, sort, contentsByPlace, user.data.favorites]);
 
+  // ---- 部落客攻略 ----
+  const placeById = useMemo(() => new Map((data?.places ?? []).map((p) => [p.place_id, p])), [data]);
+  const allVideos: Video[] = useMemo(() => {
+    const m = new Map<string, Video>();
+    for (const c of data?.contents ?? []) {
+      const place = placeById.get(c.place_id);
+      if (!place || !c.source_url) continue;
+      let v = m.get(c.source_url);
+      if (!v) {
+        v = { url: c.source_url, title: c.title, source_name: c.source_name, published_at: c.published_at, items: [] };
+        m.set(c.source_url, v);
+      }
+      v.items.push({ content: c, place });
+    }
+    const list = [...m.values()];
+    for (const v of list) v.items.sort((a, b) => (a.content.original_sequence ?? 999) - (b.content.original_sequence ?? 999));
+    return list.sort((a, b) => b.published_at.localeCompare(a.published_at));
+  }, [data, placeById]);
+  const channels = useMemo(() => [...new Set(allVideos.map((v) => v.source_name))], [allVideos]);
+  const videos = channel === 'all' ? allVideos : allVideos.filter((v) => v.source_name === channel);
+  const video = allVideos.find((v) => v.url === videoUrl) ?? null;
+  const guidePlaces: Place[] = useMemo(() => {
+    const src = video ? [video] : videos;
+    const seen = new Map<string, Place>();
+    for (const v of src) for (const it of v.items) seen.set(it.place.place_id, it.place);
+    return [...seen.values()];
+  }, [video, videos]);
+  const numbers = useMemo(() => {
+    if (!video) return undefined;
+    const n: Record<string, number> = {};
+    for (const it of video.items) if (it.content.original_sequence != null && !(it.place.place_id in n)) n[it.place.place_id] = it.content.original_sequence;
+    return n;
+  }, [video]);
+  const isGuide = mode === 'blogger';
+
   const selectedRow = rows.find((r) => r.place.place_id === selectedId);
   const selected = selectedRow?.place ?? data?.places.find((p) => p.place_id === selectedId);
   const activeMode = MODES.find((m) => m.id === mode)!;
@@ -107,7 +145,16 @@ export default function App() {
             </button>
           ))}
         </nav>
-        {mode === 'destination' ? (
+        {isGuide ? (
+          <div className="filters">
+            <div className="chips">
+              <Chip on={channel === 'all'} onClick={() => { setChannel('all'); setVideoUrl(null); }}>全部頻道</Chip>
+              {channels.map((c) => (
+                <Chip key={c} on={channel === c} onClick={() => { setChannel(c); setVideoUrl(null); }}>{c}</Chip>
+              ))}
+            </div>
+          </div>
+        ) : mode === 'destination' ? (
           <div className="filters">
             <div className="chips">
               <Chip on={filter === 'all'} onClick={() => setFilter('all')}>全部</Chip>
@@ -162,7 +209,9 @@ export default function App() {
           <MapView
             center={center}
             radiusKm={radius}
-            places={rows.map((r) => r.place)}
+            places={isGuide ? guidePlaces : rows.map((r) => r.place)}
+            guideMode={isGuide}
+            numbers={numbers}
             selectedId={selectedId}
             userPos={userPos}
             onSelect={select}
@@ -172,6 +221,15 @@ export default function App() {
         </section>
 
         <aside className="sheet">
+          {isGuide ? (
+            <GuideList
+              videos={videos}
+              selected={video}
+              selectedPlaceId={selectedId}
+              onPickVideo={(u) => { setVideoUrl(u); setSelectedId(null); }}
+              onSelectPlace={select}
+            />
+          ) : (<>
           <div className="sheet-head">
             <span>
               <strong>{center.label}</strong> 附近 {radius} 公里 · {rows.length} 個地點
@@ -203,13 +261,14 @@ export default function App() {
           ) : (
             <div className="empty">載入資料中…</div>
           )}
+          </>)}
         </aside>
 
         {selected && (
           <PlaceCard
             place={selected}
             distance={
-              selected.latitude != null && selected.longitude != null
+              !isGuide && selected.latitude != null && selected.longitude != null
                 ? distanceKm(center, { lat: selected.latitude, lng: selected.longitude })
                 : null
             }

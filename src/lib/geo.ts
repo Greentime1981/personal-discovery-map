@@ -18,9 +18,10 @@ export function formatDistance(km: number): string {
 
 /** 開啟 Google Maps 導航（外部連結，不自建導航） */
 export function googleMapsDirUrl(p: { name: string; address: string; latitude: number | null; longitude: number | null }): string {
+  // 有地址時用「店名 + 地址」讓 Google Maps 找到精確店家；沒地址才用座標
   const dest =
-    p.latitude != null && p.longitude != null
-      ? `${p.latitude},${p.longitude}`
-      : `${p.name} ${p.address}`;
+    p.address
+      ? `${p.name} ${p.address}`
+      : `${p.latitude},${p.longitude}`;
   return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}`;
 }

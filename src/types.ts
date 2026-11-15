@@ -17,6 +17,7 @@ export interface Place {
   last_verified_at: string;
   confidence_score: number | null;
   sample?: boolean; // 範例資料，非已驗證推薦
+  geo_precision?: 'house' | 'street' | null; // 座標精度：門牌 / 路段概略
 }
 
 export interface Content {

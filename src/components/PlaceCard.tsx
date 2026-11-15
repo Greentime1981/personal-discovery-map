@@ -31,6 +31,9 @@ export default function PlaceCard(props: Props) {
         <button className="icon-btn" onClick={props.onClose} aria-label="關閉">✕</button>
       </div>
       {p.sample && <div className="sample-tag">範例資料：位置為概略值，尚未驗證</div>}
+      {!p.sample && p.geo_precision === 'street' && (
+        <div className="sample-tag">地圖位置為路段概略位置，導航會以店名 + 地址查詢</div>
+      )}
       <dl>
         <dt>分類</dt>
         <dd>{cat ? `${cat.icon} ${cat.label}` : NA}</dd>
@@ -56,7 +59,8 @@ export default function PlaceCard(props: Props) {
                   ) : (
                     c.title || c.source_name
                   )}
-                  <span className="muted">（{c.source_name}{c.published_at ? `，${c.published_at}` : ''}）</span>
+                  <span className="muted">（{c.source_name}{c.published_at ? `，${c.published_at}` : ''}
+                    {c.original_sequence != null ? `，影片中第 ${c.original_sequence} 間` : ''}）</span>
                 </li>
               ))}
             </ul>

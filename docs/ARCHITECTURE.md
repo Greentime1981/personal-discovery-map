@@ -53,12 +53,27 @@ GitHub repo（公開）
 |---|---|---|
 | 一 | 地圖、搜尋、分類、範圍、排序、地點資訊卡 | ✅ 完成 |
 | 二 | 收藏、已造訪、備註、Google Maps 導航、目前位置 | ✅ 完成 |
-| 三 | 部落格 RSS + YouTube Data API 蒐集 → 規則式地點辨識 → 人工確認 → 寫入 JSON；「部落客攻略」頁（保留原始順序） | 待開發 |
+| 三 | YouTube Data API 蒐集 → 規則式地點辨識 → 地理編碼 → 去重 → 寫入 JSON；「部落客攻略」頁（保留作者原始順序）；每日 GitHub Actions | ✅ 完成（部落格 RSS 待提供清單） |
 | 四 | 米其林 / 必比登 / 台灣500碗資料，依縣市、行政區、年度、獎項搜尋 | 待開發 |
 | 五 | 旅遊路線：飯店 + 每日目的地，以「離路線距離」篩選（先用直線距離，不做 AI 行程最佳化） | 待開發 |
 | 六 | GitHub Actions 每日排程、增量更新、錯誤紀錄、資料驗證強化 | 待開發（驗證腳本已先建立） |
 
 每階段完成並測試後才進下一階段。
+
+## 4.1 第三階段資料流程
+
+```
+pipeline/sources.json（追蹤的頻道）
+  → collect.py：YouTube Data API playlistItems（只抓新影片，state.json 記錄已處理）
+  → extract.py：從影片說明找「台灣地址（…號）」與附近的店名；沒寫地址就不建立
+  → Nominatim 地理編碼（快取在 geocode_cache.json）；查不到 → 座標 null、不上地圖
+  → 去重：同地址，或同店名且 < 200 公尺 → 合併為同一地點、多一個推薦來源
+  → 寫入 public/data/places.json、contents.json；執行紀錄與失敗原因寫入 pipeline/log.json
+  → GitHub Actions（update-data.yml，每天 04:00）commit 後重新部署
+```
+
+注意：YouTube 的公開 RSS（feeds/videos.xml）目前回應 404，因此直接使用官方 Data API。
+Nominatim 對台灣地址多半只能定位到路段（`geo_precision: "street"`），地圖上為概略位置；導航按鈕一律用「店名 + 地址」交給 Google Maps 查詢，所以導航仍會到正確店家。
 
 ## 5. 需要申請的 API 與費用
 

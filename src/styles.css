@@ -63,6 +63,7 @@ a { color: #1a73e8; }
 .li-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: 0 0 32px; }
 .li-body { display: flex; flex-direction: column; min-width: 0; }
 .li-body small { color: #5f6368; }
+.guide-head { padding: 8px 12px; border-bottom: 1px solid #f1f3f4; font-size: 14px; display: flex; flex-direction: column; gap: 2px; }
 .empty { padding: 16px; color: #5f6368; font-size: 14px; }
 
 .card {

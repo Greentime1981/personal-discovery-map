@@ -1,0 +1,12 @@
+{
+  "_說明": "要追蹤的 YouTube 頻道。category 是預設分類（food / family / date / attraction），可自行修改。",
+  "youtube": [
+    { "channel_id": "UC1JTcPIq1rgaQajsc1j9o_g", "name": "港仔張啟樂的臺灣生活", "category": "food" },
+    { "channel_id": "UCKo5ZM5XmaUO1oUCDJ42RxQ", "name": "痛風老饕易胖體質", "category": "food" },
+    { "channel_id": "UC2cmGxt70KLYyWpE9jQ4qhw", "name": "CHILL先生一家人", "category": "family" },
+    { "channel_id": "UC18jDfM8UIqYfrYGJNStUag", "name": "肥波開吃啦", "category": "food" },
+    { "channel_id": "UCQ6dAn-1lkPAnYmP4fnRNAg", "name": "A/DA阿達", "category": "food" },
+    { "channel_id": "UCiW-H284xzPGkhz20hYeQlA", "name": "波妞食境秀", "category": "food" }
+  ],
+  "blogs": []
+}

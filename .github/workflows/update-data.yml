@@ -1,0 +1,57 @@
+name: Update data (YouTube)
+
+on:
+  schedule:
+    - cron: '0 20 * * *' # 每天台灣時間 04:00
+  workflow_dispatch:
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    env:
+      YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: cd pipeline && python -m unittest test_extract.py
+      - name: Check API key
+        if: env.YOUTUBE_API_KEY == ''
+        run: echo "::warning::尚未設定 YOUTUBE_API_KEY（Settings → Secrets and variables → Actions），本次略過資料蒐集。"
+      - name: Collect
+        if: env.YOUTUBE_API_KEY != ''
+        run: python pipeline/collect.py
+      - name: Validate
+        run: python scripts/validate_data.py
+      - name: Commit changes
+        id: commit
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data pipeline
+          git commit -m "資料自動更新 $(date -u +%F)"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: collect
+    if: needs.collect.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml
