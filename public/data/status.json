@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-11-15T06:01:12+00:00",
-  "runner": "github",
+  "run_at": "2026-11-15T06:23:54+00:00",
+  "runner": "local",
   "new_videos": 0,
-  "new_posts": 0,
-  "new_places": 0,
-  "skipped": 0,
+  "new_posts": 10,
+  "new_places": 11,
+  "skipped": 19,
   "errors": [],
   "by_source": {
     "港仔張啟樂的臺灣生活": {
@@ -86,6 +86,71 @@
     "劉先生出一張嘴": {
       "contents": 6,
       "latest": "2026-11-13"
+    },
+    "PEKO の Simple Life": {
+      "contents": 11,
+      "latest": "2026-11-15"
+    },
+    "陳小可的吃喝玩樂": {
+      "contents": 21,
+      "latest": "2026-11-14"
+    },
+    "瑋瑋＊美食萬歲": {
+      "contents": 4,
+      "latest": "2026-11-11"
+    },
+    "霸子。食樂拼圖": {
+      "contents": 5,
+      "latest": "2026-11-09"
+    },
+    "艾妮可美味人生": {
+      "contents": 4,
+      "latest": "2026-11-10"
+    },
+    "ifunny 艾方妮的遊樂場": {
+      "contents": 2,
+      "latest": "2026-11-14"
+    },
+    "阿華田的美食日記": {
+      "contents": 6,
+      "latest": "2026-10-19"
+    },
+    "糖糖's 享食生活": {
+      "contents": 4,
+      "latest": "2026-11-15"
+    },
+    "曼達愛吃鬼": {
+      "contents": 21,
+      "latest": "2026-02-17"
+    },
+    "小涼的美食小天地": {
+      "contents": 5,
+      "latest": "2026-11-13"
+    },
+    "貝ㄦ貪食怪": {
+      "contents": 1,
+      "latest": "2022-07-22"
+    },
+    "阿君的玩食天堂": {
+      "contents": 1,
+      "latest": "2026-06-12"
+    },
+    "郭郭的花東走跳生活": {
+      "contents": 4,
+      "latest": "2025-12-09"
+    },
+    "高雄美食地圖": {
+      "contents": 18,
+      "latest": "2026-11-14"
+    },
+    "黑糖兄妹食樂主義": {
+      "contents": 17,
+      "latest": "2026-09-27"
+    },
+    "剎有其食": {
+      "contents": 11,
+      "latest": "2026-11-13"
     }
-  }
+  },
+  "github_blocked_detected": []
 }

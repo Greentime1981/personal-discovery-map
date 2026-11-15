@@ -86,7 +86,8 @@ def extract_places(text: str) -> list[dict]:
     """回傳 [{name, address, sequence}]，sequence 為說明文字中出現的順序（作者原始順序）。"""
     if not text:
         return []
-    lines = [normalize(l) for l in text.splitlines()]
+    # 去掉空白行：網頁轉文字常有一大串空行，會讓「往上找店名」超出範圍
+    lines = [normalize(l) for l in text.splitlines() if l.strip()]
     out, seen = [], set()
     for i, line in enumerate(lines):
         for m in ADDR_RE.finditer(ADDR_LABEL_RE.sub("", line)):

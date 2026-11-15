@@ -403,7 +403,12 @@ def main():
                 items = fetch_feed(b["feed"]) if b.get("feed") else fetch_sitemap(b["sitemap"])
                 posts = [x for x in items if x["link"] not in known]
             except Exception as e:
-                run["errors"].append(f"{b['name']}：RSS / sitemap 讀取失敗 {e}")
+                if ON_GITHUB and isinstance(e, urllib.error.HTTPError) and e.code == 403:
+                    # 這個網站擋 GitHub 伺服器：不算錯誤（本機會更新），提醒把它標成 github_blocked
+                    run["skipped"].append(f"{b['name']}：擋 GitHub 伺服器，由本機更新（建議在 sources.json 標記 github_blocked）")
+                    run.setdefault("github_blocked_detected", []).append(b["name"])
+                else:
+                    run["errors"].append(f"{b['name']}：RSS / sitemap 讀取失敗 {e}")
                 continue
             for x in reversed(posts):
                 run["new_posts"] += 1
@@ -538,6 +543,7 @@ def main():
         "run_at": run["run_at"], "runner": "github" if ON_GITHUB else "local",
         "new_videos": run["new_videos"], "new_posts": run["new_posts"], "new_places": run["new_places"],
         "skipped": len(run["skipped"]), "errors": run["errors"][:50], "by_source": by_source,
+        "github_blocked_detected": run.get("github_blocked_detected", []),
     })
     log.append(run)
     save(PIPE / "log.json", log[-60:])  # 保留最近 60 次

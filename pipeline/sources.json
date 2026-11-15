@@ -30,6 +30,16 @@
       "channel_id": "UCiW-H284xzPGkhz20hYeQlA",
       "name": "波妞食境秀",
       "category": "food"
+    },
+    {
+      "channel_id": "UCgvq9BsiLxKoPQM72Snb6vg",
+      "name": "食神鬍子哥（鬍子哥美食指南）",
+      "category": "food"
+    },
+    {
+      "channel_id": "UC-L98wb_vZUWqm_Q_fbQYXA",
+      "name": "1000cc美食頻道",
+      "category": "food"
     }
   ],
   "blogs": [
@@ -176,13 +186,6 @@
       "fetch_article": false
     },
     {
-      "name": "靜怡&大顆呆",
-      "site": "https://eeooa0314.tw/blog",
-      "category": "family",
-      "feed": "https://eeooa0314.pixnet.net/blog/feed/rss",
-      "fetch_article": true
-    },
-    {
       "name": "跟著領隊sky玩",
       "site": "https://taiwantour.net",
       "category": "attraction",
@@ -218,6 +221,128 @@
       "category": "food",
       "fetch_article": true,
       "github_blocked": true
+    },
+    {
+      "name": "PEKO の Simple Life",
+      "site": "https://pekoblog.tw",
+      "category": "food",
+      "feed": "https://pekoblog.tw/feed/",
+      "fetch_article": false
+    },
+    {
+      "name": "陳小可的吃喝玩樂",
+      "site": "https://www.mecocute.com",
+      "category": "food",
+      "feed": "https://www.mecocute.com/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "瑋瑋＊美食萬歲",
+      "site": "https://vivawei.tw",
+      "category": "food",
+      "feed": "https://vivawei.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "霸子。食樂拼圖",
+      "site": "https://buuz.tw",
+      "category": "food",
+      "feed": "https://buuz.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "剎有其食",
+      "site": "https://safood.tw",
+      "category": "food",
+      "feed": "https://safood.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "艾妮可美味人生",
+      "site": "https://anikofoodie.com",
+      "category": "food",
+      "feed": "https://anikofoodie.com/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "ifunny 艾方妮的遊樂場",
+      "site": "https://ifunny.blog",
+      "category": "food",
+      "feed": "https://ifunny.blog/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "阿華田的美食日記",
+      "site": "https://huablog.tw",
+      "category": "food",
+      "feed": "https://huablog.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "糖糖's 享食生活",
+      "site": "https://candylife.tw",
+      "category": "food",
+      "feed": "https://candylife.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "曼達愛吃鬼",
+      "site": "https://amanda390.com",
+      "category": "food",
+      "sitemap": "https://amanda390.com/post-sitemap.xml"
+    },
+    {
+      "name": "小涼的美食小天地",
+      "site": "https://sant.tw",
+      "category": "food",
+      "feed": "https://sant.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "貝ㄦ貪食怪",
+      "site": "https://belleeating.wordpress.com",
+      "category": "food",
+      "feed": "https://belleeating.wordpress.com/feed/",
+      "fetch_article": false
+    },
+    {
+      "name": "阿君的玩食天堂",
+      "site": "https://ajunfun.tw",
+      "category": "food",
+      "sitemap": "https://ajunfun.tw/post-sitemap.xml"
+    },
+    {
+      "name": "郭郭的花東走跳生活",
+      "site": "https://kuokuo.tw",
+      "category": "food",
+      "feed": "https://kuokuo.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "台南好Food遊",
+      "site": "https://itainan.com.tw",
+      "category": "food",
+      "feed": "https://itainan.com.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "高雄美食地圖",
+      "site": "https://inmap.tw",
+      "category": "food",
+      "sitemap": "https://inmap.tw/post-sitemap.xml"
+    },
+    {
+      "name": "口袋吃吃五十咩",
+      "site": "https://etaiwan.blog",
+      "category": "food",
+      "feed": "https://etaiwan.blog/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "黑糖兄妹食樂主義",
+      "site": "https://bksuger.com",
+      "category": "food",
+      "sitemap": "https://bksuger.com/post-sitemap.xml"
     }
   ]
 }

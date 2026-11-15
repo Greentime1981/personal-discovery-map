@@ -59,6 +59,11 @@ class T(unittest.TestCase):
         )
         self.assertEqual([x["name"] for x in extract_places(t)], ["板橋小籠包", "板橋王記好吃麻油雞"])
 
+    def test_many_blank_lines(self):
+        t = "銀河之心耶誕樹\n\n\n\n\n\n展出地址:新光三越台中中港店 1F 水舞廣場(台中市西屯區台灣大道三段301號)\n展出日期:即日起"
+        r = extract_places(t)
+        self.assertEqual([(x["name"], x["address"]) for x in r], [("銀河之心耶誕樹", "台中市西屯區台灣大道三段301號")])
+
     def test_address_not_name(self):
         r = extract_places("新北市三重區中央北路\n新北市三重區中央北路65號")
         self.assertIsNone(r[0]["name"])
