@@ -208,14 +208,16 @@
       "site": "https://happytravel.tw",
       "feed": "https://happytravel.tw/feed/",
       "category": "food",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "愛玩的伊凡",
       "site": "https://evantravel.tw",
       "feed": "https://evantravel.tw/feed/",
       "category": "food",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     }
   ]
 }
