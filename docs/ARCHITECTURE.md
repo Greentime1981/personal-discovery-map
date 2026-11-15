@@ -1,0 +1,92 @@
+# 架構與開發規劃
+
+依《個人生活與旅遊探索地圖 App－開發規格書》第十節要求整理。
+
+## 1. 最精簡可行架構
+
+```
+GitHub repo（公開）
+├── public/data/*.json      ← 公開地點資料（places / contents / awards / meta）
+├── src/                    ← React + TypeScript + Vite 前端（純靜態）
+├── scripts/                ← Python：資料驗證；第三階段起加入資料蒐集
+└── .github/workflows/      ← build + 部署 GitHub Pages；第六階段加每日排程
+
+瀏覽器
+├── 讀取 data/*.json（靜態檔，無後端）
+├── 地圖：Leaflet + OpenStreetMap 官方圖磚（低用量個人使用，可在 config.ts 換供應商）
+├── 地址查詢：OSM Nominatim（使用者按搜尋時才呼叫）
+├── 個人資料：localStorage（收藏、已造訪、備註），可匯出 / 匯入 user_data.json
+└── 導航：開啟 Google Maps 外部連結
+```
+
+沒有後端、沒有資料庫伺服器、沒有會員系統。
+
+## 2. 專案目錄
+
+| 路徑 | 用途 |
+|---|---|
+| `src/App.tsx` | 首頁：搜尋列、四大入口、篩選、地圖 + 清單 + 資訊卡 |
+| `src/components/MapView.tsx` | Leaflet 地圖、分類圖示、搜尋範圍圈、目前位置 |
+| `src/components/SearchBar.tsx` | 目的地 / 地址搜尋 |
+| `src/components/PlaceList.tsx` | 附近推薦清單 |
+| `src/components/PlaceCard.tsx` | 地點資訊卡（沒有資料就顯示「尚無資料」） |
+| `src/lib/geo.ts` | 距離計算、Google Maps 導航連結 |
+| `src/lib/geocode.ts` | Nominatim 查詢（節流 1 次/秒 + 快取） |
+| `src/lib/userData.ts` | 個人資料（localStorage） |
+| `src/config.ts` | 圖磚供應商、分類圖示、獎項名稱 |
+| `public/data/` | 公開資料 JSON |
+| `scripts/validate_data.py` | 資料檢查（重複、參照、獎項年度），CI 每次部署前執行 |
+
+## 3. 資料 Schema
+
+與規格書第四節一致，額外欄位：
+
+- `places.json`：多一個 `sample: true`，標示「範例資料、未驗證」。`latitude/longitude` 為 `null` 的地點**不會**出現在地圖上（避免不確定的地址當成正確資料）。
+- `contents.json`：`source_type` 為 `youtube` / `blog` / `official`。推薦數量 = 同一 `place_id` 下不同 `source_name` 的數量。`original_sequence` 存作者原始順序；系統最佳化順序將另存，不覆蓋原始值。
+- `awards.json`：`award_type` ∈ `michelin_1 | michelin_2 | michelin_3 | bib_gourmand | taiwan_500`；每筆一個年度，同一家多年獲獎就多筆，畫面一律顯示年度。
+- `meta.json`：`last_updated`、說明文字。
+- `user_data.json`：**不進 repo**（已列入 `.gitignore`）。App 內存在 localStorage，「匯出個人資料」可下載備份。
+
+## 4. 開發階段
+
+| 階段 | 內容 | 狀態 |
+|---|---|---|
+| 一 | 地圖、搜尋、分類、範圍、排序、地點資訊卡 | ✅ 完成 |
+| 二 | 收藏、已造訪、備註、Google Maps 導航、目前位置 | ✅ 完成 |
+| 三 | 部落格 RSS + YouTube Data API 蒐集 → 規則式地點辨識 → 人工確認 → 寫入 JSON；「部落客攻略」頁（保留原始順序） | 待開發 |
+| 四 | 米其林 / 必比登 / 台灣500碗資料，依縣市、行政區、年度、獎項搜尋 | 待開發 |
+| 五 | 旅遊路線：飯店 + 每日目的地，以「離路線距離」篩選（先用直線距離，不做 AI 行程最佳化） | 待開發 |
+| 六 | GitHub Actions 每日排程、增量更新、錯誤紀錄、資料驗證強化 | 待開發（驗證腳本已先建立） |
+
+每階段完成並測試後才進下一階段。
+
+## 5. 需要申請的 API 與費用
+
+| 服務 | 用途 | 需要申請 | 費用 |
+|---|---|---|---|
+| OpenStreetMap 圖磚 | 地圖圖磚 | 否 | 免費，但只限低用量、需標示出處、不可批次下載；用量變大改 Stadia Maps / MapTiler（有免費額度，需註冊 key） |
+| OSM Nominatim | 地址查詢 | 否 | 免費，限 1 次/秒、不可大量查詢 |
+| Google Maps 連結 | 導航 | 否 | 免費（只用 URL，不用 API） |
+| GitHub Pages + Actions | 部署 / 排程 | 否 | 公開 repo 免費 |
+| YouTube Data API v3（第三階段） | 影片 metadata | Google Cloud 專案 + API Key | 免費，每日 10,000 配額單位 |
+| 地理編碼（第三階段後，批次） | 地址轉座標 | 視選擇 | 建議 TGOS（內政部，需申請）或自建快取；不可用 Nominatim 批次跑 |
+| Claude API（選用，第三階段後） | 摘要 / 地點辨識 | Anthropic Console | 依用量計費，增量更新每月約數美元內 |
+
+API Key 一律放 GitHub Secrets，只在 Actions 的 Python 中使用，不會出現在前端。
+
+## 6. 可能的技術限制
+
+1. **米其林 / 台灣500碗資料授權**：官方網站沒有公開 API，網站條款可能禁止爬取。建議以手動或半自動方式整理名單（店名、獎項、年度、官方連結），不複製介紹全文與照片。
+2. **部落格**：很多部落格沒有 RSS，或 RSS 只有摘要。只用 RSS 能取得的內容，不爬全文。
+3. **地點辨識**：從文章擷取店名容易出錯（同名分店、已歇業）。自動流程只產出「候選」，座標不確定的維持 `null`，不上地圖。
+4. **地理編碼**：Nominatim 對台灣門牌地址精度普通；批次地理編碼需要另一個合規服務。
+5. **行車路線（第五階段）**：真正的繞路時間需要路線 API（如 OSRM 公共伺服器有用量限制）。初期以「離每日目的地連線的距離」近似。
+6. **個人資料只存在單一裝置**：換手機需用匯出 / 匯入。需要跨裝置同步時再考慮 Supabase。
+7. **GitHub Pages 為公開網站**：任何知道網址的人都看得到公開地點資料（但看不到你的收藏）。
+
+## 7. 未來擴充清單（目前刻意不做）
+
+- 跨裝置同步（Supabase）
+- 行車時間 / 繞路時間分析
+- AI 自動行程最佳化
+- 離線地圖、Service Worker 快取

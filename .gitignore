@@ -1,0 +1,8 @@
+node_modules
+dist
+.env
+.env.*
+# 個人資料不可進公開 repo
+user_data.json
+*.local
+*.tsbuildinfo

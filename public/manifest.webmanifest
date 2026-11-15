@@ -1,0 +1,9 @@
+{
+  "name": "Personal Discovery Map 個人探索地圖",
+  "short_name": "探索地圖",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a73e8",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
