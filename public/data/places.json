@@ -156,7 +156,9 @@
     "longitude": 121.5294,
     "price_range": null,
     "description": "",
-    "sources": [],
+    "sources": [
+      "bl-1b112ba0d2-1"
+    ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
     "last_verified_at": "",
@@ -10200,7 +10202,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "yt-rNJzRavK004-4"
+      "yt-rNJzRavK004-4",
+      "bl-b75b4d3571-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -23313,7 +23316,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "yt-gk_0f016plc-1"
+      "yt-gk_0f016plc-1",
+      "bl-fb9cbcfb77-10"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -23333,7 +23337,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "yt-gk_0f016plc-2"
+      "yt-gk_0f016plc-2",
+      "bl-fb9cbcfb77-3"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -27918,7 +27923,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "bl-b996e56adf-2"
+      "bl-b996e56adf-2",
+      "bl-06f32f5bc2-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -27938,7 +27944,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "bl-b996e56adf-3"
+      "bl-b996e56adf-3",
+      "bl-06f32f5bc2-2"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -27958,7 +27965,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "bl-b996e56adf-4"
+      "bl-b996e56adf-4",
+      "bl-06f32f5bc2-3"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -27978,7 +27986,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "bl-b996e56adf-5"
+      "bl-b996e56adf-5",
+      "bl-06f32f5bc2-4"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -28239,6 +28248,4351 @@
     "description": "",
     "sources": [
       "bl-57b251d04d-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3c1b17e4be",
+    "name": "航空教育展示館",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "岡山區",
+    "address": "高雄市岡山區致遠路55號",
+    "latitude": 22.797418,
+    "longitude": 120.266787,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-43ad4ed27c-1",
+      "bl-9c21daa581-10"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-58bd71acd0",
+    "name": "帕可麗酒店",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區文信路192號",
+    "latitude": 22.664278,
+    "longitude": 120.295885,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-7da79e7fbc-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-8417e6aafa",
+    "name": "奧斯丁夢想樂園草衙道店",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區中安路1-1號",
+    "latitude": 22.582803,
+    "longitude": 120.333243,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-83bb92fee6",
+    "name": "紅頂穀創穀物文創樂園",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區民族一路709號",
+    "latitude": 22.674327,
+    "longitude": 120.318084,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-3"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-708b38240e",
+    "name": "宏裕行花枝丸館",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區新生路240號",
+    "latitude": 22.586044,
+    "longitude": 120.308884,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-4"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-87623365fe",
+    "name": "高雄義大遊樂世界",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "大樹區",
+    "address": "高雄市大樹區學城路一段10號",
+    "latitude": 22.730663,
+    "longitude": 120.400386,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-5"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a8a139b0e9",
+    "name": "國立科學工藝博物館",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區九如一路720號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-6"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-b7eb15bd7c",
+    "name": "蓮潭滑水主題樂園",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區新庄仔路46號",
+    "latitude": 22.669106,
+    "longitude": 120.308854,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-7"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-7522331764",
+    "name": "木育森林駁二門市",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區大義街2-2號",
+    "latitude": 22.620716,
+    "longitude": 120.285794,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-8"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a6b8f4cbb2",
+    "name": "十鼓橋糖文化園區",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "橋頭區",
+    "address": "高雄市橋頭區糖廠路24號",
+    "latitude": 22.754781,
+    "longitude": 120.313097,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-9"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4a883ec9a7",
+    "name": "美濃民俗村",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "美濃區",
+    "address": "高雄市美濃區中山路二段421巷80號",
+    "latitude": 22.898036,
+    "longitude": 120.51946,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-11"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-5170d34362",
+    "name": "壽山動物園",
+    "category": "attraction",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區萬壽路350號",
+    "latitude": 22.635586,
+    "longitude": 120.275109,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c21daa581-12"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-d31f597d4e",
+    "name": "國立台灣博物館古生物館(土銀展示館)",
+    "category": "attraction",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "台北市中正區襄陽路25號",
+    "latitude": 25.043378,
+    "longitude": 121.515856,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-822914fee1-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-9be9b23326",
+    "name": "松山文創園區(松菸)",
+    "category": "attraction",
+    "city": "台北市",
+    "district": "信義區",
+    "address": "台北市信義區光復南路133號",
+    "latitude": 25.036532,
+    "longitude": 121.557621,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-7541a6959a-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-0bc99934a7",
+    "name": "林家肉圓",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區華泰路219號",
+    "latitude": 22.669869,
+    "longitude": 120.293562,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-1e8a6ad534-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-8f234f2125",
+    "name": "右昌街樂透棒雞肉捲餅",
+    "category": "food",
+    "city": "高雄市",
+    "district": "楠梓區",
+    "address": "高雄市楠梓區右昌街191號",
+    "latitude": 22.719627,
+    "longitude": 120.282916,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-1f69423dd1-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-95cd3c7069",
+    "name": "荳荳泰味飯館",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區苓雅一路225號",
+    "latitude": 22.618297,
+    "longitude": 120.303585,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9a7d131e9b-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-b9e32cbe4d",
+    "name": "知本山上有家麵包店",
+    "category": "food",
+    "city": "台東縣",
+    "district": "卑南鄉",
+    "address": "台東縣卑南鄉溫泉村鎮樂路38號",
+    "latitude": 22.708158,
+    "longitude": 121.027237,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-ab0a59cdf2-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a4a009ab97",
+    "name": "老味陽春麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區龍水里青海路426號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-936c31cae4-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-afa82def4a",
+    "name": "頂拌 夫妻肺片 自由店 自由黃昏市場",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區自由三路261號",
+    "latitude": 22.669791,
+    "longitude": 120.308849,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-4959e82e99-1",
+      "bl-4064a5633a-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e742241c95",
+    "name": "虎爺雞飯_左營自由店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區新上里自由二路422號",
+    "latitude": 22.657861,
+    "longitude": 120.309643,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b3732d8bed-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-609656a312",
+    "name": "方圓九里精緻餐盒-楠梓店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "楠梓區",
+    "address": "高雄市楠梓區創新路65號",
+    "latitude": 22.750291,
+    "longitude": 120.331538,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-47993a57b0-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4e9695f35c",
+    "name": "止癢選物店 塩埕第一公有零售市場",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區教仁里新樂街213號之10",
+    "latitude": 22.626702,
+    "longitude": 120.279746,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9a943a8928-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a17cd412f7",
+    "name": "阿桃紅豆薏仁",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區壽星里壽星街10號",
+    "latitude": 22.631693,
+    "longitude": 120.284863,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-65561c09b0-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-b66216e646",
+    "name": "日日燒肉、日日炭火燒肉",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區新江里七賢一路526號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-6279dd899c-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-618fefb5b9",
+    "name": "煦咖啡 LUME Café",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區河西路5號",
+    "latitude": 22.622798,
+    "longitude": 120.288706,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9a39eef485-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-ed6e5ff195",
+    "name": "老泉城黃燜雞米飯(鼎山店)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區鼎山街290號",
+    "latitude": 22.654814,
+    "longitude": 120.321008,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-15e0725aa4-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-7c64034058",
+    "name": "湖畔咖啡屋庇護工場 (高雄長庚 復健大樓)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳥松區",
+    "address": "高雄市鳥松區鳥松里大埤路123號",
+    "latitude": 22.647133,
+    "longitude": 120.353226,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-65818be233-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-5e5621a029",
+    "name": "苓雅市場廟口蚵仔煎",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區苓雅二路132號",
+    "latitude": 22.617174,
+    "longitude": 120.298853,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-d92a823266-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-34e179c967",
+    "name": "屏感覺所 遊客服務中心",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "屏東市",
+    "address": "屏東縣屏東市勝利路137號",
+    "latitude": 22.678744,
+    "longitude": 120.475193,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-4574edb026-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-66ac760b2e",
+    "name": "任家涼麵(勝利店)創始店",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "屏東市",
+    "address": "屏東縣屏東市勝利路183之2號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-4574edb026-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-cc70e97bb4",
+    "name": "進來涼冰菓室",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "屏東市",
+    "address": "屏東縣屏東市金泉里民權路20-7號",
+    "latitude": 22.671169,
+    "longitude": 120.49155,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-4574edb026-4"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a3da61808e",
+    "name": "李家圓仔冰",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區五福四路234號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-560c9ec796-1",
+      "bl-b75b4d3571-67"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-bcf4b4ad20",
+    "name": "萬里香白糖粿 傳承的美味",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區漢民里大同一路171號",
+    "latitude": 22.627356,
+    "longitude": 120.298665,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-13ad680589-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-bf87b9b0bf",
+    "name": "興隆居傳統早點美食",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前金區",
+    "address": "高雄市前金區六合二路186號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-1bd92e6425-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-903937eec0",
+    "name": "水點心手工水餃",
+    "category": "food",
+    "city": "台中市",
+    "district": "北區",
+    "address": "台中市北區賴福里太原路二段190-1號",
+    "latitude": 24.165138,
+    "longitude": 120.678963,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-d97847953f-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6a7d642b63",
+    "name": "欣怡冰菓屋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區嘉慶街15號",
+    "latitude": 22.658919,
+    "longitude": 120.306008,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-041ab72343",
+    "name": "午涼。Go for ice",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區昌盛路34號",
+    "latitude": 22.663846,
+    "longitude": 120.299281,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-3"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-ebe8a20e56",
+    "name": "吳家豆花八寶冰(正忠總店)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區建武路187號",
+    "latitude": 22.646304,
+    "longitude": 120.330693,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-4"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-615afcc38f",
+    "name": "夏雪冰棧",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區天祥一路155號",
+    "latitude": 22.668267,
+    "longitude": 120.31695,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-5"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6870aadb6c",
+    "name": "佐棧冰舖",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區青海路346號",
+    "latitude": 22.65112,
+    "longitude": 120.291656,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-6"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2227a92360",
+    "name": "旗山老街吳厝傳統豆花",
+    "category": "food",
+    "city": "高雄市",
+    "district": "旗山區",
+    "address": "高雄市旗山區中山路842號",
+    "latitude": 22.642433,
+    "longitude": 120.368019,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-7"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-370dc77d5c",
+    "name": "蒟蒻綠豆屋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區裕誠路167號",
+    "latitude": 22.66692,
+    "longitude": 120.301623,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-8"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a78da92407",
+    "name": "百樂冰淇淋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前金區",
+    "address": "高雄市前金區市中一路225號",
+    "latitude": 22.628747,
+    "longitude": 120.290468,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-9"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6e8a4a8bfd",
+    "name": "古錐家",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區濱海一路58號",
+    "latitude": 22.619594,
+    "longitude": 120.270317,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-10"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-dbe55ce760",
+    "name": "冰屋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區沱江街23號",
+    "latitude": 22.608101,
+    "longitude": 120.314939,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-11"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-7dca6e61da",
+    "name": "ICE+ 艾司加冰屋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區文衡路491號",
+    "latitude": 22.640953,
+    "longitude": 120.353671,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-12"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-dfb14be52b",
+    "name": "鹽埕町雪花冰Yanchengting",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區富野路56巷10號",
+    "latitude": 22.628339,
+    "longitude": 120.283764,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-13"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6b75c36f50",
+    "name": "瑞豐夜市-KAJU Gelato 咔啾義式手工冰淇淋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區裕誠路1128號",
+    "latitude": 22.66692,
+    "longitude": 120.301623,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-14"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-cac185d2b8",
+    "name": "港城豆花 – 高雄旗艦店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區文忠路147號",
+    "latitude": 22.692159,
+    "longitude": 120.314083,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-15"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2cde7f547a",
+    "name": "碳佐麻里 精品燒肉-高雄美術館旗艦店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區美術東四路562號",
+    "latitude": 22.663337,
+    "longitude": 120.29043,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-16"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-743dd04aeb",
+    "name": "Buonopops冰棒",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區五福四路154號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-17"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-4e28d5f7e9",
+    "name": "冰塔 B-TOD",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區中正路85號",
+    "latitude": 22.629894,
+    "longitude": 120.360712,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-18"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-9209a4c7a1",
+    "name": "阿美冰店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區左營大路86號",
+    "latitude": 22.674291,
+    "longitude": 120.285172,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-19"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-824203889d",
+    "name": "糖小鴨港式甜品",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區林南街8號",
+    "latitude": 22.624938,
+    "longitude": 120.329602,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-20"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-53596ca0d0",
+    "name": "南海理髮廳",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區南海街164號",
+    "latitude": 22.628304,
+    "longitude": 120.310097,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-21"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2bf76fc798",
+    "name": "葉月堂手作雪花冰",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區天祥一路179-2號",
+    "latitude": 22.668267,
+    "longitude": 120.31695,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-22"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-18790e5a1b",
+    "name": "莊記綠豆算",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區新庄仔路550號",
+    "latitude": 22.669106,
+    "longitude": 120.308854,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-23"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4aa5398651",
+    "name": "QQ粉圓冰",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區自立一路85巷45號",
+    "latitude": 22.64378,
+    "longitude": 120.296357,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-24"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a36c5fe3fd",
+    "name": "多田冰舖",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區裕誠路239號",
+    "latitude": 22.66692,
+    "longitude": 120.301623,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-25"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-100a620905",
+    "name": "甜舞糖水",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區裕誠路422號",
+    "latitude": 22.66692,
+    "longitude": 120.301623,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-27"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c04f502fd3",
+    "name": "小艾莎餐桌 Little Elsa",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區明倫路68號",
+    "latitude": 22.667359,
+    "longitude": 120.297557,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-28"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2a2a8013ef",
+    "name": "TheCorner美式手作霜淇淋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區尚義街15號",
+    "latitude": 22.631445,
+    "longitude": 120.315311,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-29"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-bf6fa1fed2",
+    "name": "等一下X甘味処スウィートオフィス冰",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區崑明街55號",
+    "latitude": 22.611605,
+    "longitude": 120.307665,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-30"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-11a850f266",
+    "name": "張家豪台式功夫甜品",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區熱河一街415號",
+    "latitude": 22.643591,
+    "longitude": 120.308767,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-31"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3875faf806",
+    "name": "嚐仙手工芋圓芋泥專賣店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區博愛二路310號",
+    "latitude": 22.668607,
+    "longitude": 120.30191,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-32"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-5e04b847f5",
+    "name": "彩虹叭噗手作冰棒(水果冰棒)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區明倫路136號",
+    "latitude": 22.667359,
+    "longitude": 120.297557,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-33"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-fc54302e91",
+    "name": "勞倫斯茶飲",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區林森一路7號",
+    "latitude": 22.631193,
+    "longitude": 120.30465,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-34"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-f4f97435d0",
+    "name": "鬆一下調皮泡泡飲(創意飲料)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區博愛路425號",
+    "latitude": 22.629846,
+    "longitude": 120.368412,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-35"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-326facd3fc",
+    "name": "泰讚了thai like tea",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區綏遠一街167巷34號",
+    "latitude": 22.648707,
+    "longitude": 120.306231,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-36"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-b225ee2587",
+    "name": "瘋仙草手工仙草專賣店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區立大路125號",
+    "latitude": 22.674291,
+    "longitude": 120.285172,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-37"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e4eb6892db",
+    "name": "岩雪 雪片の冰",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區勝利路128之1號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-38"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-e344a531f4",
+    "name": "行事紅心粉圓(挫冰)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區林泉街4號",
+    "latitude": 22.626765,
+    "longitude": 120.323795,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-39"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-08aca34558",
+    "name": "Q陳古早味黑砂糖剉冰(高雄旗艦店)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區五福一路147號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-40"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-c61c2d6c05",
+    "name": "青葉冰城",
+    "category": "food",
+    "city": "高雄市",
+    "district": "岡山區",
+    "address": "高雄市岡山區中華路1之1號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-41"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-48c353dd5d",
+    "name": "COOLPLAY酷頑創意霜淇淋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區七賢三路1-3號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-42"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-36183ca142",
+    "name": "黑砂糖剉冰(陳Q古早黑砂糖剉冰)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區華榮路325號",
+    "latitude": 22.671213,
+    "longitude": 120.292124,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-43"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-05a316f150",
+    "name": "杏福巷子",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前金區",
+    "address": "高雄市前金區成功一路274巷1-1號",
+    "latitude": 22.626336,
+    "longitude": 120.292923,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-44"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3146471b9c",
+    "name": "甲仙小奇芋冰老店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "甲仙區",
+    "address": "高雄市甲仙區中正路2號",
+    "latitude": 23.084389,
+    "longitude": 120.588127,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-45"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-31d8405761",
+    "name": "那個年代杏仁豆腐冰",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區新田路127號",
+    "latitude": 22.863934,
+    "longitude": 120.360709,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-46"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6023b6b9f9",
+    "name": "那個年代杏仁豆腐冰",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區自由二路448號",
+    "latitude": 22.657861,
+    "longitude": 120.309643,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-47"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-0cbe9927cc",
+    "name": "老張愛玉冰店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區信義街11號",
+    "latitude": 22.791418,
+    "longitude": 120.289226,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-48"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6817af2c9a",
+    "name": "寶來36咖啡愛玉",
+    "category": "food",
+    "city": "高雄市",
+    "district": "六龜區",
+    "address": "高雄市六龜區寶來里中正路36號",
+    "latitude": 23.109381,
+    "longitude": 120.703031,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-50"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c42cde54fa",
+    "name": "高雄大碗公旗艦店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區建工路605號",
+    "latitude": 22.654145,
+    "longitude": 120.333164,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-51"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3b31295d4c",
+    "name": "大坪頂之皇冠冰城",
+    "category": "food",
+    "city": "高雄市",
+    "district": "小港區",
+    "address": "高雄市小港區高坪17街151號",
+    "latitude": 22.561223,
+    "longitude": 120.391224,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-52"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-030675330b",
+    "name": "渡船頭海之冰(大碗冰創始店)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區濱海一路76號",
+    "latitude": 22.619594,
+    "longitude": 120.270317,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-53"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-658f43a1b9",
+    "name": "宇治.玩笑亭",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區尚義街148號",
+    "latitude": 22.631445,
+    "longitude": 120.315311,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-54"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-379cd57963",
+    "name": "度c高醫大二代店(85度c咖啡)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區自由一路78號",
+    "latitude": 22.644689,
+    "longitude": 120.308617,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-55"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2827326dfc",
+    "name": "懿品乳酪菓子手造所(清水茶食)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區中正四路66號",
+    "latitude": 22.630973,
+    "longitude": 120.300535,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-56"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-18e6b3ad0d",
+    "name": "三星園抹茶-文山茶屋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區青年路二段584號",
+    "latitude": 22.632487,
+    "longitude": 120.349781,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-57"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-bd99270be8",
+    "name": "枝仔冰城(高雄直營店)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區東海街2號",
+    "latitude": 22.628708,
+    "longitude": 120.310889,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-58"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-dd896e65da",
+    "name": "枝仔冰城旗山總店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "旗山區",
+    "address": "高雄市旗山區中山路109號",
+    "latitude": 22.642433,
+    "longitude": 120.368019,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-59"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-f3661dfbe7",
+    "name": "上林茶屋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區明誠二路182號",
+    "latitude": 22.660946,
+    "longitude": 120.306363,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-60"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a87c57df58",
+    "name": "Deer Grassland 鹿草冰店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區綏遠二街188號",
+    "latitude": 22.649128,
+    "longitude": 120.300371,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-61"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-26d95da0cb",
+    "name": "三泉冰淇淋工廠",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區林森一路141號",
+    "latitude": 22.631193,
+    "longitude": 120.30465,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-62"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c45f849e76",
+    "name": "福中居(冰鋪)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區明倫路59號",
+    "latitude": 22.667359,
+    "longitude": 120.297557,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-63"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2840d4d8bc",
+    "name": "米格霜淇淋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區澄清路158號",
+    "latitude": 22.629655,
+    "longitude": 120.344837,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-64"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-5f8930fe8d",
+    "name": "阿Q凍圓",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區明倫路130號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-65"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-1f0dbd71c1",
+    "name": "泰涼清冰",
+    "category": "food",
+    "city": "高雄縣",
+    "district": "美濃鎮",
+    "address": "高雄縣美濃鎮中正路一段14號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-66"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-b01d6c81c3",
+    "name": "許家豆花湯圓",
+    "category": "food",
+    "city": "高雄市",
+    "district": "旗山區",
+    "address": "高雄市旗山區中山路10號",
+    "latitude": 22.642433,
+    "longitude": 120.368019,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-68"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-901d971592",
+    "name": "獅甲綠豆湯",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區中山二路42號",
+    "latitude": 22.615404,
+    "longitude": 120.304062,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-69"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-fc92f4f9cc",
+    "name": "民合茶屋",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區民族二路50號",
+    "latitude": 22.630594,
+    "longitude": 120.313371,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-70"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-f486060d96",
+    "name": "常美冰店(魔法阿嬤)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "旗山區",
+    "address": "高雄市旗山區文中路99號",
+    "latitude": 22.891515,
+    "longitude": 120.480986,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-71"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-9e2902be9c",
+    "name": "延平店",
+    "category": "food",
+    "city": "高雄縣",
+    "district": "旗山鎮",
+    "address": "高雄縣旗山鎮延平一路665號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-72"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-c715cdad76",
+    "name": "阿寶姨古早味綜合茶",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區田單街13號",
+    "latitude": 22.628227,
+    "longitude": 120.280626,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-73"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-aabf9bea85",
+    "name": "阿寶姨古早味綜合茶",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區鎮興路151-1號",
+    "latitude": 22.610066,
+    "longitude": 120.301858,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-74"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-b680a969b3",
+    "name": "鹽埕區吳家金桔豆花",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區富野路70號",
+    "latitude": 22.628339,
+    "longitude": 120.283764,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-75"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-52f2adeed6",
+    "name": "鹽埕區彈珠汽水(綜合茶)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區大勇路131號",
+    "latitude": 22.620369,
+    "longitude": 120.282074,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b75b4d3571-76"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-47e44117c0",
+    "name": "果貿來來豆漿 自強店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前金區",
+    "address": "高雄市前金區自強一路47之1號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-8fb252507e-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-0a0f34de92",
+    "name": "氣球屋輕食早午餐 古早味客製化創意飯糰",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區建興路272號",
+    "latitude": 22.648633,
+    "longitude": 120.319273,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-24cb80fa54-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-d213eaff55",
+    "name": "古早味-紅茶冰",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區本揚里澄和路89號",
+    "latitude": 22.645268,
+    "longitude": 120.341228,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-89c5e469ba-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e6d7095797",
+    "name": "于家水餃大王、苓雅市場 韭黃豬肉水餃 (搬到店鋪了)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區永昌街50號",
+    "latitude": 22.616225,
+    "longitude": 120.298484,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c608ab7dcf",
+    "name": "鏞記水餃",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區新樂街233號",
+    "latitude": 22.623511,
+    "longitude": 120.288421,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a253b2bb11",
+    "name": "唯。手工黑豬肉水餃  鹽埕美食",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區瀨南街142號",
+    "latitude": 22.624434,
+    "longitude": 120.28232,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-3"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-19ac174c52",
+    "name": "美味牛肉麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區崗山西街201號",
+    "latitude": 22.602819,
+    "longitude": 120.328544,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-4"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c4dfa29522",
+    "name": "康姐姐純手工水餃",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區文澄街102號",
+    "latitude": 22.643549,
+    "longitude": 120.354686,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-5"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a41535c0e6",
+    "name": "謦豐麵食館、謦ㄑㄧㄥˋ豐麵食館",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區佛德街12-2號",
+    "latitude": 22.574944,
+    "longitude": 120.321361,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-6"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a50ba807fe",
+    "name": "孩餃一號水餃王(高應大店)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區正忠路395號",
+    "latitude": 22.643427,
+    "longitude": 120.321983,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-7"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-9c546f157d",
+    "name": "瑞發肉圓水餃專賣店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區瑞發街59號",
+    "latitude": 22.606382,
+    "longitude": 120.327203,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-8"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-07a116f6dd",
+    "name": "圓元寶水餃館",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區新庄仔路810號",
+    "latitude": 22.669106,
+    "longitude": 120.308854,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-9"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-f27a1eb30c",
+    "name": "川味牛肉麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區廣州一街31號",
+    "latitude": 22.62498,
+    "longitude": 120.31697,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-10"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-40d07b4f65",
+    "name": "小葉水餃牛肉麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區忠孝一路27號",
+    "latitude": 22.628574,
+    "longitude": 120.305828,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-11"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-55b2429d96",
+    "name": "蓁手工水餃",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區八德二路73號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-12"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-1e34ad0c36",
+    "name": "樹仔下 水餃王 樹仔下水餃王(原榕樹下)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區義華路433號",
+    "latitude": 22.644114,
+    "longitude": 120.340541,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-13"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c1e1cddb12",
+    "name": "鍋飽鍋貼麵食專賣店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區明誠三路720號",
+    "latitude": 22.661946,
+    "longitude": 120.301571,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-14"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-14d477470b",
+    "name": "嘿嘿水餃麵食館 內用免費豆花",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區新光里政德路420號",
+    "latitude": 22.68065,
+    "longitude": 120.302981,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-15",
+      "bl-30ea64ca9f-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e6ebe83115",
+    "name": "卓仔手工麵店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "仁武區",
+    "address": "高雄市仁武區仁和南街37號",
+    "latitude": 22.70107,
+    "longitude": 120.347788,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-17"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-5d57366db4",
+    "name": "享健康水餃鍋燒麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區熱河二街2號",
+    "latitude": 22.64441,
+    "longitude": 120.297273,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-18"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4e293cbb2e",
+    "name": "高雄手工外省麵-華榮路",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區華榮路344號",
+    "latitude": 22.671213,
+    "longitude": 120.292124,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-20"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-afa71ea01c",
+    "name": "北芳園牛肉拉麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區光遠路171號",
+    "latitude": 22.624224,
+    "longitude": 120.365746,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-21"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-74cdd21a5c",
+    "name": "青島餃子專賣店~愛棒球的餃子",
+    "category": "food",
+    "city": "高雄市",
+    "district": "仁武區",
+    "address": "高雄市仁武區八德南路100巷65號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-22"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-3115b7d046",
+    "name": "邱媽媽手工水餃 左營果貿",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區果峰街50巷1號",
+    "latitude": 22.670278,
+    "longitude": 120.289043,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-23"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-ae8e630888",
+    "name": "陳家豬肉麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區新樂街67之2號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-24"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-7af65f7507",
+    "name": "年山東小吃部",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區九如四路1245號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-25"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-7fdde8b7f0",
+    "name": "九初 流心脆皮煎餃 高雄鳳山店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區五甲二路464號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-26"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-b93147cb6a",
+    "name": "不凡水餃總店 蛋ㄕˋ幸福農場",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區美術東五路39號",
+    "latitude": 22.658828,
+    "longitude": 120.295022,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-27"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-93f7765d66",
+    "name": "南北餃子館",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區延吉街58號",
+    "latitude": 22.640763,
+    "longitude": 120.319702,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-28"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-cfae6986e0",
+    "name": "路竹外省麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "路竹區",
+    "address": "高雄市路竹區國昌路17號",
+    "latitude": 22.860441,
+    "longitude": 120.253703,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-179a9e8980-29"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3515a9ba03",
+    "name": "廟口小吃熱炒(阿成師)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區府北里興華街5號",
+    "latitude": 22.630558,
+    "longitude": 120.284231,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-55cc51fc1c-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-02277a0bda",
+    "name": "謝老闆手作包子 旗山美食 旗山老街",
+    "category": "food",
+    "city": "高雄市",
+    "district": "旗山區",
+    "address": "高雄市旗山區太平里復新街81號",
+    "latitude": 22.885227,
+    "longitude": 120.481557,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-c0c03162ad-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6dda9c3a0e",
+    "name": "朝天宮媽祖夜市 周六夜日",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區明正里明鳳三路51號",
+    "latitude": 22.586663,
+    "longitude": 120.337148,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-0b437dc45e-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4f30f2ceda",
+    "name": "阿欽師山雞飯 旗山老街美食 台灣獨家『跑山雞肉飯",
+    "category": "food",
+    "city": "高雄市",
+    "district": "旗山區",
+    "address": "高雄市旗山區復新街64號",
+    "latitude": 22.885227,
+    "longitude": 120.481557,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b65a99faaf-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2f945e6c85",
+    "name": "馬叔叔港式脆皮臭豆腐",
+    "category": "food",
+    "city": "高雄市",
+    "district": "高雄市",
+    "address": "高雄市高雄市正義路192號",
+    "latitude": 22.626901,
+    "longitude": 120.337594,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9c5bdfe577-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-1c48b63bef",
+    "name": "禾雅行李箱、行動行李箱館 (原「俗俗的賣」大昌店)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區寶珠里大昌二路463號",
+    "latitude": 22.649365,
+    "longitude": 120.331808,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-0179d3beb4-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-0f65a7ccb0",
+    "name": "蔬香樓 自由店 (斐得蔬食)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區新上里自由二路351號",
+    "latitude": 22.657861,
+    "longitude": 120.309643,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-93ef46b60a-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-0ffe66ab52",
+    "name": "天慕 Le Ciel  高雄高空酒吧、餐酒館",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區林森四路189號",
+    "latitude": 22.608917,
+    "longitude": 120.30169,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-4759e7f4c0-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4d6e7649a8",
+    "name": "鴨點棧烤鴨港點專賣華夏店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區菜公里華夏路1123-1號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-5147424df3-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-d2349d57ea",
+    "name": "陳麵店(60年老店) 鳳山老麵店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區縣口里雙慈街24號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-2cf9ee648f-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-184b03d2c7",
+    "name": "饌記牛肉麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "大寮區",
+    "address": "高雄市大寮區中興里鳳林四路66號",
+    "latitude": 22.620189,
+    "longitude": 120.381917,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-4232e4f94f-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-f43d081d8f",
+    "name": "左咖啡 鹽埕咖啡館、寵物友善",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區瀨南里大勇路157號",
+    "latitude": 22.624443,
+    "longitude": 120.284302,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-dcd3361c63-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-f2485b6cdf",
+    "name": "ELYSE crème brûlée",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區府北里大有街9-1號",
+    "latitude": 22.628793,
+    "longitude": 120.284613,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-6a0af6c84e-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e394ad6625",
+    "name": "NUO 諾 Art of Tea 鹽埕旗艦店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區五福四路196號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-99eb311cf9-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-db8fde2fff",
+    "name": "好吃的麻醬麵 九重葛麻醬麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區城東里中華四路90號",
+    "latitude": 22.619695,
+    "longitude": 120.299943,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-64dcc1e898-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-467b9915d9",
+    "name": "胡家麵店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區灣復里民族一路312巷52號",
+    "latitude": 22.651371,
+    "longitude": 120.315131,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-1a2eb0c35f-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-d7af1d0e06",
+    "name": "品億砂鍋鴨火鍋(全台砂鍋鴨專賣店)",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "新園鄉",
+    "address": "屏東縣新園鄉中洲村河堤二街467號",
+    "latitude": 22.485181,
+    "longitude": 120.462434,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-007ef9f73c-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-36a2d4ac0a",
+    "name": "十月甜波士頓派 高雄巨蛋店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區裕誠路467號",
+    "latitude": 22.66692,
+    "longitude": 120.301623,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-38fc376057-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-bdf75d4d1b",
+    "name": "新國際西餐",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前金區",
+    "address": "高雄市前金區民生二路76號",
+    "latitude": 22.625595,
+    "longitude": 120.298499,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-0e38fd9a09-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-8372878e5f",
+    "name": "有碗 碗盤器皿小物店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區四維一路29號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-3b2c47b36a-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-95ceaed99f",
+    "name": "榮璋陽春麵 鹽埕美食 老店 麵店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區瀨南里瀨南街206號",
+    "latitude": 22.624434,
+    "longitude": 120.28232,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-6b815bdc5f-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-62e8434621",
+    "name": "小翠幸食堂",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區中山西路179號",
+    "latitude": 22.628936,
+    "longitude": 120.340835,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-6a13136a15-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-172fabe60b",
+    "name": "九重羊肉店 各式熱炒 KTV包廂",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "琉球鄉",
+    "address": "屏東縣琉球鄉中山路16之6號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-0689b3aa17-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-0cfc1d20a1",
+    "name": "饅頭匠 BunTakumi 小琉球必吃美食",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "琉球鄉",
+    "address": "屏東縣琉球鄉民生路12號",
+    "latitude": 22.351658,
+    "longitude": 120.380187,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-db677f7617-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-9e7185da01",
+    "name": "漫漫游 小琉球龜崗ㄟ蝦餅伴手禮專賣店、選物店",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "琉球鄉",
+    "address": "屏東縣琉球鄉中福村三民路140號",
+    "latitude": 22.351795,
+    "longitude": 120.383535,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-c3482909a7-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-9df8eefc0c",
+    "name": "老賈小館庭園餐廳(鳳山總店)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區文化路149號",
+    "latitude": 22.635086,
+    "longitude": 120.352517,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-dee7bcf65b-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-281c5af375",
+    "name": "讚不絕口小火鍋鳳山店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區鎮北里文龍東路346號",
+    "latitude": 22.641226,
+    "longitude": 120.372537,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-f9b03f70dd-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-62468d26ba",
+    "name": "五鮮級鍋物2.0自助吧吃到飽-東港白金店",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "東港鎮",
+    "address": "屏東縣東港鎮新街里中正路一段35號",
+    "latitude": 22.473107,
+    "longitude": 120.457196,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-97af589114-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-b98d8c0f27",
+    "name": "內埔公有黃昏市場",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "內埔鄉",
+    "address": "屏東縣內埔鄉內埔村文化路302號",
+    "latitude": 22.60851,
+    "longitude": 120.574624,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-611348b87b-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a3566122fc",
+    "name": "台南 禾雅行李箱特賣會  常態專賣店",
+    "category": "food",
+    "city": "台南市",
+    "district": "新化區",
+    "address": "台南市新化區豐榮里正新路191號",
+    "latitude": 23.036059,
+    "longitude": 120.302908,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-22c9841e22-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-752b89a488",
+    "name": "全台最狂週年慶,全館8折起、寶可夢 30 週年強勢聯名",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區高鐵路123號",
+    "latitude": 22.685669,
+    "longitude": 120.307007,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-0349571243-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c5cc006d7b",
+    "name": "好之鄉麵店-鳳北店 、創立民國64年",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區鎮北里鳳北路22號",
+    "latitude": 22.642433,
+    "longitude": 120.368019,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-41b66e298b-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e3e9cee0c9",
+    "name": "高雄左營 禾雅行李箱特賣會   即日起到11/30",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區自由三路292號",
+    "latitude": 22.669791,
+    "longitude": 120.308849,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-8f778ce83c-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e52c420653",
+    "name": "禎美樓 砂鍋濃雞湯X海鮮料理",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前金區",
+    "address": "高雄市前金區中華三路65之6號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-d23226cf45-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-ad69517014",
+    "name": "觀音山綠野山莊土雞城、義大美食、庭園餐廳、高雄土雞城",
+    "category": "food",
+    "city": "高雄市",
+    "district": "大社區",
+    "address": "高雄市大社區翠屏路112巷5-4號",
+    "latitude": 22.729842,
+    "longitude": 120.356668,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-5b73f87567-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-797f300c96",
+    "name": "芳師傅私房菜",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區明哲路15號",
+    "latitude": 22.661297,
+    "longitude": 120.313395,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-915b277a35-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4b311b54d0",
+    "name": "和平香菇肉飯/虱目魚粥",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區和平一路256之1號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-6a5b0a3a12-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-1678b1c76a",
+    "name": "光春榕樹下麵店 福惠宮土地公廟",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "潮州鎮",
+    "address": "屏東縣潮州鎮光春里光春路198號",
+    "latitude": 22.540737,
+    "longitude": 120.538393,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-6545f2be06-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-7209aa6436",
+    "name": "早餐屋 (建昇玻璃早餐)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區青年一路460號",
+    "latitude": 22.622773,
+    "longitude": 120.313416,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-112f7f30f2-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e2b8b82a4a",
+    "name": "皇茗碳燒薑母鴨-文龍店 (二樓冷氣開放中)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區鎮北里文龍東路101-1號",
+    "latitude": 22.641226,
+    "longitude": 120.372537,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-3addb354f4-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-081c102112",
+    "name": "瀅 · 牛肉湯 白飯 肉燥免費",
+    "category": "food",
+    "city": "台南市",
+    "district": "善化區",
+    "address": "台南市善化區東關里中興路43號",
+    "latitude": 23.13153,
+    "longitude": 120.291661,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-ec2a386c71-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-bd07d68890",
+    "name": "阿婆仔麵",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區忠誠里鳳松路392號",
+    "latitude": 22.638686,
+    "longitude": 120.36302,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-90e140e3b4-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a4f2cd08a2",
+    "name": "捷米早安主廚 高雄總店(苓雅店)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區四維二路35號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-d376b1c618-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-fd302da746",
+    "name": "咕嚕咕嚕家うちりょうり 漢神成功總店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前金區",
+    "address": "高雄市前金區成功一路260號",
+    "latitude": 22.626336,
+    "longitude": 120.292923,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-7f4a6040c3-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2c03a7d4d9",
+    "name": "一起去台鐵高雄機廠看車",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鳳山區",
+    "address": "高雄市鳳山區武慶二路221號",
+    "latitude": 22.614102,
+    "longitude": 120.332515,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-3d859195a5-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3d9403a436",
+    "name": "艾伯特服飾 99元起、眾多買一送一、保暖衣99元",
+    "category": "food",
+    "city": "屏東縣",
+    "district": "潮州鎮",
+    "address": "屏東縣潮州鎮延平路312號",
+    "latitude": 22.552652,
+    "longitude": 120.540238,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b12f81b981-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-473d436e8e",
+    "name": "五一早餐 鼓山早餐",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區登山街20號",
+    "latitude": 22.623607,
+    "longitude": 120.273961,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-5babba9d48-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e157d29fe7",
+    "name": "高雄市立圖書館-鹽埕分館、高雄漫畫圖書館",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鹽埕區",
+    "address": "高雄市鹽埕區中正四路274號",
+    "latitude": 22.626049,
+    "longitude": 120.286775,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-698a79706c-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-d2d583f3f5",
+    "name": "翠園粵菜餐廳 高雄漢來店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前金區",
+    "address": "高雄市前金區成功一路266號",
+    "latitude": 22.626336,
+    "longitude": 120.292923,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-a69af854f1-1",
+      "bl-a69af854f1-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-5ad7ab513d",
+    "name": "牛室炙燒牛排BEEFHOUSE 高雄自由店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "左營區",
+    "address": "高雄市左營區自由三路531號",
+    "latitude": 22.669791,
+    "longitude": 120.308849,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-bfe23aed4e-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3ef41bc7df",
+    "name": "牛室炙燒牛排BEEFHOUSE 台中大墩店",
+    "category": "food",
+    "city": "台中市",
+    "district": "南屯區",
+    "address": "台中市南屯區大墩路689號",
+    "latitude": 24.156501,
+    "longitude": 120.650359,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-bfe23aed4e-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-38c87877de",
+    "name": "牛室炙燒牛排BEEFHOUSE 台中大里店",
+    "category": "food",
+    "city": "台中市",
+    "district": "大里區",
+    "address": "台中市大里區德芳南路445號",
+    "latitude": 24.103545,
+    "longitude": 120.684703,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-bfe23aed4e-3"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-46688b31d6",
+    "name": "牛室炙燒牛排BEEFHOUSE 崇德洲際店",
+    "category": "food",
+    "city": "台中市",
+    "district": "北屯區",
+    "address": "台中市北屯區崇德路三段689號",
+    "latitude": 24.196722,
+    "longitude": 120.686588,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-bfe23aed4e-4"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-28fa446920",
+    "name": "牛室炙燒牛排BEEFHOUSE 中科玉門店",
+    "category": "food",
+    "city": "台中市",
+    "district": "西屯區",
+    "address": "台中市西屯區玉門路31號",
+    "latitude": 24.185789,
+    "longitude": 120.609912,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-bfe23aed4e-5"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e27011a774",
+    "name": "牛室炙燒牛排BEEFHOUSE 台南海安店",
+    "category": "food",
+    "city": "台南市",
+    "district": "北區",
+    "address": "台南市北區海安路三段606號",
+    "latitude": 23.016089,
+    "longitude": 120.20024,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-bfe23aed4e-6"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-fbd5fbab54",
+    "name": "太豐御炒 安和店(新開幕)",
+    "category": "food",
+    "city": "台南市",
+    "district": "安南區",
+    "address": "台南市安南區安和路五段378號",
+    "latitude": 23.068299,
+    "longitude": 120.216648,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-f74c820213-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-989465956c",
+    "name": "。裕農店",
+    "category": "food",
+    "city": "台南市",
+    "district": "東區",
+    "address": "台南市東區裕農路619號",
+    "latitude": 22.99,
+    "longitude": 120.244546,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-f74c820213-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4b3492954c",
+    "name": "。凱旋外帶店",
+    "category": "food",
+    "city": "台南市",
+    "district": "東區",
+    "address": "台南市東區凱旋路314號",
+    "latitude": 22.993167,
+    "longitude": 120.229697,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-f74c820213-3"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-159f846519",
+    "name": "C’est Bon Bar & Restaurant 河堤店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區明賢街86號",
+    "latitude": 22.663281,
+    "longitude": 120.312669,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-30cf14b87e-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6d9f4a3a7d",
+    "name": "C’est Bon Bar & Restaurant 美術店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "鼓山區",
+    "address": "高雄市鼓山區美術東六街149號",
+    "latitude": 22.659302,
+    "longitude": 120.29146,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-30cf14b87e-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-72f4649181",
+    "name": "旻哥古早味 七賢店",
+    "category": "food",
+    "city": "高雄市",
+    "district": "新興區",
+    "address": "高雄市新興區七賢二路83之1號",
+    "latitude": null,
+    "longitude": null,
+    "geo_precision": null,
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-a634e101a3-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.3
+  },
+  {
+    "place_id": "pl-ff8ffe962f",
+    "name": "森碳柴燒餐盒",
+    "category": "food",
+    "city": "高雄市",
+    "district": "三民區",
+    "address": "高雄市三民區正興路172號",
+    "latitude": 22.644513,
+    "longitude": 120.319674,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-d27d068411-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6f77f1dfe9",
+    "name": "前鎮鹽酥鴨(前鎮夜市)",
+    "category": "food",
+    "city": "高雄市",
+    "district": "前鎮",
+    "address": "高雄市前鎮區鎮北里擴建一路34號",
+    "latitude": 22.592225,
+    "longitude": 120.307037,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-3a7b231849-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4706df63d0",
+    "name": "三赫燒餅",
+    "category": "food",
+    "city": "台南市",
+    "district": "永康區",
+    "address": "台南市永康區東橋一路298號",
+    "latitude": 23.0268,
+    "longitude": 120.235879,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-4aefd53aa3-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-fb46ad3cbb",
+    "name": "俺の豚",
+    "category": "food",
+    "city": "台南市",
+    "district": "永康區",
+    "address": "台南市永康區東橋一路250號",
+    "latitude": 23.0268,
+    "longitude": 120.235879,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-a277405802-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-015656de93",
+    "name": "陽光食園",
+    "category": "food",
+    "city": "台南市",
+    "district": "北區",
+    "address": "台南市北區育德路66-1號",
+    "latitude": 23.015272,
+    "longitude": 120.206758,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-186b0f0093-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-de0080ab13",
+    "name": "新光三越台南新天地",
+    "category": "food",
+    "city": "台南市",
+    "district": "中西區",
+    "address": "台南市中西區西門路一段658號",
+    "latitude": 22.988937,
+    "longitude": 120.197501,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fb9cbcfb77-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-10cad86f2e",
+    "name": "南紡購物中心",
+    "category": "food",
+    "city": "台南市",
+    "district": "東區",
+    "address": "台南市東區中華東路一段366號",
+    "latitude": 22.990618,
+    "longitude": 120.23377,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fb9cbcfb77-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-5e4d01fe21",
+    "name": "奇美博物館",
+    "category": "food",
+    "city": "台南市",
+    "district": "仁德區",
+    "address": "台南市仁德區文華路二段66號",
+    "latitude": 22.939301,
+    "longitude": 120.228008,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fb9cbcfb77-4"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-f3184a49db",
+    "name": "尚待確認",
+    "category": "food",
+    "city": "台南市",
+    "district": "南區",
+    "address": "台南市南區新興路555號",
+    "latitude": 22.973597,
+    "longitude": 120.184572,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fb9cbcfb77-5"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-969b83cf1b",
+    "name": "尚待確認",
+    "category": "food",
+    "city": "台南市",
+    "district": "中西區",
+    "address": "台南市中西區中正路343號",
+    "latitude": 22.992537,
+    "longitude": 120.199792,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fb9cbcfb77-6"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-03cbd1b856",
+    "name": "尚待確認",
+    "category": "food",
+    "city": "台南市",
+    "district": "永康區",
+    "address": "台南市永康區康橋大道255號",
+    "latitude": 23.024681,
+    "longitude": 120.238506,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fb9cbcfb77-7"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-cda7922acf",
+    "name": "尚待確認",
+    "category": "food",
+    "city": "台南市",
+    "district": "新營區",
+    "address": "台南市新營區中正路23號",
+    "latitude": 23.322961,
+    "longitude": 120.316156,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fb9cbcfb77-8"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e3e72ace7d",
+    "name": "芥末熊的九米聖誕奇遇",
+    "category": "food",
+    "city": "台南市",
+    "district": "歸仁區",
+    "address": "台南市歸仁區歸仁大道101號",
+    "latitude": 22.902363,
+    "longitude": 120.297481,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fb9cbcfb77-9"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-703a17ba58",
+    "name": "尚待確認",
+    "category": "food",
+    "city": "台南市",
+    "district": "安平區",
+    "address": "台南市安平區安平路988號",
+    "latitude": 22.99799,
+    "longitude": 120.185586,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fb9cbcfb77-11"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a84b3f3960",
+    "name": "天母體驗館",
+    "category": "food",
+    "city": "台北市",
+    "district": "士林區",
+    "address": "台北市士林區中山北路六段195巷17弄2號",
+    "latitude": 25.103287,
+    "longitude": 121.526521,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-6e3c59e98e-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-5ec1e649ac",
+    "name": "戀戀溫州",
+    "category": "attraction",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "台北市大安區大學里溫州街74巷1弄8號",
+    "latitude": 25.024232,
+    "longitude": 121.533402,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-8c5cc08ac2-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-d1476a479b",
+    "name": "縱谷耘穗",
+    "category": "attraction",
+    "city": "花蓮縣",
+    "district": "瑞穗鄉",
+    "address": "花蓮縣瑞穗鄉富興村中正北路三段180號",
+    "latitude": 23.561543,
+    "longitude": 121.382041,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-06f32f5bc2-5"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-9720b94f51",
+    "name": "泰和樓地點",
+    "category": "food",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "台北市大安區杭州南路二段61-20號",
+    "latitude": 25.030922,
+    "longitude": 121.522297,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-83e3f4c359-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
