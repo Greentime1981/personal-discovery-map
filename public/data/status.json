@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-11-15T06:23:54+00:00",
-  "runner": "local",
-  "new_videos": 0,
-  "new_posts": 10,
-  "new_places": 11,
-  "skipped": 19,
+  "run_at": "2026-11-15T06:26:01+00:00",
+  "runner": "github",
+  "new_videos": 284,
+  "new_posts": 0,
+  "new_places": 32,
+  "skipped": 264,
   "errors": [],
   "by_source": {
     "港仔張啟樂的臺灣生活": {
@@ -150,7 +150,24 @@
     "剎有其食": {
       "contents": 11,
       "latest": "2026-11-13"
+    },
+    "食神鬍子哥（鬍子哥美食指南）": {
+      "contents": 5,
+      "latest": "2026-10-23"
+    },
+    "1000cc美食頻道": {
+      "contents": 28,
+      "latest": "2025-07-07"
     }
   },
-  "github_blocked_detected": []
+  "github_blocked_detected": [
+    "霸子。食樂拼圖",
+    "剎有其食",
+    "艾妮可美味人生",
+    "ifunny 艾方妮的遊樂場",
+    "阿華田的美食日記",
+    "糖糖's 享食生活",
+    "郭郭的花東走跳生活",
+    "口袋吃吃五十咩"
+  ]
 }

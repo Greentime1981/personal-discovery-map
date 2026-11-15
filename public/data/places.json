@@ -1461,7 +1461,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "yt-lxBQDdUS5I4-3"
+      "yt-lxBQDdUS5I4-3",
+      "yt-jEFZxIJ_DZw-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -41687,6 +41688,646 @@
     "description": "",
     "sources": [
       "bl-d33b6077f9-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-d7632f3cac",
+    "name": "坤山四神湯",
+    "category": "food",
+    "city": "台北市",
+    "district": "萬華區",
+    "address": "台北市萬華區康定路276號",
+    "latitude": 25.045124,
+    "longitude": 121.503047,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-NZGzmbLMOM4-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-cec120a8c4",
+    "name": "歐仔麵線下午",
+    "category": "food",
+    "city": "台北市",
+    "district": "萬華區",
+    "address": "台北市萬華區大理街170巷60號",
+    "latitude": 25.034522,
+    "longitude": 121.499976,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-j0D2K7wfMpk-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-ef46415d87",
+    "name": "百年老店柴寮鯊魚煙",
+    "category": "food",
+    "city": "台北市",
+    "district": "大同區",
+    "address": "台北市大同區重慶北路三段335巷25號",
+    "latitude": 25.074155,
+    "longitude": 121.513904,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-9-C4vkaa6lQ-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-bb35523725",
+    "name": "無店名的肉羹店",
+    "category": "food",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "台北市中正區中華路二段75巷1弄11號",
+    "latitude": 25.036602,
+    "longitude": 121.506752,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-DBDLCkucyAw-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e33fcfcf01",
+    "name": "阿川蚵仔麵線",
+    "category": "food",
+    "city": "台北市",
+    "district": "大同區",
+    "address": "台北市大同區民生西路198-17號",
+    "latitude": 25.057179,
+    "longitude": 121.516909,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-HbSRnQJDVSU-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-dde519afd3",
+    "name": "湯包洪 TANG BAO HUNG",
+    "category": "food",
+    "city": "台北市",
+    "district": "中山區",
+    "address": "台北市中山區合江街18號",
+    "latitude": 25.057273,
+    "longitude": 121.539156,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-1pc63hCt6Nw-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e201da6f65",
+    "name": "極品光復包子",
+    "category": "food",
+    "city": "台北市",
+    "district": "信義區",
+    "address": "台北市信義區光復南路419巷95號",
+    "latitude": 25.036532,
+    "longitude": 121.557621,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-EcYgTZ9va_k-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-27eae48dd6x",
+    "name": "i 板橋超人氣平價排隊美食-每次經過都超級多人重點是非常便宜",
+    "category": "food",
+    "city": "新北市",
+    "district": "板橋區",
+    "address": "新北市板橋區宮口街28號",
+    "latitude": 25.01014,
+    "longitude": 121.45738,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-0G_YVFjNtRw-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2a9a34deac",
+    "name": "周家豆腐捲",
+    "category": "food",
+    "city": "台北市",
+    "district": "信義區",
+    "address": "台北市信義區光復南路419巷106號",
+    "latitude": 25.036532,
+    "longitude": 121.557621,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-9BXSpDAtGlw-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-bdb168986e",
+    "name": "i 巨無霸冰淇淋 - 比我手臂還長的冰淇淋一定要去現場看一下",
+    "category": "food",
+    "city": "新北市",
+    "district": "淡水區",
+    "address": "新北市淡水區公明街30號",
+    "latitude": 25.168841,
+    "longitude": 121.443269,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-Mk0BMQA8YAM-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-9913e76052",
+    "name": "i 哥吉拉冰淇淋在台灣 - 不要錯過超有創意的冰淇淋",
+    "category": "food",
+    "city": "新北市",
+    "district": "淡水區",
+    "address": "新北市淡水區中正路35號",
+    "latitude": 25.169648,
+    "longitude": 121.442993,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt--miw4CDLXLg-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-d13087b393",
+    "name": "燒烤杏鮑菇",
+    "category": "food",
+    "city": "台北市",
+    "district": "士林區",
+    "address": "台北市士林區大南路98號",
+    "latitude": 25.089407,
+    "longitude": 121.52467,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-4xO4kiHuwN8-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2168e52030",
+    "name": "貝斯鍋物 @best_hot_pot",
+    "category": "food",
+    "city": "新北市",
+    "district": "三重區",
+    "address": "新北市三重區中正北路399-2號",
+    "latitude": 25.062556,
+    "longitude": 121.491352,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-1R4wVMYqFlE-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-1c9e61040e",
+    "name": "初泰(新板傑仕堡門市)",
+    "category": "food",
+    "city": "新北市",
+    "district": "板橋區",
+    "address": "新北市板橋區文化路一段188巷65號",
+    "latitude": 25.016222,
+    "longitude": 121.463159,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-c8o1mJD5Fxo-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-dd44bf6360",
+    "name": "店名:M3 Bistro 餐酒館",
+    "category": "food",
+    "city": "桃園市",
+    "district": "中壢區",
+    "address": "桃園市中壢區青峰路一段55號",
+    "latitude": 25.014737,
+    "longitude": 121.218816,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-zxdvjwHk_tU-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2ba78f60cc",
+    "name": "Posino Taipei",
+    "category": "food",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "台北市大安區基隆路二段128號",
+    "latitude": 25.026876,
+    "longitude": 121.555319,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-C3tz_qsmFU8-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-49ac85cdb7",
+    "name": "店名:郡閣Drink台菜餐酒館",
+    "category": "food",
+    "city": "南投縣",
+    "district": "埔里鎮",
+    "address": "南投縣埔里鎮中山路三段589號",
+    "latitude": 23.969304,
+    "longitude": 120.947201,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-5GCMy8jAvUg-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-ec9d599e8f",
+    "name": "韓哥哥石頭火鍋",
+    "category": "food",
+    "city": "新北市",
+    "district": "新莊區",
+    "address": "新北市新莊區復興路一段203號",
+    "latitude": 25.042072,
+    "longitude": 121.44684,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-_8zPFm5DAZE-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3c44d9eee9",
+    "name": "PAI CAFÉ & noodle",
+    "category": "food",
+    "city": "新北市",
+    "district": "新莊區",
+    "address": "新北市新莊區中正路516-8號",
+    "latitude": 25.040574,
+    "longitude": 121.463029,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-QPzYqWbYIdo-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-487f5a537d",
+    "name": "爆汁老上海生煎內湖旗艦店",
+    "category": "food",
+    "city": "台北市",
+    "district": "內湖區",
+    "address": "台北市內湖區內湖路一段285巷65弄6-1號",
+    "latitude": 25.081361,
+    "longitude": 121.571266,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-aIo9TScyC5w-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-29ea16f7fa",
+    "name": "中山總店",
+    "category": "food",
+    "city": "台北市",
+    "district": "中山區",
+    "address": "台北市中山區中山北路一段105巷4-9號",
+    "latitude": 25.051005,
+    "longitude": 121.522042,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-aIo9TScyC5w-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c5385d1e32",
+    "name": "信義莊敬店",
+    "category": "food",
+    "city": "台北市",
+    "district": "信義區",
+    "address": "台北市信義區莊敬路281號",
+    "latitude": 25.027847,
+    "longitude": 121.564252,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-aIo9TScyC5w-3"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3394588c64",
+    "name": "店名:和牛涮 台北忠孝東店",
+    "category": "food",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "台北市大安區忠孝東路四段128號",
+    "latitude": 25.041452,
+    "longitude": 121.548993,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-hau0YdOgeOQ-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-eee2c5f307",
+    "name": "聯邦上海鮮肉包",
+    "category": "food",
+    "city": "新北市",
+    "district": "新莊區",
+    "address": "新北市新莊區復興路一段47巷5號",
+    "latitude": 25.042072,
+    "longitude": 121.44684,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-4_U1lIsqp-M-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-46737fda31",
+    "name": "紅磚園邸",
+    "category": "food",
+    "city": "新北市",
+    "district": "樹林區",
+    "address": "新北市樹林區太平路247巷9號",
+    "latitude": 24.973957,
+    "longitude": 121.418262,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-Fh5e9ZcZhmk-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c5cd3ac496",
+    "name": "J.GU臭豆腐",
+    "category": "food",
+    "city": "新北市",
+    "district": "三重區",
+    "address": "新北市三重區集美街53號",
+    "latitude": 25.056829,
+    "longitude": 121.487374,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-rXZMJaq3eQI-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-14fd3486e1",
+    "name": "東京巴黎甜點大安店",
+    "category": "food",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "台北市大安區復興南路二段212號",
+    "latitude": 25.023158,
+    "longitude": 121.543448,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-6qV48F1UtcU-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-c2a689b1e8",
+    "name": "東京巴黎甜點(南京門市彌月蛋糕專門店)",
+    "category": "food",
+    "city": "台北市",
+    "district": "中山區",
+    "address": "台北市中山區南京東路二段25號",
+    "latitude": 25.051953,
+    "longitude": 121.532219,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-6qV48F1UtcU-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-b8dfbbef4e",
+    "name": "東京巴黎甜點(遠東SOGO百貨櫃 台北忠孝館 B2)",
+    "category": "food",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "台北市大安區忠孝東路四段45號",
+    "latitude": 25.041452,
+    "longitude": 121.548993,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-6qV48F1UtcU-3"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-144396822a",
+    "name": "東京巴黎甜點(IFG遠雄廣場百貨櫃B1)",
+    "category": "food",
+    "city": "新北市",
+    "district": "汐止區",
+    "address": "新北市汐止區新台五路一段99號",
+    "latitude": 25.063825,
+    "longitude": 121.658961,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-6qV48F1UtcU-4"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a915f37b8c",
+    "name": "鮨一的鍋",
+    "category": "food",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "台北市大安區東豐街30號",
+    "latitude": 25.036033,
+    "longitude": 121.546085,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-PwYxnHDAaXU-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e3da9629d1",
+    "name": "任風咖哩",
+    "category": "food",
+    "city": "新北市",
+    "district": "板橋區",
+    "address": "新北市板橋區文聖街16號",
+    "latitude": 25.029862,
+    "longitude": 121.477543,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "yt-SeQiBomJjNA-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
