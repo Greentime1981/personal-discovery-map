@@ -10,7 +10,7 @@
 - 地點資訊卡：沒有資料的欄位顯示「尚無資料」，不捏造內容
 - 收藏、已造訪、個人備註（只存在本機瀏覽器），可匯出 / 匯入 `user_data.json`
 - 開啟 Google Maps 導航
-- **部落客攻略**：每天自動讀取追蹤的 6 個 YouTube 頻道與 14 個部落格（`pipeline/sources.json`），擷取店名與地址，依作者原始順序顯示在地圖上
+- **部落客攻略**：每天自動讀取追蹤的 6 個 YouTube 頻道與 21 個部落格（`pipeline/sources.json`），擷取店名與地址，依作者原始順序顯示在地圖上
 
 ### 設定 YouTube API Key（一次就好）
 
@@ -18,7 +18,7 @@
 2. 到本 repo **Settings → Secrets and variables → Actions → New repository secret**，名稱 `YOUTUBE_API_KEY`，貼上金鑰。
 3. 到 **Actions → Update data (YouTube) → Run workflow** 手動跑第一次。之後每天台灣時間 04:00 自動執行。
 
-新增 / 移除頻道或部落格：編輯 `pipeline/sources.json`。
+新增 / 移除頻道或部落格：編輯 `pipeline/sources.json`。改善辨識規則後，可在 Actions 手動執行時勾選 **rebuild** 重新整理全部資料。
 
 > ⚠️ `public/data/places.json` 目前只有幾筆**範例地點**（標示為範例、座標為概略值），還沒有部落客 / YouTube / 米其林資料。這些在第三、四階段加入。
 

@@ -72,10 +72,12 @@ pipeline/sources.json（追蹤的頻道）
   → GitHub Actions（update-data.yml，每天 04:00）commit 後重新部署
 ```
 
-部落格（14 個，見 sources.json）：
+部落格（21 個，見 sources.json）：
 - RSS 有全文的（4 個）直接從 RSS 擷取。
 - RSS 只有摘要的（10 個，`fetch_article: true`）：經使用者同意，對每篇**新文章**讀取一次文章頁面，只在記憶體中擷取店名與地址；不儲存全文與照片，遵守 robots.txt，每篇間隔 3 秒。
+- 關閉 RSS 的部落格（`sitemap`）：從文章 sitemap 取最新 30 篇，同樣只擷取店名與地址。
 - 資料只保存：店名、地址、文章標題、連結、日期。
+- 地點 ID 由地址產生（`pl-` + 雜湊），重建資料時不變，個人收藏不會失效。
 
 注意：YouTube 的公開 RSS（feeds/videos.xml）目前回應 404，因此直接使用官方 Data API。
 Nominatim 對台灣地址多半只能定位到路段（`geo_precision: "street"`），地圖上為概略位置；導航按鈕一律用「店名 + 地址」交給 Google Maps 查詢，所以導航仍會到正確店家。

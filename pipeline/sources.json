@@ -1,5 +1,5 @@
 {
-  "_說明": "要追蹤的 YouTube 頻道與部落格。category 是預設分類（food / family / date / attraction）。fetch_article=true 表示 RSS 只有摘要，會開啟文章頁面只擷取店名與地址（不存全文、照片）。",
+  "_說明": "要追蹤的 YouTube 頻道與部落格。category 是預設分類（food / family / date / attraction）。fetch_article=true 表示 RSS 只有摘要，會開啟文章頁面只擷取店名與地址（不存全文、照片）。 沒有 RSS 的部落格用 sitemap（只看最新 30 篇）。",
   "youtube": [
     {
       "channel_id": "UC1JTcPIq1rgaQajsc1j9o_g",
@@ -130,6 +130,53 @@
       "feed": "https://yoti.life/feed/",
       "category": "food",
       "fetch_article": true
+    },
+    {
+      "name": "Yuki's Life",
+      "site": "https://yuki.tw",
+      "category": "family",
+      "feed": "https://yuki.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "冠軍媽咪二個寶",
+      "site": "https://twobb.blog",
+      "category": "family",
+      "sitemap": "https://twobb.blog/post-sitemap.xml"
+    },
+    {
+      "name": "Alina 愛琳娜",
+      "site": "https://alinalife.tw",
+      "category": "food",
+      "feed": "https://alinalife.tw/feed/",
+      "fetch_article": true
+    },
+    {
+      "name": "達浪的日常手札",
+      "site": "https://dalang.tw",
+      "category": "food",
+      "sitemap": "https://dalang.tw/post-sitemap.xml"
+    },
+    {
+      "name": "Jason's Life",
+      "site": "https://jasonslife.tw",
+      "category": "food",
+      "feed": "https://jasonslife.tw/feed/",
+      "fetch_article": false
+    },
+    {
+      "name": "靜怡&大顆呆",
+      "site": "https://eeooa0314.tw/blog",
+      "category": "family",
+      "feed": "https://eeooa0314.pixnet.net/blog/feed/rss",
+      "fetch_article": true
+    },
+    {
+      "name": "跟著領隊sky玩",
+      "site": "https://taiwantour.net",
+      "category": "attraction",
+      "feed": "https://taiwantour.net/feed/",
+      "fetch_article": false
     }
   ]
 }

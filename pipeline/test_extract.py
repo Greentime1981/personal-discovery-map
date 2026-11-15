@@ -40,6 +40,18 @@ class T(unittest.TestCase):
         t = "陽光食園\n活動日期:11/14(六)\n地址：台南市北區育德路66-1號\n\n松山文創園區 官網\n台北市信義區光復南路133號"
         self.assertEqual([x["name"] for x in extract_places(t)], ["陽光食園", "松山文創園區"])
 
+    def test_youtube_formats(self):
+        bonny = (
+            "===\n📍締旺油飯肉羹麵\n🈺️06:00–13:30\n🏠新北市新莊區自強街44號\n\n"
+            "📍宏泰地瓜球\n🈺️08:30–18:00，賣完為止\n🏠新北市新莊區自信街51號(市場)"
+        )
+        self.assertEqual([x["name"] for x in extract_places(bonny)], ["締旺油飯肉羹麵", "宏泰地瓜球"])
+        gout = (
+            "/ 新東街米粉湯 /\n6 : 0 0 - 1 4  : 0 0（週四公休）\n台北市松山區新東街41巷10號\n\n"
+            "/ 屏東任家涼麵 /\n台北市松山區富錦街535號"
+        )
+        self.assertEqual([x["name"] for x in extract_places(gout)], ["新東街米粉湯", "屏東任家涼麵"])
+
     def test_admin(self):
         self.assertEqual(split_admin("台北市大安區仁愛路"), ("台北市", "大安區"))
         self.assertEqual(split_admin("宜蘭縣羅東鎮中正路1號"), ("宜蘭縣", "羅東鎮"))

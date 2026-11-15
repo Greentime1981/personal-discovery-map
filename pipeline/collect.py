@@ -134,13 +134,30 @@ def allowed_by_robots(url: str) -> bool:
     return True if rp is None else rp.can_fetch(UA, url)
 
 
-def fetch_article_text(url: str) -> str:
-    """RSS 只有摘要時：讀一次文章頁面，只在記憶體中取文字找店名地址，不儲存全文與照片。"""
+def fetch_article(url: str) -> tuple[str, str]:
+    """RSS 只有摘要時：讀一次文章頁面，只在記憶體中取文字找店名地址，不儲存全文與照片。回傳 (標題, 文字)。"""
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=30) as r:
         page = r.read().decode("utf-8", "ignore")
+    t = re.search(r"(?is)<title[^>]*>(.*?)</title>", page)
+    title = html.unescape(t.group(1)).strip() if t else ""
+    title = re.split(r"\s+[|｜\-–—]\s+[^|｜]*$", title)[0]  # 去掉「 - 網站名稱」
     m = re.search(r"(?is)<article\b.*?</article>", page)  # 只取文章本體，避開側欄
-    return html_to_text(m.group(0) if m else page)
+    return title, html_to_text(m.group(0) if m else page)
+
+
+SITEMAP_LIMIT = 30  # 沒有 RSS 的部落格：只看 sitemap 中最新的 30 篇
+
+
+def fetch_sitemap(url: str) -> list[dict]:
+    """部落格關閉 RSS 時，改從文章 sitemap 取得最新文章連結（標題在讀文章時取得）。"""
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        root = ET.fromstring(r.read())
+    ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+    rows = [(u.findtext(ns + "lastmod") or "", u.findtext(ns + "loc") or "") for u in root.findall(ns + "url")]
+    rows = sorted([r for r in rows if r[1]], reverse=True)[:SITEMAP_LIMIT]
+    return [{"title": "", "link": loc, "date": lm[:10], "text": "", "full": False} for lm, loc in rows]
 
 
 # ---------- 地理編碼（Nominatim，1 次/秒，結果快取） ----------
@@ -216,17 +233,12 @@ def find_existing(places, name, address, coords):
     return None
 
 
-def slug_id(prefix: str, existing: set[str]) -> str:
-    i = len(existing) + 1
-    while f"{prefix}{i:05d}" in existing:
-        i += 1
-    return f"{prefix}{i:05d}"
-
-
 # ---------- 主流程 ----------
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--videos-json", help="離線測試：{channel_id: [video, ...]} 格式的檔案")
+    ap.add_argument("--rebuild", action="store_true",
+                    help="改善辨識規則後使用：清除已蒐集的地點與紀錄，全部重新處理（保留地理編碼快取與範例地點）")
     args = ap.parse_args()
 
     sources = load(PIPE / "sources.json", {})
@@ -234,6 +246,10 @@ def main():
     places = load(DATA / "places.json", [])
     contents = load(DATA / "contents.json", [])
     log = load(PIPE / "log.json", [])
+    if args.rebuild:
+        places = [p for p in places if p.get("sample")]
+        contents = []
+        state = {"processed_videos": {}}
     geo = Geocoder(PIPE / "geocode_cache.json", offline=bool(args.videos_json))
     offline_videos = load(Path(args.videos_json), {}) if args.videos_json else None
     key = os.environ.get("YOUTUBE_API_KEY", "")
@@ -263,7 +279,10 @@ def main():
             p = find_existing(places, f["name"], f["address"], coords)
             if p is None:
                 city, district = split_admin(f["address"])
-                pid = slug_id("pl", place_ids)
+                # 以地址產生固定 ID：重建資料時 ID 不變，個人收藏不會失效
+                pid = "pl-" + short_hash(key_addr(f["address"]))
+                while pid in place_ids:
+                    pid += "x"
                 place_ids.add(pid)
                 p = {"place_id": pid, "name": f["name"], "category": category,
                      "city": city, "district": district, "address": f["address"],
@@ -310,19 +329,21 @@ def main():
     if offline_videos is None:
         posts_state = state.setdefault("processed_posts", {})
         for b in sources.get("blogs", []):
-            if not b.get("feed"):
+            src_url = b.get("feed") or b.get("sitemap")
+            if not src_url:
                 continue
-            known = set(posts_state.get(b["feed"], []))
+            known = set(posts_state.get(src_url, []))
             try:
-                posts = [x for x in fetch_feed(b["feed"]) if x["link"] not in known]
+                items = fetch_feed(b["feed"]) if b.get("feed") else fetch_sitemap(b["sitemap"])
+                posts = [x for x in items if x["link"] not in known]
             except Exception as e:
-                run["errors"].append(f"{b['name']}：RSS 讀取失敗 {e}")
+                run["errors"].append(f"{b['name']}：RSS / sitemap 讀取失敗 {e}")
                 continue
             for x in reversed(posts):
                 run["new_posts"] += 1
-                text = x["text"]
+                text, title = x["text"], x["title"]
                 if not x["full"]:
-                    if not b.get("fetch_article"):
+                    if not b.get("fetch_article") and not b.get("sitemap"):
                         run["skipped"].append(f"{b['name']}｜{x['title'][:40]}：RSS 只有摘要，無法取得地址")
                         known.add(x["link"])
                         continue
@@ -332,14 +353,15 @@ def main():
                         continue
                     time.sleep(ARTICLE_DELAY)
                     try:
-                        text = fetch_article_text(x["link"])
+                        page_title, text = fetch_article(x["link"])
+                        title = title or page_title or x["link"]
                     except Exception as e:  # 下次再試，不記為已處理
-                        run["errors"].append(f"{b['name']}｜{x['title'][:40]}：文章讀取失敗 {e}")
+                        run["errors"].append(f"{b['name']}｜{(title or x['link'])[:40]}：文章讀取失敗 {e}")
                         continue
                 ingest(b["name"], b.get("category", "food"), "blog", "bl-" + short_hash(x["link"]),
-                       x["title"], x["link"], x["date"], text)
+                       title, x["link"], x["date"], text)
                 known.add(x["link"])
-            posts_state[b["feed"]] = sorted(known)
+            posts_state[src_url] = sorted(known)
 
     save(DATA / "places.json", places)
     save(DATA / "contents.json", contents)

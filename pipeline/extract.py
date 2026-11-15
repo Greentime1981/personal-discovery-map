@@ -19,6 +19,8 @@ NOISE_RE = re.compile(r"[\U0001F000-\U0001FFFF☀-➿️#＃|｜]+")
 SKIP_NAME_RE = re.compile(r"(地址|住址|位置|電話|專線|營業|時間|公休|價位|價格|日期|期間|參考|http|訂位|菜單|停車|交通|捷運|instagram|facebook|\bIG\b|\bFB\b)", re.I)
 # 「(挫冰|冰|季節性)」這類分類標籤：括號內含 | 或 、
 TAG_GROUP_RE = re.compile(r"\([^()]*[|、/][^()]*\)")
+# 營業時間行：🈺（NFKC 後為「営」）、「營業」開頭，或含 11:00、「1 1 : 0 0」這類時間
+HOURS_RE = re.compile(r"^\s*[営營]|\d\s*[:：]\s*\d\s*\d")
 
 
 def normalize(s: str) -> str:
@@ -33,8 +35,8 @@ def clean_name(s: str) -> str:
     s = re.sub(r"\s*(在哪裡|在哪|店家資訊|資訊)\s*[?？]?\s*$", "", s)
     s = re.sub(r"\s*(官網|官方網站)\s*$", "", s)
     s = NOISE_RE.sub(" ", s)
-    s = re.sub(r"^[\s\-–—•·*\d\.、:：【\[(（]+", "", s)
-    s = re.sub(r"[\s\-–—:：】\]]+$", "", s)
+    s = re.sub(r"^[\s\-–—•·*\d\.、:：/／【\[(（]+", "", s)
+    s = re.sub(r"[\s\-–—:：/／】\]]+$", "", s)
     s = s.strip("「」『』 ")
     return s.strip()
 
@@ -52,8 +54,19 @@ def guess_name(lines: list[str], idx: int) -> str | None:
             name = clean_name(m.group(1))
             if 2 <= len(name) <= 30:
                 return name
+    # 📍 開頭的行通常就是店名（例：📍店名 / 🈺️時間 / 🏠地址）；遇到上一筆地址就停
+    for j in range(idx - 1, max(-1, idx - 6), -1):
+        raw = lines[j].strip()
+        if ADDR_RE.search(raw):
+            break
+        if raw.startswith("📍"):
+            cand = clean_name(raw)
+            if 2 <= len(cand) <= 30 and not SKIP_NAME_RE.search(cand):
+                return cand
     for j in range(idx - 1, max(-1, idx - 5), -1):
         raw = lines[j].strip()
+        if HOURS_RE.search(raw):  # 營業時間行，略過往上找
+            continue
         if re.fullmatch(r"\(.*\)", raw):  # 整行都是括號說明，略過往上找
             continue
         cand = clean_name(raw)

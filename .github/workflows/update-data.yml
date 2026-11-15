@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 20 * * *' # 每天台灣時間 04:00
   workflow_dispatch:
+    inputs:
+      rebuild:
+        description: '清除已蒐集資料並全部重新處理（改善辨識規則後使用）'
+        type: boolean
+        default: false
 
 concurrency:
   group: update-data
@@ -29,7 +34,7 @@ jobs:
         if: env.YOUTUBE_API_KEY == ''
         run: echo "::warning::尚未設定 YOUTUBE_API_KEY，本次只處理部落格。"
       - name: Collect
-        run: python pipeline/collect.py
+        run: python pipeline/collect.py ${{ inputs.rebuild && '--rebuild' || '' }}
       - name: Validate
         run: python scripts/validate_data.py
       - name: Commit changes
