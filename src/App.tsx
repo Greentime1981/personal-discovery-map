@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import AwardsPanel from './components/AwardsPanel';
 import GuideList, { type Video } from './components/GuideList';
 import MapView from './components/MapView';
 import PlaceCard from './components/PlaceCard';
 import PlaceList, { type Row } from './components/PlaceList';
 import SearchBar from './components/SearchBar';
+import StatusPanel from './components/StatusPanel';
+import TripPlanner, { type TripMapState } from './components/TripPlanner';
 import { CATEGORY_META, DEFAULT_CENTER, RADIUS_OPTIONS } from './config';
 import { loadPublicData, type PublicData } from './lib/data';
 import { distanceKm } from './lib/geo';
@@ -14,12 +17,14 @@ type Mode = 'destination' | 'trip' | 'blogger' | 'guide';
 type Filter = 'all' | Category | 'favorites';
 type Sort = 'distance' | 'sources' | 'category';
 
-const MODES: { id: Mode; label: string; phase?: string }[] = [
+const MODES: { id: Mode; label: string }[] = [
   { id: 'destination', label: '目的地探索' },
-  { id: 'trip', label: '旅遊路線', phase: '第五階段' },
+  { id: 'trip', label: '旅遊路線' },
   { id: 'blogger', label: '部落客攻略' },
-  { id: 'guide', label: '米其林/500碗', phase: '第四階段' },
+  { id: 'guide', label: '米其林/500碗' },
 ];
+
+const EMPTY_TRIP: TripMapState = { places: [], anchors: [], route: [], fitKey: '' };
 
 export default function App() {
   const [data, setData] = useState<PublicData | null>(null);
@@ -35,6 +40,9 @@ export default function App() {
   const [toast, setToast] = useState('');
   const [channel, setChannel] = useState('all');
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [awardPlaces, setAwardPlaces] = useState<Place[]>([]);
+  const [tripMap, setTripMap] = useState<TripMapState>(EMPTY_TRIP);
+  const [showStatus, setShowStatus] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const user = useUserData();
 
@@ -54,6 +62,7 @@ export default function App() {
         const p = { lat: pos.coords.latitude, lng: pos.coords.longitude };
         setUserPos(p);
         setCenter({ ...p, label: '目前位置' });
+        setMode('destination');
       },
       () => flash('無法取得目前位置（請確認已允許定位）'),
       { enableHighAccuracy: true, timeout: 10000 },
@@ -63,6 +72,7 @@ export default function App() {
   const pickPoint = useCallback((p: LatLng) => {
     setCenter({ ...p, label: '地圖上選取的位置' });
     setSelectedId(null);
+    setMode('destination');
   }, []);
 
   const select = useCallback((id: string) => {
@@ -70,9 +80,20 @@ export default function App() {
     setView('map');
   }, []);
 
+  const switchMode = (m: Mode) => {
+    setMode(m);
+    setSelectedId(null);
+  };
+
   const contentsByPlace = useMemo(() => groupBy(data?.contents ?? [], (c) => c.place_id), [data]);
   const awardsByPlace = useMemo(() => groupBy(data?.awards ?? [], (a) => a.place_id), [data]);
+  const latestYear = useMemo(() => {
+    const m: Record<string, number> = {};
+    for (const a of data?.awards ?? []) m[a.award_type] = Math.max(m[a.award_type] ?? 0, a.award_year);
+    return m;
+  }, [data]);
 
+  // ---- 目的地探索 ----
   const rows: Row[] = useMemo(() => {
     if (!data) return [];
     const out: Row[] = [];
@@ -128,33 +149,54 @@ export default function App() {
     for (const it of video.items) if (it.content.original_sequence != null && !(it.place.place_id in n)) n[it.place.place_id] = it.content.original_sequence;
     return n;
   }, [video]);
-  const isGuide = mode === 'blogger';
+  const guideRoute = useMemo(
+    () => (video ? video.items.filter((i) => i.place.latitude != null).map((i) => ({ lat: i.place.latitude!, lng: i.place.longitude! })) : []),
+    [video],
+  );
 
-  const selectedRow = rows.find((r) => r.place.place_id === selectedId);
-  const selected = selectedRow?.place ?? data?.places.find((p) => p.place_id === selectedId);
-  const activeMode = MODES.find((m) => m.id === mode)!;
+  // ---- 地圖要顯示什麼（依模式） ----
+  const mapProps = (() => {
+    switch (mode) {
+      case 'blogger':
+        return { places: guidePlaces, numbers, route: guideRoute, routeLabel: '作者原始順序', anchors: [], fitKey: 'b' + guidePlaces.map((p) => p.place_id).join(',') };
+      case 'guide':
+        return { places: awardPlaces, numbers: undefined, route: [], routeLabel: '', anchors: [], fitKey: 'g' + awardPlaces.map((p) => p.place_id).join(',') };
+      case 'trip':
+        return { places: tripMap.places, numbers: undefined, route: tripMap.route, routeLabel: '當天路線（直線）', anchors: tripMap.anchors, fitKey: 't' + tripMap.fitKey };
+      default:
+        return { places: rows.map((r) => r.place), numbers: undefined, route: [], routeLabel: '', anchors: [], fitKey: '' };
+    }
+  })();
+
+  const selected = selectedId ? placeById.get(selectedId) : undefined;
 
   return (
     <div className={`app view-${view}`}>
       <header className="top">
-        <SearchBar onPick={(d) => { setCenter(d); setSelectedId(null); }} onLocate={locate} />
+        <div className="brand-row">
+          <img src={`${import.meta.env.BASE_URL}icon-192.png`} alt="" className="brand-icon" />
+          <div className="brand-search">
+            <SearchBar onPick={(d) => { setCenter(d); setSelectedId(null); setMode('destination'); }} onLocate={locate} />
+          </div>
+        </div>
         <nav className="modes">
           {MODES.map((m) => (
-            <button key={m.id} className={m.id === mode ? 'on' : ''} onClick={() => setMode(m.id)}>
+            <button key={m.id} className={m.id === mode ? 'on' : ''} onClick={() => switchMode(m.id)}>
               {m.label}
             </button>
           ))}
         </nav>
-        {isGuide ? (
+        {mode === 'blogger' && (
           <div className="filters">
             <div className="chips">
-              <Chip on={channel === 'all'} onClick={() => { setChannel('all'); setVideoUrl(null); }}>全部頻道</Chip>
+              <Chip on={channel === 'all'} onClick={() => { setChannel('all'); setVideoUrl(null); }}>全部來源</Chip>
               {channels.map((c) => (
                 <Chip key={c} on={channel === c} onClick={() => { setChannel(c); setVideoUrl(null); }}>{c}</Chip>
               ))}
             </div>
           </div>
-        ) : mode === 'destination' ? (
+        )}
+        {mode === 'destination' && (
           <div className="filters">
             <div className="chips">
               <Chip on={filter === 'all'} onClick={() => setFilter('all')}>全部</Chip>
@@ -194,13 +236,8 @@ export default function App() {
                   <option value="category">分類</option>
                 </select>
               </label>
-              <button className="link" onClick={() => setView(view === 'map' ? 'list' : 'map')}>
-                {view === 'map' ? '清單模式' : '地圖模式'}
-              </button>
             </div>
           </div>
-        ) : (
-          <div className="todo">「{activeMode.label}」預計於{activeMode.phase}開發，目前請使用「目的地探索」。</div>
         )}
       </header>
 
@@ -209,19 +246,48 @@ export default function App() {
           <MapView
             center={center}
             radiusKm={radius}
-            places={isGuide ? guidePlaces : rows.map((r) => r.place)}
-            guideMode={isGuide}
-            numbers={numbers}
+            showRadius={mode === 'destination'}
             selectedId={selectedId}
             userPos={userPos}
             onSelect={select}
             onPickPoint={pickPoint}
+            {...mapProps}
           />
-          <div className="map-hint">右鍵 / 長按地圖可設為目的地</div>
+          <div className="map-tools">
+            <button className="link" onClick={() => setView(view === 'map' ? 'list' : 'map')}>{view === 'map' ? '☰ 清單' : '🗺 地圖'}</button>
+          </div>
         </section>
 
         <aside className="sheet">
-          {isGuide ? (
+          {mode === 'destination' && (
+            <>
+              <div className="sheet-head">
+                <span><strong>{center.label}</strong> 附近 {radius} 公里 · {rows.length} 個地點</span>
+                <span className="menu">
+                  <button className="link" onClick={() => setShowStatus(true)}>ⓘ 資料狀態</button>
+                  <button className="link" onClick={user.exportJson}>匯出個人資料</button>
+                  <button className="link" onClick={() => fileRef.current?.click()}>匯入</button>
+                  <input
+                    ref={fileRef} type="file" accept="application/json" hidden
+                    onChange={async (e) => {
+                      const f = e.target.files?.[0];
+                      if (!f) return;
+                      try { await user.importJson(f); flash('已匯入個人資料'); }
+                      catch { flash('檔案格式不正確'); }
+                      e.target.value = '';
+                    }}
+                  />
+                </span>
+              </div>
+              {data?.meta.note && <div className="data-note">{data.meta.note}</div>}
+              {data ? (
+                <PlaceList rows={rows} favorites={user.data.favorites} visited={user.data.visited} selectedId={selectedId} onSelect={select} />
+              ) : (
+                <div className="empty">載入資料中…</div>
+              )}
+            </>
+          )}
+          {mode === 'blogger' && (
             <GuideList
               videos={videos}
               selected={video}
@@ -229,46 +295,34 @@ export default function App() {
               onPickVideo={(u) => { setVideoUrl(u); setSelectedId(null); }}
               onSelectPlace={select}
             />
-          ) : (<>
-          <div className="sheet-head">
-            <span>
-              <strong>{center.label}</strong> 附近 {radius} 公里 · {rows.length} 個地點
-            </span>
-            <span className="menu">
-              <button className="link" onClick={user.exportJson}>匯出個人資料</button>
-              <button className="link" onClick={() => fileRef.current?.click()}>匯入</button>
-              <input
-                ref={fileRef} type="file" accept="application/json" hidden
-                onChange={async (e) => {
-                  const f = e.target.files?.[0];
-                  if (!f) return;
-                  try { await user.importJson(f); flash('已匯入個人資料'); }
-                  catch { flash('檔案格式不正確'); }
-                  e.target.value = '';
-                }}
-              />
-            </span>
-          </div>
-          {data?.meta.note && <div className="data-note">{data.meta.note}</div>}
-          {data ? (
-            <PlaceList
-              rows={rows}
-              favorites={user.data.favorites}
-              visited={user.data.visited}
+          )}
+          {mode === 'guide' && data && (
+            <AwardsPanel
+              places={data.places}
+              awards={data.awards}
+              notes={data.meta.award_notes ?? {}}
               selectedId={selectedId}
               onSelect={select}
+              onShow={setAwardPlaces}
             />
-          ) : (
-            <div className="empty">載入資料中…</div>
           )}
-          </>)}
+          {mode === 'trip' && data && (
+            <TripPlanner
+              places={data.places}
+              trips={user.data.trips}
+              setTrips={user.setTrips}
+              selectedId={selectedId}
+              onSelect={select}
+              onShow={setTripMap}
+            />
+          )}
         </aside>
 
         {selected && (
           <PlaceCard
             place={selected}
             distance={
-              !isGuide && selected.latitude != null && selected.longitude != null
+              mode === 'destination' && selected.latitude != null && selected.longitude != null
                 ? distanceKm(center, { lat: selected.latitude, lng: selected.longitude })
                 : null
             }
@@ -276,6 +330,7 @@ export default function App() {
               (a, b) => (b.published_at || '').localeCompare(a.published_at || ''),
             )}
             awards={awardsByPlace.get(selected.place_id) ?? []}
+            latestYear={latestYear}
             favorite={user.data.favorites.includes(selected.place_id)}
             visited={user.data.visited.includes(selected.place_id)}
             note={user.data.notes[selected.place_id] ?? ''}
@@ -286,6 +341,7 @@ export default function App() {
           />
         )}
       </main>
+      {showStatus && data && <StatusPanel data={data} onClose={() => setShowStatus(false)} />}
       {toast && <div className="toast">{toast}</div>}
     </div>
   );

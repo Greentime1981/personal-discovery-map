@@ -63,7 +63,7 @@ def run_update() -> None:
         log(f"蒐集結果：{(r.stdout or '').strip()[-400:]} {(r.stderr or '').strip()[-300:]}")
         if r.returncode != 0:
             raise RuntimeError("collect.py 執行失敗")
-        v = subprocess.run([sys.executable, "scripts/validate_data.py"], cwd=REPO, capture_output=True,
+        v = subprocess.run([sys.executable, "scripts/validate_data.py", "--compare-git"], cwd=REPO, capture_output=True,
                            text=True, encoding="utf-8", env=env)
         if v.returncode != 0:
             raise RuntimeError(f"資料驗證失敗，不上傳：{v.stdout[-300:]}")

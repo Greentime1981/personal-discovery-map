@@ -19,10 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write # 出錯時開 Issue 通知
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
     env:
       YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -34,11 +36,22 @@ jobs:
         if: env.YOUTUBE_API_KEY == ''
         run: echo "::warning::尚未設定 YOUTUBE_API_KEY，本次只處理部落格。"
       - name: Collect
+        id: collect
+        continue-on-error: true
         run: python pipeline/collect.py ${{ inputs.rebuild && '--rebuild' || '' }}
       - name: Validate
-        run: python scripts/validate_data.py
+        id: validate
+        continue-on-error: true
+        # 重建時筆數本來就會變動，不做「與上一版比較」
+        run: python scripts/validate_data.py ${{ !inputs.rebuild && '--compare-git' || '' }}
+      - name: Report problems (GitHub Issue)
+        run: >
+          python scripts/report_status.py
+          ${{ steps.collect.outcome == 'failure' && '"資料蒐集程式執行失敗，請查看 Actions 紀錄"' || '' }}
+          ${{ steps.validate.outcome == 'failure' && '"資料驗證失敗，本次資料未發布"' || '' }}
       - name: Commit changes
         id: commit
+        if: steps.collect.outcome == 'success' && steps.validate.outcome == 'success'
         run: |
           if git diff --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"

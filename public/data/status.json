@@ -1,0 +1,83 @@
+{
+  "run_at": "2026-11-15T03:46:53+00:00",
+  "runner": "local",
+  "new_videos": 0,
+  "new_posts": 0,
+  "new_places": 0,
+  "skipped": 0,
+  "errors": [],
+  "by_source": {
+    "港仔張啟樂的臺灣生活": {
+      "contents": 7,
+      "latest": "2026-11-07"
+    },
+    "痛風老饕易胖體質": {
+      "contents": 748,
+      "latest": "2026-11-12"
+    },
+    "CHILL先生一家人": {
+      "contents": 80,
+      "latest": "2026-10-24"
+    },
+    "肥波開吃啦": {
+      "contents": 18,
+      "latest": "2026-02-20"
+    },
+    "A/DA阿達": {
+      "contents": 29,
+      "latest": "2026-11-04"
+    },
+    "波妞食境秀": {
+      "contents": 540,
+      "latest": "2026-11-12"
+    },
+    "猴屁的異想世界": {
+      "contents": 10,
+      "latest": "2026-11-13"
+    },
+    "丹尼旅遊食記": {
+      "contents": 1,
+      "latest": "2026-10-23"
+    },
+    "大口老師的走跳學堂": {
+      "contents": 17,
+      "latest": "2026-11-15"
+    },
+    "Jason's Life": {
+      "contents": 2,
+      "latest": "2026-11-12"
+    },
+    "跟著領隊sky玩": {
+      "contents": 12,
+      "latest": "2026-11-14"
+    },
+    "Mimi韓の旅遊指南": {
+      "contents": 16,
+      "latest": "2026-11-13"
+    },
+    "跟著尼力吃喝玩樂": {
+      "contents": 187,
+      "latest": "2026-11-13"
+    },
+    "虎麗笑嗨嗨": {
+      "contents": 5,
+      "latest": "2026-06-29"
+    },
+    "熱血玩台南": {
+      "contents": 14,
+      "latest": "2026-11-12"
+    },
+    "捲捲和土豆拿鐵": {
+      "contents": 1,
+      "latest": "2026-11-12"
+    },
+    "蔡小妞依玲": {
+      "contents": 6,
+      "latest": "2026-11-13"
+    },
+    "Tiss玩味食尚": {
+      "contents": 1,
+      "latest": "2026-11-01"
+    }
+  }
+}

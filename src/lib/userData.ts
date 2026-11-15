@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { UserData } from '../types';
+import type { Trip, UserData } from '../types';
 
 const KEY = 'pdm_user_data_v1';
 const EMPTY: UserData = { favorites: [], visited: [], notes: {}, trips: [] };
@@ -8,7 +8,9 @@ function read(): UserData {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return EMPTY;
-    return { ...EMPTY, ...(JSON.parse(raw) as Partial<UserData>) };
+    const d = { ...EMPTY, ...(JSON.parse(raw) as Partial<UserData>) };
+    if (!Array.isArray(d.trips)) d.trips = [];
+    return d;
   } catch {
     return EMPTY;
   }
@@ -42,6 +44,10 @@ export function useUserData() {
     });
   }, []);
 
+  const setTrips = useCallback((trips: Trip[]) => {
+    setData((d) => ({ ...d, trips }));
+  }, []);
+
   const exportJson = useCallback(() => {
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
@@ -56,5 +62,5 @@ export function useUserData() {
     setData({ ...EMPTY, ...parsed });
   }, []);
 
-  return { data, toggle, setNote, exportJson, importJson };
+  return { data, toggle, setNote, setTrips, exportJson, importJson };
 }

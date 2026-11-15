@@ -1,5 +1,5 @@
 {
-  "_說明": "要追蹤的 YouTube 頻道與部落格。category 是預設分類（food / family / date / attraction）。fetch_article=true 表示 RSS 只有摘要，會開啟文章頁面只擷取店名與地址（不存全文、照片）。 沒有 RSS 的部落格用 sitemap（只看最新 30 篇）。",
+  "_說明": "要追蹤的 YouTube 頻道與部落格。category 是預設分類（food / family / date / attraction）。fetch_article=true 表示 RSS 只有摘要，會開啟文章頁面只擷取店名與地址（不存全文、照片）。 沒有 RSS 的部落格用 sitemap（只看最新 30 篇）。 github_blocked=true：該網站擋 GitHub 伺服器，只在本機（開啟 Claude 時）更新。",
   "youtube": [
     {
       "channel_id": "UC1JTcPIq1rgaQajsc1j9o_g",
@@ -38,14 +38,16 @@
       "site": "https://bobbytravel.tw",
       "feed": "https://bobbytravel.tw/feed/",
       "category": "attraction",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "Mimi韓の旅遊指南",
       "site": "https://mimigo.tw",
       "feed": "https://mimigo.tw/feed/",
       "category": "attraction",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "猴屁的異想世界",
@@ -59,35 +61,40 @@
       "site": "https://nellydyu.tw",
       "feed": "https://nellydyu.tw/feed/",
       "category": "food",
-      "fetch_article": false
+      "fetch_article": false,
+      "github_blocked": true
     },
     {
       "name": "虎麗笑嗨嗨",
       "site": "https://hoolee.tw",
       "feed": "https://hoolee.tw/feed/",
       "category": "food",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "熱血玩台南",
       "site": "https://decing.tw",
       "feed": "https://decing.tw/feed/",
       "category": "food",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "捲捲和土豆拿鐵",
       "site": "https://nigi33.tw",
       "feed": "https://nigi33.tw/feed/",
       "category": "food",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "喵爸喵媽玩轉地球",
       "site": "https://kimiyo.tw",
       "feed": "https://kimiyo.tw/feed/",
       "category": "attraction",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "丹尼旅遊食記",
@@ -101,21 +108,24 @@
       "site": "https://tsnio.com",
       "feed": "https://tsnio.com/feed/",
       "category": "attraction",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "嗯嗯。莉莉嗯",
       "site": "https://lillian.tw",
       "feed": "https://lillian.tw/feed/",
       "category": "food",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "Tiss玩味食尚",
       "site": "https://tisshuang.com",
       "feed": "https://tisshuang.com/feed/",
       "category": "food",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "大口老師的走跳學堂",
@@ -129,7 +139,8 @@
       "site": "https://yoti.life",
       "feed": "https://yoti.life/feed/",
       "category": "food",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "Yuki's Life",

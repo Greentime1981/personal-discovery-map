@@ -39,6 +39,7 @@ UA = "personal-discovery-map/0.3 (personal, non-commercial)"
 ARTICLE_DELAY = 3  # 讀文章頁面之間間隔秒數，避免造成對方網站負擔
 BACKFILL_PAGES = 4  # 第一次執行每個頻道最多抓 4×50 支影片
 TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+ON_GITHUB = os.environ.get("GITHUB_ACTIONS") == "true"
 
 
 def load(p: Path, default):
@@ -193,10 +194,16 @@ class Geocoder:
         r = self._query(address)
         if r:
             return r["lat"], r["lng"], "house" if r["has_house"] else "street"
-        # 去掉門牌、巷弄，退而求其次找路段
-        street = re.sub(r"(\d+巷)?(\d+弄)?\d+(-\d+)?號.*$", "", address)
-        if street != address:
-            r = self._query(street)
+        # 去掉門牌、巷弄，退而求其次找路段（「9之1號」「60-5號」也要能去掉）
+        street = re.sub(r"(\d+巷)?(\d+弄)?\d+(?:[-之]\d+)?號.*$", "", address)
+        if street == address:
+            return None
+        # OSM 多寫「臺北市」；有時加縣市反而查不到，所以再試只有「行政區＋路名」
+        tries = [street, street.replace("台", "臺"), re.sub(r"^.{2}[市縣]", "", street)]
+        if re.search(r"[一二三四五六七八九十]段$", street):
+            tries.append(re.sub(r"[一二三四五六七八九十]段$", "", street))  # 去掉「段」
+        for q in dict.fromkeys(tries):
+            r = self._query(q)
             if r:
                 return r["lat"], r["lng"], "street"
         return None
@@ -245,9 +252,20 @@ def key_addr(s: str) -> str:
     return re.sub(r"\s", "", normalize(s))
 
 
+def similar_name(a: str, b: str) -> bool:
+    """同一地址常有多家店（百貨、美食街），名稱要有關聯才算同一家：
+    一方包含另一方，或有 2 個以上連續相同字（例如「A Cut」與「ACut牛排館」）。"""
+    a, b = key_name(a), key_name(b)
+    if not a or not b:
+        return False
+    if a in b or b in a:
+        return True
+    return any(a[i:i + 2] in b for i in range(len(a) - 1))
+
+
 def find_existing(places, name, address, coords):
     for p in places:
-        if address and key_addr(p.get("address", "")) == key_addr(address):
+        if address and key_addr(p.get("address", "")) == key_addr(address) and similar_name(p["name"], name):
             return p
         if key_name(p["name"]) == key_name(name):
             if coords and p.get("latitude") is not None and km(coords, (p["latitude"], p["longitude"])) < 0.2:
@@ -320,6 +338,8 @@ def main():
                 run["skipped"].append(f"{name}：查不到座標，暫不顯示在地圖（{address}）")
         else:
             run["merged_places"] += 1
+            if loc and p.get("latitude") is None:  # 之前查不到座標的地點，這次查到了就補上
+                p["latitude"], p["longitude"], p["geo_precision"] = loc
         return p
 
     def add_source(name, address, category, cont):
@@ -376,6 +396,8 @@ def main():
             src_url = b.get("feed") or b.get("sitemap")
             if not src_url:
                 continue
+            if b.get("github_blocked") and ON_GITHUB:
+                continue  # 這個網站擋 GitHub 伺服器，交給本機更新
             known = set(posts_state.get(src_url, []))
             try:
                 items = fetch_feed(b["feed"]) if b.get("feed") else fetch_sitemap(b["sitemap"])
@@ -460,7 +482,13 @@ def main():
         name, city = e["name"], e["city"]
         base = re.split(r"\s*[（(]", name)[0].strip()
         if e.get("address"):
-            p = ensure_place(name, normalize(e["address"]), "food")
+            addr = normalize(e["address"])
+            p = ensure_place(name, addr, "food")
+            c2, d2 = split_admin(addr)  # 官方地址最準：縣市、行政區以它為準
+            if d2:
+                p["city"], p["district"] = c2, d2
+            if not p.get("address"):
+                p["address"] = addr
         else:
             # 先找同縣市、同店名的既有地點（含部落客推薦或前一年度已建立的）
             # 連鎖店名稱含分店（如「鼎泰豐（信義路）」），只做完整名稱比對，避免配到別家分店
@@ -499,6 +527,18 @@ def main():
     meta["note"] = "地點由 YouTube 影片說明與部落格文章中的地址自動整理（規則式，未經 AI 推論）。標示「範例資料」者為未驗證的示範地點。"
     meta["award_notes"] = meta_notes
     save(DATA / "meta.json", meta)
+
+    # ---- 第六階段：公開的執行狀態（App 的「資料狀態」會顯示；不含任何個人資料）----
+    by_source = {}
+    for c in contents:
+        s = by_source.setdefault(c["source_name"], {"contents": 0, "latest": ""})
+        s["contents"] += 1
+        s["latest"] = max(s["latest"], c.get("published_at") or "")
+    save(DATA / "status.json", {
+        "run_at": run["run_at"], "runner": "github" if ON_GITHUB else "local",
+        "new_videos": run["new_videos"], "new_posts": run["new_posts"], "new_places": run["new_places"],
+        "skipped": len(run["skipped"]), "errors": run["errors"][:50], "by_source": by_source,
+    })
     log.append(run)
     save(PIPE / "log.json", log[-60:])  # 保留最近 60 次
     print(json.dumps({k: (len(v) if isinstance(v, list) else v) for k, v in run.items()}, ensure_ascii=False))

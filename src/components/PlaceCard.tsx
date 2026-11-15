@@ -1,4 +1,5 @@
 import { AWARD_LABEL, CATEGORY_META } from '../config';
+import { awardSummary } from './AwardsPanel';
 import { formatDistance, googleMapsDirUrl } from '../lib/geo';
 import type { Award, AwardType, Content, Place } from '../types';
 
@@ -7,6 +8,8 @@ interface Props {
   distance: number | null;
   contents: Content[];
   awards: Award[];
+  /** 各獎項資料中最新的年度，用來判斷「最新一年是否仍在名單上」 */
+  latestYear: Record<string, number>;
   favorite: boolean;
   visited: boolean;
   note: string;
@@ -22,7 +25,9 @@ export default function PlaceCard(props: Props) {
   const { place: p, distance, contents, awards } = props;
   const cat = CATEGORY_META[p.category];
   const sourceCount = new Set(contents.map((c) => c.source_name)).size;
-  const sortedAwards = [...awards].sort((a, b) => b.award_year - a.award_year);
+  const summary = awardSummary(awards);
+  const michelinLast = Math.max(0, ...awards.filter((a) => a.award_type.startsWith('michelin')).map((a) => a.award_year));
+  const latestMichelin = Math.max(props.latestYear.michelin_1 ?? 0, props.latestYear.michelin_2 ?? 0, props.latestYear.michelin_3 ?? 0);
 
   return (
     <div className="card" role="dialog" aria-label={p.name}>
@@ -70,15 +75,23 @@ export default function PlaceCard(props: Props) {
         <dd>{sourceCount ? `${sourceCount} 個獨立來源` : NA}</dd>
         <dt>評鑑</dt>
         <dd>
-          {sortedAwards.length
-            ? sortedAwards.map((a) => (
-                <div key={a.award_id}>
-                  {AWARD_LABEL[a.award_type as AwardType] ?? a.award_type}（{a.award_year} 年）
-                  {a.source_url && (
-                    <a href={a.source_url} target="_blank" rel="noopener noreferrer"> 來源</a>
-                  )}
-                </div>
-              ))
+          {summary.length
+            ? summary.map((s) => {
+                const latest = props.latestYear[s.type] ?? s.last;
+                const src = awards.filter((a) => a.award_type === s.type).sort((a, b) => b.award_year - a.award_year)[0];
+                // 米其林星級在等級間升降時，只要最新年度仍有任何星級就不顯示「未列入」
+                const stillListed = s.type.startsWith('michelin') ? michelinLast >= latestMichelin : s.last >= latest;
+                return (
+                  <div key={s.type} className="award-row">
+                    <b>{AWARD_LABEL[s.type as AwardType] ?? s.label}</b> {s.years} 年
+                    {src?.level ? `（${src.level} 碗）` : ''}
+                    {!stillListed && <span className="muted">（{latest} 年名單未列入）</span>}
+                    {src?.source_url && (
+                      <a href={src.source_url} target="_blank" rel="noopener noreferrer"> 來源</a>
+                    )}
+                  </div>
+                );
+              })
             : NA}
         </dd>
         <dt>價格</dt>

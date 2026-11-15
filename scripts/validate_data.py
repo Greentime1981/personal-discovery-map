@@ -4,13 +4,16 @@
 - place_id / content_id / award_id 不重複
 - 疑似重複地點（同名且距離 < 100 公尺）
 - contents / awards 參照的 place_id 必須存在
-- 獎項必須有年度（不能把舊年度當成今年）
+- 獎項必須有年度（不能把舊年度當成今年），年度須在 2018～明年之間
+- --compare-git：與上一版比較，筆數減少超過 20% 視為異常
 
 用法：python scripts/validate_data.py   （有錯誤時 exit code = 1）
 """
 import json
 import math
+import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "public" / "data"
@@ -78,10 +81,26 @@ def main():
             errors.append(f"award {aid} 參照不存在的 place_id：{a.get('place_id')}")
         if a.get("award_type") not in AWARD_TYPES:
             errors.append(f"award {aid} award_type 不合法：{a.get('award_type')}")
-        if not isinstance(a.get("award_year"), int):
+        y = a.get("award_year")
+        if not isinstance(y, int):
             errors.append(f"award {aid} 缺少 award_year")
+        elif not (2018 <= y <= datetime.now().year + 1):  # 台灣米其林 2018 年起；不可寫未來年度
+            errors.append(f"award {aid} 年度不合理：{y}")
+        if a.get("level") is not None and a.get("level") not in (1, 2, 3):
+            errors.append(f"award {aid} 碗數應為 1～3：{a.get('level')}")
         if not a.get("source_url"):
             warns.append(f"award {aid} 缺少 source_url")
+
+    # 與上一版比較：地點或推薦大量消失，多半是蒐集出錯，不要直接發布
+    if "--compare-git" in sys.argv:
+        for name, now in (("places.json", len(places)), ("contents.json", len(contents)), ("awards.json", len(awards))):
+            try:
+                prev = len(json.loads(subprocess.run(["git", "show", f"HEAD:public/data/{name}"], capture_output=True,
+                                                     check=True, cwd=DATA.parent.parent).stdout.decode("utf-8")))
+            except Exception:
+                continue
+            if prev >= 50 and now < prev * 0.8:
+                errors.append(f"{name} 筆數從 {prev} 降到 {now}（減少超過 20%），疑似蒐集異常")
 
     for w in warns:
         print("警告：", w)

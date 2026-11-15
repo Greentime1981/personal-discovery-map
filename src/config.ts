@@ -28,4 +28,7 @@ export const AWARD_LABEL: Record<AwardType, string> = {
   taiwan_500: '台灣500碗',
 };
 
+/** 獎項排序：越前面越高 */
+export const AWARD_ORDER: AwardType[] = ['michelin_3', 'michelin_2', 'michelin_1', 'bib_gourmand', 'taiwan_500'];
+
 export const RADIUS_OPTIONS = [1, 3, 5, 10];

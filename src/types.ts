@@ -46,6 +46,15 @@ export interface Award {
   award_year: number;
   source_url: string;
   verified_at: string;
+  level?: number; // 台灣500碗的碗數
+}
+
+/** 自訂旅遊行程（第五階段） */
+export interface Trip {
+  id: string;
+  name: string;
+  hotel: Destination | null;
+  days: { stops: Destination[] }[];
 }
 
 /** 個人資料：只存在瀏覽器 localStorage，絕不進公開 repo */
@@ -53,7 +62,7 @@ export interface UserData {
   favorites: string[];
   visited: string[];
   notes: Record<string, string>;
-  trips: unknown[]; // 第五階段再定義
+  trips: Trip[];
 }
 
 export interface LatLng {

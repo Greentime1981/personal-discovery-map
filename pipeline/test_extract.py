@@ -66,6 +66,9 @@ class T(unittest.TestCase):
     def test_admin(self):
         self.assertEqual(split_admin("台北市大安區仁愛路"), ("台北市", "大安區"))
         self.assertEqual(split_admin("宜蘭縣羅東鎮中正路1號"), ("宜蘭縣", "羅東鎮"))
+        self.assertEqual(split_admin("高雄市前鎮區正勤路27號"), ("高雄市", "前鎮區"))
+        self.assertEqual(split_admin("新竹縣竹北市嘉南豐路一段62號"), ("新竹縣", "竹北市"))
+        self.assertEqual(split_admin("新竹市東區東門街1號"), ("新竹市", "東區"))
 
 
 if __name__ == "__main__":
