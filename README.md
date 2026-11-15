@@ -28,6 +28,10 @@
 
 新增 / 移除頻道或部落格：編輯 `pipeline/sources.json`。
 
+### 開啟 Claude 時自動更新部落格
+
+部分部落格會擋 GitHub 的伺服器，所以由本機補抓：`scripts/local_update.py` 掛在 Claude Code 的 SessionStart hook（`~/.claude/settings.json`），開啟 Claude 時在背景執行，20 小時內最多一次，紀錄在 `%LOCALAPPDATA%\pdm-updater\update.log`。
+
 ### 我的手動清單
 
 不在追蹤清單裡的店家，加到 `pipeline/manual.json` 的 `places`（店名、地址必填；可填分類、推薦人 `by`、備註 `note`）。
