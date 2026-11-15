@@ -351,6 +351,34 @@
       "site": "https://bksuger.com",
       "category": "food",
       "sitemap": "https://bksuger.com/post-sitemap.xml"
+    },
+    {
+      "name": "周花花，甲飽沒",
+      "site": "https://tenjo.tw",
+      "feed": "https://tenjo.tw/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "Nash，神之領域",
+      "site": "https://nash.tw",
+      "feed": "https://nash.tw/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "布雷克的出走旅行視界",
+      "site": "https://blake.com.tw",
+      "feed": "https://blake.com.tw/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "大食女 in Wonderland",
+      "site": "https://joyaijia.tw",
+      "feed": "https://joyaijia.tw/feed/",
+      "category": "food",
+      "fetch_article": true
     }
   ]
 }

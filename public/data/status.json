@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-11-15T06:26:01+00:00",
-  "runner": "github",
-  "new_videos": 284,
-  "new_posts": 0,
-  "new_places": 32,
-  "skipped": 264,
+  "run_at": "2026-11-15T06:37:57+00:00",
+  "runner": "local",
+  "new_videos": 0,
+  "new_posts": 30,
+  "new_places": 13,
+  "skipped": 16,
   "errors": [],
   "by_source": {
     "港仔張啟樂的臺灣生活": {
@@ -158,16 +158,23 @@
     "1000cc美食頻道": {
       "contents": 28,
       "latest": "2025-07-07"
+    },
+    "周花花，甲飽沒": {
+      "contents": 1,
+      "latest": "2026-11-11"
+    },
+    "Nash，神之領域": {
+      "contents": 5,
+      "latest": "2026-11-15"
+    },
+    "布雷克的出走旅行視界": {
+      "contents": 10,
+      "latest": "2026-11-15"
+    },
+    "大食女 in Wonderland": {
+      "contents": 3,
+      "latest": "2026-05-27"
     }
   },
-  "github_blocked_detected": [
-    "霸子。食樂拼圖",
-    "剎有其食",
-    "艾妮可美味人生",
-    "ifunny 艾方妮的遊樂場",
-    "阿華田的美食日記",
-    "糖糖's 享食生活",
-    "郭郭的花東走跳生活",
-    "口袋吃吃五十咩"
-  ]
+  "github_blocked_detected": []
 }

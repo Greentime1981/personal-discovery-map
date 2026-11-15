@@ -2444,7 +2444,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "yt-doqT_fPSLjw-5"
+      "yt-doqT_fPSLjw-5",
+      "bl-1d3bce4a57-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -3049,7 +3050,8 @@
     "description": "",
     "sources": [
       "yt-dNMDudNCIc4-7",
-      "yt-RG8NtqbKh5Q-1"
+      "yt-RG8NtqbKh5Q-1",
+      "bl-e1ea0c50e7-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -6489,7 +6491,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "yt-bB-XLFjN9RA-2"
+      "yt-bB-XLFjN9RA-2",
+      "bl-8ae3e306b7-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -6549,7 +6552,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "yt-4P6un1oSa6g-1"
+      "yt-4P6un1oSa6g-1",
+      "bl-91972953c2-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -27568,7 +27572,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "bl-d890cad5d0-1"
+      "bl-d890cad5d0-1",
+      "bl-1d3bce4a57-4"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -38903,7 +38908,9 @@
     "geo_precision": "street",
     "price_range": null,
     "description": "",
-    "sources": [],
+    "sources": [
+      "bl-7c013f9159-1"
+    ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
     "last_verified_at": "",
@@ -42328,6 +42335,266 @@
     "description": "",
     "sources": [
       "yt-SeQiBomJjNA-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-50c0102232",
+    "name": "《肉多多火鍋》在全台灣很多縣市都有分店,完整據點可點此查詢",
+    "category": "food",
+    "city": "台北市",
+    "district": "大安區",
+    "address": "台北市大安區羅斯福路二段79號",
+    "latitude": 25.02598,
+    "longitude": 121.523491,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-d5e4cea0d8-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-b909582341",
+    "name": "A CUT 牛排館",
+    "category": "food",
+    "city": "台北市",
+    "district": "中山區",
+    "address": "台北市中山區遼寧街177號",
+    "latitude": 25.053283,
+    "longitude": 121.542088,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-1d63b3b277-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-b52301aa23",
+    "name": "雙囍家常料理",
+    "category": "food",
+    "city": "台北市",
+    "district": "中正區",
+    "address": "台北市中正區羅斯福路二段48巷2號",
+    "latitude": 25.027618,
+    "longitude": 121.521918,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-244a787bf3-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-d90b6032c3",
+    "name": "林家蔬菜羊肉爐",
+    "category": "food",
+    "city": "台北市",
+    "district": "中山區",
+    "address": "台北市中山區吉林路327號",
+    "latitude": 25.052058,
+    "longitude": 121.530091,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-fcb20704a5-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-fb71188606",
+    "name": "基隆孝三大腸圈",
+    "category": "food",
+    "city": "基隆市",
+    "district": "仁愛區",
+    "address": "基隆市仁愛區孝三路99巷3號",
+    "latitude": 25.130044,
+    "longitude": 121.739281,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-227de00bf3-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-41efda9f05",
+    "name": "碧海廚房敦北店",
+    "category": "food",
+    "city": "台北市",
+    "district": "松山區",
+    "address": "台北市松山區敦化北路155巷10號",
+    "latitude": 25.06112,
+    "longitude": 121.550855,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-cc1d1f3c19-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-05b11514de",
+    "name": "武昌市場香菇麵",
+    "category": "food",
+    "city": "台北市",
+    "district": "松山區",
+    "address": "台北市松山區南京東路五段59巷27弄11號",
+    "latitude": 25.051443,
+    "longitude": 121.559095,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-c8eb3045f2-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-f2c8118c2b",
+    "name": "竹子湖 山中園野菜餐廳",
+    "category": "food",
+    "city": "台北市",
+    "district": "北投區",
+    "address": "台北市北投區竹子湖路49號",
+    "latitude": 25.182724,
+    "longitude": 121.556606,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-0b5dd70f68-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-7010061a9e",
+    "name": "醉翁漁港海鮮",
+    "category": "food",
+    "city": "台北市",
+    "district": "松山區",
+    "address": "台北市松山區長安東路二段272號",
+    "latitude": 25.048148,
+    "longitude": 121.545789,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-2afa63b2c4-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-40b4d33248",
+    "name": "老巷小館",
+    "category": "food",
+    "city": "桃園市",
+    "district": "中壢區",
+    "address": "桃園市中壢區中正路243號",
+    "latitude": 24.955321,
+    "longitude": 121.219826,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-24388d15fa-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3272b3e674",
+    "name": "大漠紅頂級蒙古鍋 桃園店",
+    "category": "food",
+    "city": "桃園市",
+    "district": "桃園區",
+    "address": "桃園市桃園區中正路327號",
+    "latitude": 25.015158,
+    "longitude": 121.299033,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-3e9864703c-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e8321e6deb",
+    "name": "大漠紅頂級蒙古鍋 中壢店",
+    "category": "food",
+    "city": "桃園市",
+    "district": "中壢區",
+    "address": "桃園市中壢區興平里中豐路170號",
+    "latitude": 24.962595,
+    "longitude": 121.219976,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-3e9864703c-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-09ca859fd5",
+    "name": "Standard Bread",
+    "category": "food",
+    "city": "台北市",
+    "district": "信義區",
+    "address": "台北市信義區松壽路11號",
+    "latitude": 25.035888,
+    "longitude": 121.564504,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-61ac8cf926-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
