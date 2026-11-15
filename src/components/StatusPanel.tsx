@@ -18,7 +18,7 @@ export default function StatusPanel({ data, onClose }: { data: PublicData; onClo
           <dt>地點</dt>
           <dd>{data.places.length} 個（地圖上 {located} 個）</dd>
           <dt>推薦來源</dt>
-          <dd>{data.contents.length} 筆</dd>
+          <dd>{data.index.total} 筆（{data.index.sources.length} 個來源）</dd>
           <dt>評鑑</dt>
           <dd>{data.awards.length} 筆</dd>
         </dl>
@@ -36,6 +36,12 @@ export default function StatusPanel({ data, onClose }: { data: PublicData; onClo
               </tbody>
             </table>
           </>
+        )}
+        {(s?.history_remaining ?? 0) > 0 && (
+          <p className="data-note">⏳ 正在補齊歷史文章：還有約 {s!.history_remaining!.toLocaleString()} 篇待讀，會在之後的更新中自動完成。</p>
+        )}
+        {(s?.geo_pending ?? 0) > 0 && (
+          <p className="data-note">📍 {s!.geo_pending!.toLocaleString()} 個地址尚未查到地圖座標（清單和搜尋仍可找到，導航可正常使用）。</p>
         )}
         <h3>最近一次執行</h3>
         {s ? (

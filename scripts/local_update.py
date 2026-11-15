@@ -43,9 +43,21 @@ def git(*args: str, check: bool = True) -> subprocess.CompletedProcess:
 
 def run_update() -> None:
     HOME.mkdir(parents=True, exist_ok=True)
-    if LOCK.exists() and time.time() - LOCK.stat().st_mtime < 3 * 3600:
+    if LOCK.exists() and time.time() - LOCK.stat().st_mtime < 4 * 3600:
         log("已有更新在執行中，略過")
         return
+    # GitHub 正在更新資料時先不跑，避免兩邊同時上傳造成衝突
+    try:
+        import json as _json
+        import urllib.request as _ur
+        api = REPO_URL.replace("https://github.com/", "https://api.github.com/repos/").removesuffix(".git")
+        with _ur.urlopen(_ur.Request(api + "/actions/runs?status=in_progress&per_page=5",
+                                     headers={"User-Agent": "personal-discovery-map"}), timeout=20) as r:
+            if _json.load(r).get("total_count", 0) > 0:
+                log("GitHub 正在更新資料，這次先不跑（下次開 Claude 再更新）")
+                return
+    except Exception:
+        pass  # 查不到就照常執行
     LOCK.write_text(str(os.getpid()))
     try:
         if not (REPO / ".git").exists():
@@ -58,7 +70,8 @@ def run_update() -> None:
 
         env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
         env.pop("YOUTUBE_API_KEY", None)  # YouTube 由 GitHub 每日處理，本機只跑部落格
-        r = subprocess.run([sys.executable, "pipeline/collect.py"], cwd=REPO, capture_output=True,
+        # 補齊歷史文章時一次最多讀 150 分鐘，沒讀完下次開 Claude 會接著讀
+        r = subprocess.run([sys.executable, "pipeline/collect.py", "--time-budget", "150"], cwd=REPO, capture_output=True,
                            text=True, encoding="utf-8", env=env)
         log(f"蒐集結果：{(r.stdout or '').strip()[-400:]} {(r.stderr or '').strip()[-300:]}")
         if r.returncode != 0:
@@ -71,7 +84,7 @@ def run_update() -> None:
         if not git("status", "--porcelain").stdout.strip():
             log("沒有新資料")
         else:
-            git("add", "public/data", "pipeline")
+            git("add", "data", "pipeline")
             git("commit", "-q", "-m", f"部落格資料更新（本機）{datetime.now():%Y-%m-%d}")
             if git("push", "-q", check=False).returncode != 0:
                 git("pull", "-q", "--rebase", "origin", "main")

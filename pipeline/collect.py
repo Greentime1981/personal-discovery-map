@@ -17,8 +17,10 @@ import html
 import json
 import math
 import os
+import queue
 import re
 import sys
+import threading
 import time
 import urllib.parse
 import urllib.error
@@ -33,11 +35,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from extract import extract_places, normalize, split_admin  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "public" / "data"
+DATA = ROOT / "data"  # 完整資料庫（App 用的精簡檔由 scripts/build_app_data.py 產生）
 PIPE = ROOT / "pipeline"
 UA = "personal-discovery-map/0.3 (personal, non-commercial)"
 ARTICLE_DELAY = 3  # 讀文章頁面之間間隔秒數，避免造成對方網站負擔
-BACKFILL_PAGES = 4  # 第一次執行每個頻道最多抓 4×50 支影片
 TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 ON_GITHUB = os.environ.get("GITHUB_ACTIONS") == "true"
 
@@ -46,8 +47,20 @@ def load(p: Path, default):
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
 
 
+COMPACT = {"places.json", "contents.json", "awards.json", "state.json", "geocode_cache.json", "log.json"}
+
+
 def save(p: Path, obj):
-    p.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if p.name in COMPACT and isinstance(obj, list):
+        # 大型清單：一筆一行（不縮排）。檔案小，而且每天新增的資料只是多幾行，GitHub 倉庫不會暴增
+        text = "[\n" + ",\n".join(json.dumps(x, ensure_ascii=False, separators=(",", ":")) for x in obj) + "\n]"
+    elif p.name in COMPACT:
+        text = json.dumps(obj, ensure_ascii=False, separators=(",", ":"))
+    else:
+        text = json.dumps(obj, ensure_ascii=False, indent=2)
+    tmp = p.with_suffix(p.suffix + ".tmp")
+    tmp.write_text(text + "\n", encoding="utf-8")
+    tmp.replace(p)  # 先寫暫存檔再取代：中途被中斷也不會留下壞掉的檔案
 
 
 def http_json(url: str, headers=None):
@@ -57,11 +70,13 @@ def http_json(url: str, headers=None):
 
 
 # ---------- YouTube Data API ----------
-def fetch_new_videos(channel_id: str, known: set[str], key: str) -> list[dict]:
-    """從頻道的 uploads 播放清單由新到舊抓，遇到已處理過的影片就停（增量）。"""
+def fetch_new_videos(channel_id: str, known: set[str], key: str, full: bool = False) -> list[dict]:
+    """從頻道的 uploads 播放清單由新到舊抓。
+    full=True：補齊歷史，翻完所有頁面（每頁 50 支只花 1 單位配額），跳過已處理的影片。
+    full=False：日常增量，遇到已處理過的影片就停。"""
     playlist = "UU" + channel_id[2:]
     out, token = [], None
-    for _ in range(BACKFILL_PAGES if not known else 2):
+    for _ in range(10_000 if full else 2):
         q = {"part": "snippet", "playlistId": playlist, "maxResults": 50, "key": key}
         if token:
             q["pageToken"] = token
@@ -72,6 +87,8 @@ def fetch_new_videos(channel_id: str, known: set[str], key: str) -> list[dict]:
             if not vid:
                 continue
             if vid in known:
+                if full:
+                    continue
                 return out
             out.append({"video_id": vid, "title": sn.get("title", ""), "description": sn.get("description", ""),
                         "published_at": sn.get("publishedAt", "")[:10]})
@@ -135,19 +152,74 @@ def allowed_by_robots(url: str) -> bool:
     return True if rp is None else rp.can_fetch(UA, url)
 
 
-def fetch_article(url: str) -> tuple[str, str]:
-    """RSS 只有摘要時：讀一次文章頁面，只在記憶體中取文字找店名地址，不儲存全文與照片。回傳 (標題, 文字)。"""
+def fetch_article_meta(url: str) -> tuple[str, str, str]:
+    """讀一次文章頁面，只在記憶體中取文字找店名地址，不儲存全文與照片。回傳 (標題, 文字, 發布日期)。"""
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=30) as r:
         page = r.read().decode("utf-8", "ignore")
     t = re.search(r"(?is)<title[^>]*>(.*?)</title>", page)
     title = html.unescape(t.group(1)).strip() if t else ""
     title = re.split(r"\s+[|｜\-–—]\s+[^|｜]*$", title)[0]  # 去掉「 - 網站名稱」
+    d = re.search(r'(?i)(?:article:published_time|datePublished)["\']?\s*(?:content=|:)\s*["\'](\d{4}-\d{2}-\d{2})', page)
     m = re.search(r"(?is)<article\b.*?</article>", page)  # 只取文章本體，避開側欄
-    return title, html_to_text(m.group(0) if m else page)
+    return title, html_to_text(m.group(0) if m else page), d.group(1) if d else ""
 
 
-SITEMAP_LIMIT = 30  # 沒有 RSS 的部落格：只看 sitemap 中最新的 30 篇
+def fetch_article(url: str) -> tuple[str, str]:
+    title, text, _ = fetch_article_meta(url)
+    return title, text
+
+
+SITEMAP_LIMIT = 30  # 日常增量：沒有 RSS 的部落格只看 sitemap 中最新的 30 篇
+SM_NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+
+
+def _get(url: str) -> bytes:
+    with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=30) as r:
+        return r.read()
+
+
+def discover_all_posts(site: str) -> list[str]:
+    """補齊歷史：從網站的 sitemap 索引找出「所有」文章網址（新到舊）。找不到 sitemap 回傳空清單。"""
+    base = "{0.scheme}://{0.netloc}".format(urllib.parse.urlparse(site))
+    for idx in ("/sitemap_index.xml", "/wp-sitemap.xml", "/sitemap.xml"):
+        try:
+            root = ET.fromstring(_get(base + idx))
+        except Exception:
+            continue
+        subs = [e.findtext(SM_NS + "loc") for e in root.findall(SM_NS + "sitemap")]
+        post_maps = [u for u in subs if u and re.search(r"post(s)?[-_]?(sitemap|\d)|sitemap-posts|posts-post", u)]
+        if not post_maps and root.findall(SM_NS + "url"):
+            post_maps = [base + idx]
+        if not post_maps:
+            continue
+        rows = []
+        for sm in post_maps:
+            try:
+                r2 = ET.fromstring(_get(sm))
+            except Exception:
+                continue
+            for u in r2.findall(SM_NS + "url"):
+                loc = u.findtext(SM_NS + "loc")
+                if loc and loc.rstrip("/") != base:
+                    rows.append(((u.findtext(SM_NS + "lastmod") or "")[:10], loc))
+        rows.sort(reverse=True)
+        if rows:
+            return list(dict.fromkeys(loc for _, loc in rows))
+    # 沒有索引的網站：直接試 post-sitemap.xml、post-sitemap2.xml…
+    rows = []
+    for i in range(1, 200):
+        url = f"{base}/post-sitemap{'' if i == 1 else i}.xml"
+        try:
+            r2 = ET.fromstring(_get(url))
+        except Exception:
+            break
+        for u in r2.findall(SM_NS + "url"):
+            loc = u.findtext(SM_NS + "loc")
+            if loc:
+                rows.append(((u.findtext(SM_NS + "lastmod") or "")[:10], loc))
+    rows.sort(reverse=True)
+    return list(dict.fromkeys(loc for _, loc in rows))
 
 
 def fetch_sitemap(url: str) -> list[dict]:
@@ -163,17 +235,24 @@ def fetch_sitemap(url: str) -> list[dict]:
 
 # ---------- 地理編碼（Nominatim，1 次/秒，結果快取） ----------
 class Geocoder:
-    def __init__(self, cache_path: Path, offline: bool):
+    def __init__(self, cache_path: Path, offline: bool, budget: int = 10**9):
         self.path = cache_path
         self.cache = load(cache_path, {})
         self.offline = offline
         self.last = 0.0
+        self.budget = budget  # 本次最多新查幾次（遵守 Nominatim 不可大量查詢的規定）
+        self.used = 0
+        self.deferred = 0  # 超過額度、留到下次再查的次數
 
     def _query(self, q: str):
         if q in self.cache:
             return self.cache[q]
         if self.offline:
             return None
+        if self.used >= self.budget:
+            self.deferred += 1
+            return None  # 不寫入快取：下次還會再查
+        self.used += 1
         wait = 1.1 - (time.time() - self.last)
         if wait > 0:
             time.sleep(wait)
@@ -216,7 +295,11 @@ class Geocoder:
             r = self.cache[key]
         elif self.offline:
             return None
+        elif self.used >= self.budget:
+            self.deferred += 1
+            return None
         else:
+            self.used += 1
             wait = 1.1 - (time.time() - self.last)
             if wait > 0:
                 time.sleep(wait)
@@ -263,23 +346,54 @@ def similar_name(a: str, b: str) -> bool:
     return any(a[i:i + 2] in b for i in range(len(a) - 1))
 
 
-def find_existing(places, name, address, coords):
-    for p in places:
-        if address and key_addr(p.get("address", "")) == key_addr(address) and similar_name(p["name"], name):
-            return p
-        if key_name(p["name"]) == key_name(name):
+class PlaceIndex:
+    """地點索引（依地址、依店名），幾萬筆資料比對也很快（原本逐筆比對會慢到跑不完）。"""
+
+    def __init__(self, places):
+        self.by_addr: dict[str, list] = {}
+        self.by_name: dict[str, list] = {}
+        for p in places:
+            self.add(p)
+
+    def add(self, p):
+        if p.get("address"):
+            self.by_addr.setdefault(key_addr(p["address"]), []).append(p)
+        self.by_name.setdefault(key_name(p["name"]), []).append(p)
+
+    def rename(self, p, new_name):
+        old = self.by_name.get(key_name(p["name"]), [])
+        if p in old:
+            old.remove(p)
+        p["name"] = new_name
+        self.by_name.setdefault(key_name(new_name), []).append(p)
+
+    def remove(self, p):
+        for d, k in ((self.by_addr, key_addr(p.get("address", ""))), (self.by_name, key_name(p["name"]))):
+            if p in d.get(k, []):
+                d[k].remove(p)
+
+    def find(self, name, address, coords):
+        if address:
+            for p in self.by_addr.get(key_addr(address), []):
+                if similar_name(p["name"], name):
+                    return p
+        for p in self.by_name.get(key_name(name), []):
             if coords and p.get("latitude") is not None and km(coords, (p["latitude"], p["longitude"])) < 0.2:
                 return p
             if not coords or p.get("latitude") is None:
                 if split_admin(p.get("address", ""))[1] == split_admin(address)[1]:
                     return p
-    return None
+        return None
 
 
 # ---------- 主流程 ----------
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--videos-json", help="離線測試：{channel_id: [video, ...]} 格式的檔案")
+    ap.add_argument("--time-budget", type=float, default=20,
+                    help="補齊歷史資料最多花幾分鐘（GitHub 用 300、本機用 150）；時間到會存檔，下次接著做")
+    ap.add_argument("--geo-budget", type=int, default=int(os.environ.get("GEOCODE_BUDGET", "800")),
+                    help="本次最多新查幾個地址座標（Nominatim 1 次/秒；其餘留到下次）")
     ap.add_argument("--rebuild", action="store_true",
                     help="改善辨識規則後使用：清除已蒐集的地點與紀錄，全部重新處理（保留地理編碼快取與範例地點）")
     args = ap.parse_args()
@@ -293,7 +407,8 @@ def main():
         places = [p for p in places if p.get("sample")]
         contents = []
         state = {"processed_videos": {}}
-    geo = Geocoder(PIPE / "geocode_cache.json", offline=bool(args.videos_json))
+    geo = Geocoder(PIPE / "geocode_cache.json", offline=bool(args.videos_json), budget=args.geo_budget)
+    index = PlaceIndex(places)
     offline_videos = load(Path(args.videos_json), {}) if args.videos_json else None
     key = os.environ.get("YOUTUBE_API_KEY", "")
     if offline_videos is None and not key:
@@ -320,6 +435,7 @@ def main():
              "created_at": TODAY, "updated_at": TODAY, "last_verified_at": "",
              "confidence_score": 0.8 if loc and loc[2] == "house" else 0.5 if loc else 0.3}
         places.append(p)
+        index.add(p)
         run["new_places"] += 1
         return p
 
@@ -331,7 +447,7 @@ def main():
             run["errors"].append(f"地理編碼失敗 {address}：{e}")
             loc = None
         coords = (loc[0], loc[1]) if loc else None
-        p = find_existing(places, name, address, coords)
+        p = index.find(name, address, coords)
         if p is None:
             p = new_place(name, address, category, loc)
             if not loc:
@@ -376,9 +492,13 @@ def main():
     for ch in (sources.get("youtube", []) if (key or offline_videos is not None) else []):
         cid = ch["channel_id"]
         known = set(state["processed_videos"].get(cid, []))
+        yt_done = state.setdefault("youtube_history_done", {})
+        full = not yt_done.get(cid)  # 還沒補齊歷史：翻完頻道所有影片
         try:
-            videos = offline_videos.get(cid, []) if offline_videos is not None else fetch_new_videos(cid, known, key)
+            videos = offline_videos.get(cid, []) if offline_videos is not None else fetch_new_videos(cid, known, key, full=full)
             videos = [v for v in videos if v["video_id"] not in known]
+            if full and offline_videos is None:
+                yt_done[cid] = TODAY
         except Exception as e:  # 單一頻道失敗不影響其他頻道
             run["errors"].append(f"{ch['name']}：抓取失敗 {e}")
             continue
@@ -434,6 +554,135 @@ def main():
                 known.add(x["link"])
             posts_state[src_url] = sorted(known)
 
+    # ---- 部落格歷史文章補齊：從 sitemap 取得「所有」文章 ----
+    # 多個網站同時進行；同一個網站每 3 秒最多讀 1 篇（不造成對方負擔）。
+    # 時間到（--time-budget）就存檔，下次從剩下的接著讀；全部讀完後標記完成，之後只做日常增量。
+    def checkpoint():
+        save(DATA / "places.json", places)
+        save(DATA / "contents.json", contents)
+        save(PIPE / "state.json", state)
+        geo.save()
+
+    if offline_videos is not None:
+        pass
+    else:
+        history = state.setdefault("blog_history", {})
+        posts_state = state.setdefault("processed_posts", {})
+        jobs = []
+        active = [b for b in sources.get("blogs", [])
+                  if (b.get("feed") or b.get("sitemap")) and not (b.get("github_blocked") and ON_GITHUB)
+                  and not history.get(b["site"], {}).get("done")]
+        # 第一次：同時讀取各網站的 sitemap，列出全部文章（只做一次，清單會存起來）
+        need = [b for b in active if "queue" not in history.get(b["site"], {})]
+        found_urls = {}
+        if need:
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=12) as ex:
+                futs = {b["site"]: ex.submit(discover_all_posts, b["site"]) for b in need}
+            for site, fu in futs.items():
+                try:
+                    found_urls[site] = fu.result()
+                except Exception as e:
+                    found_urls[site] = e
+        deadline = time.time() + args.time_budget * 60  # 列完清單後才開始計時
+        for b in active:
+            key_url = b.get("feed") or b.get("sitemap")
+            h = history.setdefault(b["site"], {})
+            known = set(posts_state.get(key_url, []))
+            if "queue" not in h:
+                urls = found_urls.get(b["site"], [])
+                if isinstance(urls, Exception):
+                    run["errors"].append(f"{b['name']}：讀取 sitemap 失敗 {urls}")
+                    continue
+                if not urls:
+                    h.update(done=TODAY, note="找不到文章 sitemap，只做日常增量")
+                    continue
+                h["total"] = len(urls)
+                h["queue"] = [u for u in urls if u not in known]
+            if not h["queue"]:
+                h["done"] = TODAY
+                continue
+            jobs.append((b, h, known, key_url))
+
+        results: queue.Queue = queue.Queue(maxsize=300)
+        stop = threading.Event()
+
+        def worker(b, h):
+            while h["queue"] and not stop.is_set() and time.time() < deadline:
+                url = h["queue"][0]
+                try:
+                    if not allowed_by_robots(url):
+                        item = (b, url, None, None, "", "robots")
+                    else:
+                        t, txt, d = fetch_article_meta(url)
+                        item = (b, url, t, txt, d, None)
+                except urllib.error.HTTPError as e:
+                    item = (b, url, None, None, "", "gone" if e.code in (404, 410) else f"HTTP {e.code}")
+                except Exception as e:
+                    item = (b, url, None, None, "", f"{type(e).__name__}")
+                h["queue"].pop(0)
+                results.put(item)
+                stop.wait(ARTICLE_DELAY)
+
+        threads = [threading.Thread(target=worker, args=(b, h), daemon=True) for b, h, _, _ in jobs]
+        for t in threads:
+            t.start()
+        meta_by_site = {b["site"]: (known, key_url) for b, _, known, key_url in jobs}
+        run["history_posts"] = run["history_failed"] = 0
+        done_count = 0
+
+        def handle(item):
+            nonlocal done_count
+            b, url, title, text, date, err = item
+            known, key_url = meta_by_site[b["site"]]
+            if err is None:
+                ingest(b["name"], b.get("category", "food"), "blog", "bl-" + short_hash(url),
+                       title or url, url, date, text)
+                run["history_posts"] += 1
+            elif err not in ("gone", "robots"):
+                run["history_failed"] += 1
+            known.add(url)
+            done_count += 1
+            if done_count % 500 == 0:
+                for kn, ku in meta_by_site.values():
+                    posts_state[ku] = sorted(kn)
+                checkpoint()
+                print(f"  歷史文章進度：已處理 {done_count} 篇", flush=True)
+
+        while any(t.is_alive() for t in threads) or not results.empty():
+            try:
+                handle(results.get(timeout=1))
+            except queue.Empty:
+                if time.time() > deadline + 120:
+                    stop.set()
+        stop.set()
+        for t in threads:
+            t.join(timeout=40)
+        while not results.empty():
+            handle(results.get())
+        for b, h, known, key_url in jobs:
+            posts_state[key_url] = sorted(known)
+            if not h["queue"]:
+                h["done"] = TODAY
+        left = sum(len(h.get("queue", [])) for h in history.values() if not h.get("done"))
+        run["history_remaining"] = left
+        if jobs:
+            print(f"  歷史文章：本次處理 {done_count} 篇，剩 {left} 篇下次繼續", flush=True)
+
+    # ---- 補查座標：之前因額度留到下次的地址（已確認查不到的會直接略過，不重複查）----
+    filled = 0
+    for p in places:
+        if p.get("latitude") is None and p.get("address") and "號" in p["address"] and geo.used < geo.budget:
+            try:
+                loc = geo.locate(p["address"])
+            except Exception:
+                loc = None
+            if loc:
+                p["latitude"], p["longitude"], p["geo_precision"] = loc
+                filled += 1
+    run["geo_filled"] = filled
+    run["geo_pending"] = sum(1 for p in places if p.get("latitude") is None and "號" in (p.get("address") or ""))
+
     # ---- 我的手動清單（每次都套用；重建資料也不會消失）----
     manual = load(PIPE / "manual.json", {})
     for m in manual.get("places", []):
@@ -447,7 +696,8 @@ def main():
             "source_name": m.get("by") or "我的清單", "title": note or "我的清單",
             "source_url": m.get("url", ""), "published_at": m.get("added", ""),
             "summary": note, "original_sequence": None})
-        p["name"] = m["name"]  # 以手動填寫的店名為準
+        if p["name"] != m["name"]:
+            index.rename(p, m["name"])  # 以手動填寫的店名為準
         if m.get("category"):
             p["category"] = m["category"]
     for f in manual.get("fixes", []):
@@ -458,11 +708,13 @@ def main():
         for p in hit:
             if f.get("closed"):  # 已歇業：移除地點與其推薦來源
                 places.remove(p)
+                index.remove(p)
                 contents[:] = [c for c in contents if c["place_id"] != p["place_id"]]
                 continue
-            for field in ("name", "category"):
-                if f.get(field):
-                    p[field] = f[field]
+            if f.get("name") and f["name"] != p["name"]:
+                index.rename(p, f["name"])
+            if f.get("category"):
+                p["category"] = f["category"]
 
     # ---- 米其林／必比登／台灣500碗（awards_source.json，每次重新產生 awards.json）----
     awards = []
@@ -497,7 +749,7 @@ def main():
         else:
             # 先找同縣市、同店名的既有地點（含部落客推薦或前一年度已建立的）
             # 連鎖店名稱含分店（如「鼎泰豐（信義路）」），只做完整名稱比對，避免配到別家分店
-            p = next((x for x in places if x.get("city") == city and key_name(x["name"]) == key_name(name)), None)
+            p = next((x for x in index.by_name.get(key_name(name), []) if x.get("city") == city), None)
             if p is None:
                 try:
                     r = geo.locate_poi(name, city) or (geo.locate_poi(base, city) if base == name else None)
@@ -544,10 +796,15 @@ def main():
         "new_videos": run["new_videos"], "new_posts": run["new_posts"], "new_places": run["new_places"],
         "skipped": len(run["skipped"]), "errors": run["errors"][:50], "by_source": by_source,
         "github_blocked_detected": run.get("github_blocked_detected", []),
+        "history_posts": run.get("history_posts", 0), "history_remaining": run.get("history_remaining", 0),
+        "geo_used": geo.used, "geo_deferred": geo.deferred, "geo_pending": run.get("geo_pending", 0),
     })
+    summary = {k: (len(v) if isinstance(v, list) else v) for k, v in run.items()}
+    run["skipped_count"] = len(run["skipped"])
+    run["skipped"] = run["skipped"][:300]  # 補齊歷史時會有上萬筆，只保留前 300 筆
     log.append(run)
     save(PIPE / "log.json", log[-60:])  # 保留最近 60 次
-    print(json.dumps({k: (len(v) if isinstance(v, list) else v) for k, v in run.items()}, ensure_ascii=False))
+    print(json.dumps(summary, ensure_ascii=False))
     return 0
 
 

@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predev": "python scripts/build_app_data.py",
+    "prebuild": "python scripts/build_app_data.py"
   },
   "dependencies": {
     "leaflet": "1.9.4",

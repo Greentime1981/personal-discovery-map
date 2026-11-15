@@ -9,10 +9,10 @@ import SearchBar from './components/SearchBar';
 import StatusPanel from './components/StatusPanel';
 import TripPlanner, { type TripMapState } from './components/TripPlanner';
 import { CATEGORY_META, DEFAULT_CENTER, RADIUS_OPTIONS } from './config';
-import { loadPublicData, type PublicData } from './lib/data';
+import { loadCityContents, loadPublicData, loadSourceContents, type PublicData } from './lib/data';
 import { distanceKm } from './lib/geo';
 import { useUserData } from './lib/userData';
-import type { Category, Destination, LatLng, Place } from './types';
+import type { Category, Content, Destination, LatLng, Place } from './types';
 
 type Mode = 'destination' | 'trip' | 'blogger' | 'guide';
 type Filter = 'all' | Category | 'favorites';
@@ -96,7 +96,6 @@ export default function App() {
     setSelectedId(null);
   };
 
-  const contentsByPlace = useMemo(() => groupBy(data?.contents ?? [], (c) => c.place_id), [data]);
   const awardsByPlace = useMemo(() => groupBy(data?.awards ?? [], (a) => a.place_id), [data]);
   const latestYear = useMemo(() => {
     const m: Record<string, number> = {};
@@ -113,7 +112,7 @@ export default function App() {
       if (filter === 'favorites' ? !user.data.favorites.includes(p.place_id) : filter !== 'all' && p.category !== filter) continue;
       const d = distanceKm(center, { lat: p.latitude, lng: p.longitude });
       if (d > radius) continue;
-      const sourceCount = new Set((contentsByPlace.get(p.place_id) ?? []).map((c) => c.source_name)).size;
+      const sourceCount = p.source_count ?? 0;
       out.push({ place: p, distance: d, sourceCount });
     }
     const order = Object.keys(CATEGORY_META);
@@ -125,13 +124,20 @@ export default function App() {
           : a.distance - b.distance,
     );
     return out;
-  }, [data, filter, center, radius, sort, contentsByPlace, user.data.favorites]);
+  }, [data, filter, center, radius, sort, user.data.favorites]);
 
   // ---- 部落客攻略 ----
   const placeById = useMemo(() => new Map((data?.places ?? []).map((p) => [p.place_id, p])), [data]);
+  // 先選來源（部落客 / 頻道），才下載那個來源的推薦紀錄
+  const source = data?.index.sources.find((s) => s.name === channel) ?? null;
+  const [srcContents, setSrcContents] = useState<Content[]>([]);
+  useEffect(() => {
+    setSrcContents([]);
+    if (source) loadSourceContents(source).then(setSrcContents);
+  }, [source]);
   const allVideos: Video[] = useMemo(() => {
     const m = new Map<string, Video>();
-    for (const c of data?.contents ?? []) {
+    for (const c of srcContents) {
       const place = placeById.get(c.place_id);
       if (!place || !c.source_url) continue;
       let v = m.get(c.source_url);
@@ -144,16 +150,16 @@ export default function App() {
     const list = [...m.values()];
     for (const v of list) v.items.sort((a, b) => (a.content.original_sequence ?? 999) - (b.content.original_sequence ?? 999));
     return list.sort((a, b) => b.published_at.localeCompare(a.published_at));
-  }, [data, placeById]);
-  const channels = useMemo(() => [...new Set(allVideos.map((v) => v.source_name))], [allVideos]);
-  const videos = channel === 'all' ? allVideos : allVideos.filter((v) => v.source_name === channel);
+  }, [srcContents, placeById]);
+  const videos = allVideos;
   const video = allVideos.find((v) => v.url === videoUrl) ?? null;
   const guidePlaces: Place[] = useMemo(() => {
+    if (!source) return [];
     const src = video ? [video] : videos;
     const seen = new Map<string, Place>();
     for (const v of src) for (const it of v.items) seen.set(it.place.place_id, it.place);
     return [...seen.values()];
-  }, [video, videos]);
+  }, [source, video, videos]);
   const numbers = useMemo(() => {
     if (!video) return undefined;
     const n: Record<string, number> = {};
@@ -180,6 +186,16 @@ export default function App() {
   })();
 
   const selected = selectedId ? placeById.get(selectedId) : undefined;
+  const [cardContents, setCardContents] = useState<Content[] | null>(null);
+  useEffect(() => {
+    setCardContents(null);
+    if (!selected || !data) return;
+    let alive = true;
+    loadCityContents(data.index, selected.city).then((rows) => {
+      if (alive) setCardContents(rows.filter((c) => c.place_id === selected.place_id));
+    });
+    return () => { alive = false; };
+  }, [selected, data]);
 
   return (
     <div className={`app view-${view}`}>
@@ -203,16 +219,6 @@ export default function App() {
             </button>
           ))}
         </nav>
-        {mode === 'blogger' && (
-          <div className="filters">
-            <div className="chips">
-              <Chip on={channel === 'all'} onClick={() => { setChannel('all'); setVideoUrl(null); }}>全部來源</Chip>
-              {channels.map((c) => (
-                <Chip key={c} on={channel === c} onClick={() => { setChannel(c); setVideoUrl(null); }}>{c}</Chip>
-              ))}
-            </div>
-          </div>
-        )}
         {mode === 'destination' && (
           <div className="filters">
             <div className="chips">
@@ -306,6 +312,10 @@ export default function App() {
           )}
           {mode === 'blogger' && (
             <GuideList
+              sources={data?.index.sources ?? []}
+              source={source}
+              loading={!!source && srcContents.length === 0}
+              onPickSource={(name) => { setChannel(name ?? 'all'); setVideoUrl(null); setSelectedId(null); }}
               videos={videos}
               selected={video}
               selectedPlaceId={selectedId}
@@ -343,9 +353,8 @@ export default function App() {
                 ? distanceKm(center, { lat: selected.latitude, lng: selected.longitude })
                 : null
             }
-            contents={(contentsByPlace.get(selected.place_id) ?? []).slice().sort(
-              (a, b) => (b.published_at || '').localeCompare(a.published_at || ''),
-            )}
+            contents={(cardContents ?? []).slice().sort((a, b) => (b.published_at || '').localeCompare(a.published_at || ''))}
+            contentsLoading={cardContents === null}
             awards={awardsByPlace.get(selected.place_id) ?? []}
             latestYear={latestYear}
             favorite={user.data.favorites.includes(selected.place_id)}

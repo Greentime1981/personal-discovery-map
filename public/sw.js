@@ -3,10 +3,11 @@
    - 頁面與資料 JSON：先抓網路（拿最新版），離線時用上次存的
    - 程式與圖示（檔名含雜湊）：快取優先
    - 地圖圖磚：只保留「看過的」區域（OSM 允許快取瀏覽過的圖磚、禁止大量預先下載），上限 1500 張 */
-const CACHE = 'pdm-v2';
+const CACHE = 'pdm-v3';
 const TILES = 'pdm-tiles-v1';
 const MAX_TILES = 1500;
-const DATA = ['places.json', 'contents.json', 'awards.json', 'meta.json', 'status.json'].map((f) => './data/' + f);
+// 開啟 App 一定需要的資料（推薦細節分縣市／分來源，用到才下載，下載過的離線也能看）
+const DATA = ['places.json', 'awards.json', 'meta.json', 'status.json', 'contents/index.json'].map((f) => './data/' + f);
 const SHELL = ['./', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon.svg', ...DATA];
 
 self.addEventListener('install', (e) => {

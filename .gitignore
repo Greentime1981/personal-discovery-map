@@ -7,3 +7,6 @@ user_data.json
 *.local
 *.tsbuildinfo
 __pycache__/
+
+# App 用的精簡資料由 scripts/build_app_data.py 從 data/ 產生
+public/data/

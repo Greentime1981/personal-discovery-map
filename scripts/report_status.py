@@ -10,7 +10,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-STATUS = Path(__file__).resolve().parent.parent / "public" / "data" / "status.json"
+STATUS = Path(__file__).resolve().parent.parent / "data" / "status.json"
 TITLE = "資料更新警告"
 
 

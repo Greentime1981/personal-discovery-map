@@ -7,6 +7,7 @@ interface Props {
   place: Place;
   distance: number | null;
   contents: Content[];
+  contentsLoading?: boolean;
   awards: Award[];
   /** 各獎項資料中最新的年度，用來判斷「最新一年是否仍在名單上」 */
   latestYear: Record<string, number>;
@@ -48,13 +49,13 @@ export default function PlaceCard(props: Props) {
         <dd>{distance != null ? `距目的地 ${formatDistance(distance)}（直線）` : NA}</dd>
         <dt>推薦理由</dt>
         <dd>
-          {contents.some((c) => c.summary)
+          {props.contentsLoading ? <span className="na">載入中…</span> : contents.some((c) => c.summary)
             ? contents.filter((c) => c.summary).map((c) => <p key={c.content_id}>{c.summary}</p>)
             : NA}
         </dd>
         <dt>推薦來源</dt>
         <dd>
-          {contents.length ? (
+          {props.contentsLoading ? <span className="na">載入中…</span> : contents.length ? (
             <ul className="src-list">
               {contents.map((c) => (
                 <li key={c.content_id}>
@@ -65,14 +66,14 @@ export default function PlaceCard(props: Props) {
                     c.title || c.source_name
                   )}
                   <span className="muted">（{c.source_name}{c.published_at ? `，${c.published_at}` : ''}
-                    {c.original_sequence != null ? `，影片中第 ${c.original_sequence} 間` : ''}）</span>
+                    {c.original_sequence != null ? `，${c.source_type === 'youtube' ? '影片' : '文章'}中第 ${c.original_sequence} 間` : ''}）</span>
                 </li>
               ))}
             </ul>
           ) : NA}
         </dd>
         <dt>推薦數量</dt>
-        <dd>{sourceCount ? `${sourceCount} 個獨立來源` : NA}</dd>
+        <dd>{props.contentsLoading ? <span className="na">載入中…</span> : sourceCount ? `${sourceCount} 個獨立來源` : NA}</dd>
         <dt>評鑑</dt>
         <dd>
           {summary.length

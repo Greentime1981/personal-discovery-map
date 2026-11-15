@@ -1,4 +1,4 @@
-"""檢查 public/data/*.json 的基本正確性。
+"""檢查 data/*.json（完整資料庫）的基本正確性。
 
 - 必填欄位、分類值
 - place_id / content_id / award_id 不重複
@@ -16,7 +16,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-DATA = Path(__file__).resolve().parent.parent / "public" / "data"
+DATA = Path(__file__).resolve().parent.parent / "data"
 CATEGORIES = {"food", "family", "date", "attraction"}
 AWARD_TYPES = {"michelin_1", "michelin_2", "michelin_3", "bib_gourmand", "taiwan_500"}
 
@@ -56,11 +56,16 @@ def main():
         elif lat is not None and not (21 <= lat <= 27 and 118 <= lng <= 123):
             warns.append(f"{pid} 座標不在台灣範圍：{lat},{lng}")
 
-    located = [p for p in places if p.get("latitude") is not None]
-    for i, a in enumerate(located):
-        for b in located[i + 1:]:
-            if norm(a["name"]) == norm(b["name"]) and km((a["latitude"], a["longitude"]), (b["latitude"], b["longitude"])) < 0.1:
-                errors.append(f"疑似重複地點：{a['place_id']} / {b['place_id']}（{a['name']}）")
+    # 依店名分組再比距離（幾萬筆也很快；原本兩兩比對會跑不完）
+    groups = {}
+    for p in places:
+        if p.get("latitude") is not None:
+            groups.setdefault(norm(p["name"]), []).append(p)
+    for same in groups.values():
+        for i, a in enumerate(same):
+            for b in same[i + 1:]:
+                if km((a["latitude"], a["longitude"]), (b["latitude"], b["longitude"])) < 0.1:
+                    errors.append(f"疑似重複地點：{a['place_id']} / {b['place_id']}（{a['name']}）")
 
     cids = set()
     for c in contents:
@@ -95,7 +100,7 @@ def main():
     if "--compare-git" in sys.argv:
         for name, now in (("places.json", len(places)), ("contents.json", len(contents)), ("awards.json", len(awards))):
             try:
-                prev = len(json.loads(subprocess.run(["git", "show", f"HEAD:public/data/{name}"], capture_output=True,
+                prev = len(json.loads(subprocess.run(["git", "show", f"HEAD:data/{name}"], capture_output=True,
                                                      check=True, cwd=DATA.parent.parent).stdout.decode("utf-8")))
             except Exception:
                 continue
