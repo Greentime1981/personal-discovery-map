@@ -107,4 +107,15 @@ def split_admin(addr: str) -> tuple[str, str]:
     city = m.group(1)
     if not city.endswith(("市", "縣")):
         city += "市" if city in ("台北", "台中", "台南", "新北", "桃園", "高雄", "基隆") else "縣"
-    return city, m.group(2)
+    return normalize_city(city), m.group(2)
+
+
+# 2010 年縣市合併前的舊地址，以及被誤認成縣市的縣轄市（「宜蘭市」是宜蘭縣的一個市）
+CITY_FIX = {"台北縣": "新北市", "桃園縣": "桃園市", "台中縣": "台中市", "台南縣": "台南市", "高雄縣": "高雄市",
+            "宜蘭市": "宜蘭縣", "苗栗市": "苗栗縣", "花蓮市": "花蓮縣", "彰化市": "彰化縣", "屏東市": "屏東縣",
+            "台東市": "台東縣", "南投市": "南投縣", "雲林市": "雲林縣", "澎湖市": "澎湖縣", "金門市": "金門縣"}
+
+
+def normalize_city(city: str) -> str:
+    city = (city or "").replace("臺", "台")
+    return CITY_FIX.get(city, city)

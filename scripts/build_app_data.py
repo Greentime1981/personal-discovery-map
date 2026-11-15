@@ -11,7 +11,11 @@
 """
 import json
 import shutil
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "pipeline"))
+from extract import normalize_city  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "data"
@@ -30,7 +34,9 @@ def main() -> None:
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
 
-    city_of = {p["place_id"]: p.get("city") or "" for p in places}
+    for p in places:  # 舊縣市名（台北縣等）統一成現在的縣市
+        p["city"] = normalize_city(p.get("city") or "")
+    city_of = {p["place_id"]: p["city"] for p in places}
     src_count: dict[str, set] = {}
     for c in contents:
         src_count.setdefault(c["place_id"], set()).add(c["source_name"])

@@ -32,7 +32,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from extract import extract_places, normalize, split_admin  # noqa: E402
+from extract import extract_places, normalize, normalize_city, split_admin  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"  # 完整資料庫（App 用的精簡檔由 scripts/build_app_data.py 產生）
@@ -440,6 +440,9 @@ def main():
     sources = load(PIPE / "sources.json", {})
     state = load(PIPE / "state.json", {"processed_videos": {}})
     places = load(DATA / "places.json", [])
+    for p in places:  # 舊縣市名（台北縣等）統一成現在的縣市
+        if p.get("city"):
+            p["city"] = normalize_city(p["city"])
     contents = load(DATA / "contents.json", [])
     log = load(PIPE / "log.json", [])
     if args.rebuild:
