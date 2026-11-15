@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import AwardsPanel from './components/AwardsPanel';
 import GuideList, { type Video } from './components/GuideList';
+import InstallButton from './components/InstallButton';
 import MapView from './components/MapView';
 import PlaceCard from './components/PlaceCard';
 import PlaceList, { type Row } from './components/PlaceList';
@@ -179,6 +180,7 @@ export default function App() {
             <SearchBar onPick={(d) => { setCenter(d); setSelectedId(null); setMode('destination'); }} onLocate={locate} />
           </div>
         </div>
+        <InstallButton />
         <nav className="modes">
           {MODES.map((m) => (
             <button key={m.id} className={m.id === mode ? 'on' : ''} onClick={() => switchMode(m.id)}>

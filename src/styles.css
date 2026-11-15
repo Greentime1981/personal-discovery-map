@@ -150,3 +150,9 @@ a { color: #7b2ff7; }
 .status-table th, .status-table td { text-align: left; padding: 3px 4px; border-bottom: 1px solid #f1f3f4; }
 .err-list { margin: 0; padding-left: 18px; color: #b3261e; font-size: 13px; }
 .ok { color: #188038; }
+
+/* ---- 安裝 App ---- */
+.install-btn { display: block; width: 100%; margin-top: 8px; padding: 8px; border: 0; border-radius: 10px; color: #fff; font-weight: 700; font-size: 15px;
+  background: linear-gradient(90deg, #7b2ff7, #e5133a 60%, #ff7a1a); box-shadow: 0 2px 6px rgba(123,47,247,.35); }
+.install-guide ol { padding-left: 20px; line-height: 1.9; font-size: 15px; }
+.ios-share { display: inline-block; border: 1px solid #7b2ff7; color: #7b2ff7; border-radius: 4px; padding: 0 4px; font-size: 13px; }
