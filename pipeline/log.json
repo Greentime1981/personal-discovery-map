@@ -4878,5 +4878,17 @@
       "愛玩的伊凡｜列治文美食推薦。Koto Izakaya 古都｜古風包廂、質感日式居酒屋，極鮮刺：內容中沒有地址"
     ],
     "errors": []
+  },
+  {
+    "run_at": "2026-11-15T06:00:00+00:00",
+    "new_videos": 0,
+    "new_posts": 0,
+    "new_places": 0,
+    "merged_places": 345,
+    "skipped": [],
+    "errors": [
+      "黑皮的旅遊筆記：RSS / sitemap 讀取失敗 HTTP Error 403: Forbidden",
+      "愛玩的伊凡：RSS / sitemap 讀取失敗 HTTP Error 403: Forbidden"
+    ]
   }
 ]
