@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { AWARD_LABEL, AWARD_ORDER } from '../config';
+import { MoreButton, useLimit } from '../lib/useLimit';
 import type { Award, AwardType, Place } from '../types';
 
 interface Props {
@@ -48,6 +49,7 @@ export default function AwardsPanel({ places, awards, notes, selectedId, onSelec
   const [city, setCity] = useState('');
   const [district, setDistrict] = useState('');
   const [q, setQ] = useState('');
+  const dq = useDeferredValue(q); // 打字時先更新輸入框，清單稍後再更新，不會卡
 
   const placeById = useMemo(() => new Map(places.map((p) => [p.place_id, p])), [places]);
   const years = useMemo(() => [...new Set(awards.map((a) => a.award_year))].sort((a, b) => b - a), [awards]);
@@ -77,16 +79,17 @@ export default function AwardsPanel({ places, awards, notes, selectedId, onSelec
       if (!place) continue;
       if (city && place.city !== city) continue;
       if (district && place.district !== district) continue;
-      if (q && !place.name.toLowerCase().includes(q.toLowerCase())) continue;
+      if (dq && !place.name.toLowerCase().includes(dq.toLowerCase())) continue;
       const match = list.filter((a) => (type === 'all' || a.award_type === type) && (y == null || a.award_year === y));
       if (!match.length) continue;
       out.push({ place, list, match });
     }
     const rank = (r: (typeof out)[number]) => Math.min(...r.match.map((a) => AWARD_ORDER.indexOf(a.award_type as AwardType)));
     return out.sort((a, b) => rank(a) - rank(b) || a.place.name.localeCompare(b.place.name, 'zh-Hant'));
-  }, [awardsByPlace, placeById, type, year, latest, city, district, q]);
+  }, [awardsByPlace, placeById, type, year, latest, city, district, dq]);
 
   const key = rows.map((r) => r.place.place_id).join(',');
+  const { limit, more } = useLimit(key);
   useEffect(() => {
     onShow(rows.map((r) => r.place));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -143,7 +146,7 @@ export default function AwardsPanel({ places, awards, notes, selectedId, onSelec
         <div className="empty">沒有符合條件的餐廳。</div>
       ) : (
         <ul className="place-list">
-          {rows.map(({ place: p, list }) => (
+          {rows.slice(0, limit).map(({ place: p, list }) => (
             <li key={p.place_id} className={p.place_id === selectedId ? 'sel' : ''}>
               <button onClick={() => onSelect(p.place_id)}>
                 <span className="li-icon award-icon">{list.some((a) => a.award_type.startsWith('michelin')) ? '✿' : list.some((a) => a.award_type === 'bib_gourmand') ? '😋' : '🥣'}</span>
@@ -162,6 +165,7 @@ export default function AwardsPanel({ places, awards, notes, selectedId, onSelec
           ))}
         </ul>
       )}
+      <MoreButton shown={Math.min(limit, rows.length)} total={rows.length} onMore={more} />
     </div>
   );
 }

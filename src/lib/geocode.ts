@@ -13,6 +13,7 @@ export async function geocode(query: string): Promise<Destination[]> {
   if (!q) return [];
   const hit = cache.get(q);
   if (hit) return hit;
+  if (!navigator.onLine) throw new Error('目前離線，無法查詢地址；可在地圖上長按設定位置，或用 ◎ 目前位置');
 
   const wait = 1100 - (Date.now() - lastCall);
   if (wait > 0) await new Promise((r) => setTimeout(r, wait));

@@ -1,4 +1,5 @@
 import { CATEGORY_META } from '../config';
+import { MoreButton, useLimit } from '../lib/useLimit';
 import type { Content, Place } from '../types';
 
 export interface Video {
@@ -19,6 +20,7 @@ interface Props {
 
 /** 部落客攻略：影片清單 → 單支影片的地點（保留作者原始順序） */
 export default function GuideList({ videos, selected, selectedPlaceId, onPickVideo, onSelectPlace }: Props) {
+  const { limit, more } = useLimit(`${videos.length}|${videos[0]?.url ?? ''}`);
   if (selected) {
     return (
       <div>
@@ -59,8 +61,9 @@ export default function GuideList({ videos, selected, selectedPlaceId, onPickVid
     return <div className="empty">尚無攻略資料。資料蒐集每天自動執行，有新影片後會出現在這裡。</div>;
   }
   return (
+    <>
     <ul className="place-list">
-      {videos.map((v) => (
+      {videos.slice(0, limit).map((v) => (
         <li key={v.url}>
           <button onClick={() => onPickVideo(v.url)}>
             <span className="li-icon" style={{ background: '#c00', color: '#fff' }}>▶</span>
@@ -74,5 +77,7 @@ export default function GuideList({ videos, selected, selectedPlaceId, onPickVid
         </li>
       ))}
     </ul>
+    <MoreButton shown={Math.min(limit, videos.length)} total={videos.length} onMore={more} />
+    </>
   );
 }

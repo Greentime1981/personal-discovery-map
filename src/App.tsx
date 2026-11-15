@@ -44,11 +44,21 @@ export default function App() {
   const [awardPlaces, setAwardPlaces] = useState<Place[]>([]);
   const [tripMap, setTripMap] = useState<TripMapState>(EMPTY_TRIP);
   const [showStatus, setShowStatus] = useState(false);
+  const [online, setOnline] = useState(navigator.onLine);
   const fileRef = useRef<HTMLInputElement>(null);
   const user = useUserData();
 
   useEffect(() => {
     loadPublicData().then(setData);
+  }, []);
+
+  // 線上／離線切換：恢復連線時重新抓最新資料
+  useEffect(() => {
+    const on = () => { setOnline(true); loadPublicData().then(setData); };
+    const off = () => setOnline(false);
+    window.addEventListener('online', on);
+    window.addEventListener('offline', off);
+    return () => { window.removeEventListener('online', on); window.removeEventListener('offline', off); };
   }, []);
 
   const flash = (msg: string) => {
@@ -181,6 +191,11 @@ export default function App() {
           </div>
         </div>
         <InstallButton />
+        {!online && (
+          <div className="offline-bar">
+            📴 離線模式：顯示上次更新的資料{data?.meta.last_updated ? `（${data.meta.last_updated}）` : ''}；看過的地圖區域可顯示，地址搜尋與導航需要網路
+          </div>
+        )}
         <nav className="modes">
           {MODES.map((m) => (
             <button key={m.id} className={m.id === mode ? 'on' : ''} onClick={() => switchMode(m.id)}>

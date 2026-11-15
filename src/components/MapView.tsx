@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet.markercluster';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+
+/** 超過這個數量的地點才聚合 */
+const CLUSTER_MIN = 80;
 import { CATEGORY_META, TILE_ATTRIBUTION, TILE_URL } from '../config';
 import type { Destination, LatLng, Place } from '../types';
 
@@ -58,6 +63,9 @@ export default function MapView(props: Props) {
   const overlayRef = useRef<L.LayerGroup | null>(null);
   const centerLayerRef = useRef<L.LayerGroup | null>(null);
   const userLayerRef = useRef<L.LayerGroup | null>(null);
+  const clusterRef = useRef<L.MarkerClusterGroup | null>(null);
+  const markersRef = useRef(new Map<string, { marker: L.Marker; place: Place }>());
+  const selectedRef = useRef<string | null>(selectedId);
   const pickRef = useRef(onPickPoint);
   pickRef.current = onPickPoint;
 
@@ -71,6 +79,17 @@ export default function MapView(props: Props) {
     centerLayerRef.current = L.layerGroup().addTo(map);
     overlayRef.current = L.layerGroup().addTo(map);
     layerRef.current = L.layerGroup().addTo(map);
+    clusterRef.current = L.markerClusterGroup({
+      chunkedLoading: true, // 分批加入，不會一次卡住畫面
+      maxClusterRadius: 45,
+      disableClusteringAtZoom: 17, // 放大到街道層級就全部展開
+      showCoverageOnHover: false,
+      iconCreateFunction: (c) => {
+        const n = c.getChildCount();
+        const size = n < 10 ? 34 : n < 100 ? 40 : 46;
+        return L.divIcon({ className: '', html: `<div class="cluster" style="width:${size}px;height:${size}px">${n}</div>`, iconSize: [size, size] });
+      },
+    }).addTo(map);
     userLayerRef.current = L.layerGroup().addTo(map);
     mapRef.current = map;
     // 頂端列高度改變（切換模式）時，讓地圖重新計算尺寸
@@ -96,25 +115,45 @@ export default function MapView(props: Props) {
       .bindTooltip(center.label)
       .addTo(g);
     map.invalidateSize();
-    map.fitBounds(circle.getBounds(), { padding: [20, 20] });
+    map.fitBounds(circle.getBounds(), { padding: [20, 20], animate: false });
   }, [center, radiusKm, showRadius]);
 
-  // 推薦地點標記
+  // 推薦地點標記：地點多時用「聚合」（附近的點合成一個數字泡泡，放大才展開），手機才不會卡
   useEffect(() => {
-    const g = layerRef.current;
-    if (!g) return;
-    g.clearLayers();
-    for (const p of places) {
-      if (p.latitude == null || p.longitude == null) continue;
-      L.marker([p.latitude, p.longitude], {
-        icon: placeIcon(p, p.place_id === selectedId, numbers?.[p.place_id]),
+    const plain = layerRef.current;
+    const cluster = clusterRef.current;
+    if (!plain || !cluster) return;
+    plain.clearLayers();
+    cluster.clearLayers();
+    markersRef.current.clear();
+    const located = places.filter((p) => p.latitude != null && p.longitude != null);
+    const useCluster = !numbers && located.length > CLUSTER_MIN; // 攻略的編號路線不聚合，順序才看得清楚
+    const markers = located.map((p) => {
+      const m = L.marker([p.latitude!, p.longitude!], {
+        icon: placeIcon(p, p.place_id === selectedRef.current, numbers?.[p.place_id]),
         title: p.name,
-        zIndexOffset: p.place_id === selectedId ? 1000 : 0,
-      })
-        .on('click', () => onSelect(p.place_id))
-        .addTo(g);
+      }).on('click', () => onSelect(p.place_id));
+      markersRef.current.set(p.place_id, { marker: m, place: p });
+      return m;
+    });
+    if (useCluster) cluster.addLayers(markers);
+    else for (const m of markers) m.addTo(plain);
+  }, [places, onSelect, numbers]);
+
+  // 選取變化時只更新前後兩個標記，不重畫全部
+  const prevSel = useRef<string | null>(null);
+  useEffect(() => {
+    selectedRef.current = selectedId;
+    for (const id of [prevSel.current, selectedId]) {
+      const hit = id ? markersRef.current.get(id) : undefined;
+      if (!hit) continue;
+      const on = id === selectedId;
+      hit.marker.setIcon(placeIcon(hit.place, on, numbers?.[hit.place.place_id]));
+      hit.marker.setZIndexOffset(on ? 1000 : 0);
     }
-  }, [places, selectedId, onSelect, numbers]);
+    prevSel.current = selectedId;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedId]);
 
   // 路線與固定點（攻略原始順序、旅遊行程）
   useEffect(() => {
@@ -139,7 +178,7 @@ export default function MapView(props: Props) {
     for (const p of places) if (p.latitude != null && p.longitude != null) pts.push([p.latitude, p.longitude]);
     for (const a of anchors ?? []) pts.push([a.lat, a.lng]);
     map.invalidateSize();
-    if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 16 });
+    if (pts.length) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 16, animate: false });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fitKey, showRadius]);
 
@@ -147,8 +186,12 @@ export default function MapView(props: Props) {
   useEffect(() => {
     const map = mapRef.current;
     const p = places.find((x) => x.place_id === selectedId);
-    // 點選時放大到街道層級，避免在全台縮圖中找不到
-    if (map && p?.latitude != null && p.longitude != null) map.setView([p.latitude, p.longitude], Math.max(map.getZoom(), 15));
+    // 點選時放大到街道層級，避免在全台縮圖中找不到；在聚合泡泡裡的點要放大到能展開
+    const hit = selectedId ? markersRef.current.get(selectedId) : undefined;
+    const inCluster = !!hit && !!clusterRef.current?.hasLayer(hit.marker);
+    if (map && p?.latitude != null && p.longitude != null) {
+      map.setView([p.latitude, p.longitude], Math.max(map.getZoom(), inCluster ? 17 : 15), { animate: false });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedId]);
 

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { CATEGORY_META } from '../config';
 import { formatDistance } from '../lib/geo';
 import { tripCandidates } from '../lib/trip';
+import { MoreButton, useLimit } from '../lib/useLimit';
 import type { Category, Destination, LatLng, Place, Trip } from '../types';
 import LocationInput from './LocationInput';
 import type { Anchor } from './MapView';
@@ -50,6 +51,7 @@ export default function TripPlanner({ places, trips, setTrips, selectedId, onSel
   }, [trip, points, places, cat, corridor, hotelKm]);
 
   const key = `${tripId}|${day}|${points.map((p) => p.lat + ',' + p.lng).join(';')}`;
+  const { limit, more } = useLimit(`${key}|${cat}|${corridor}|${hotelKm}`);
   useEffect(() => {
     const anchors: Anchor[] = [
       ...(trip?.hotel ? [{ ...trip.hotel, label: `飯店：${trip.hotel.label}`, kind: 'hotel' as const }] : []),
@@ -163,7 +165,7 @@ export default function TripPlanner({ places, trips, setTrips, selectedId, onSel
       </div>
       <div className="data-note">距離為直線估算；繞路時間以平均時速 40 公里、道路係數 1.3 估計，實際請以導航為準。</div>
       <ul className="place-list">
-        {hits.map((h) => {
+        {hits.slice(0, limit).map((h) => {
           const m = CATEGORY_META[h.place.category];
           return (
             <li key={h.place.place_id} className={h.place.place_id === selectedId ? 'sel' : ''}>
@@ -182,6 +184,7 @@ export default function TripPlanner({ places, trips, setTrips, selectedId, onSel
           );
         })}
       </ul>
+      <MoreButton shown={Math.min(limit, hits.length)} total={hits.length} onMore={more} />
     </div>
   );
 }
