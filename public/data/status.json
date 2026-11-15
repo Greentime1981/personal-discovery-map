@@ -1,6 +1,6 @@
 {
-  "run_at": "2026-11-15T03:46:53+00:00",
-  "runner": "local",
+  "run_at": "2026-11-15T03:48:51+00:00",
+  "runner": "github",
   "new_videos": 0,
   "new_posts": 0,
   "new_places": 0,
