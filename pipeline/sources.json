@@ -188,6 +188,34 @@
       "category": "attraction",
       "feed": "https://taiwantour.net/feed/",
       "fetch_article": false
+    },
+    {
+      "name": "小兔小安*旅遊札記",
+      "site": "https://bunnyann.tw",
+      "feed": "https://bunnyann.tw/feed/",
+      "category": "family",
+      "fetch_article": true
+    },
+    {
+      "name": "劉先生出一張嘴",
+      "site": "https://liumouth.tw",
+      "feed": "https://liumouth.tw/feed/",
+      "category": "food",
+      "fetch_article": false
+    },
+    {
+      "name": "黑皮的旅遊筆記",
+      "site": "https://happytravel.tw",
+      "feed": "https://happytravel.tw/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "愛玩的伊凡",
+      "site": "https://evantravel.tw",
+      "feed": "https://evantravel.tw/feed/",
+      "category": "food",
+      "fetch_article": true
     }
   ]
 }

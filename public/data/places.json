@@ -4903,7 +4903,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "yt-ezcFmf1T6Ro-4"
+      "yt-ezcFmf1T6Ro-4",
+      "bl-5f144be698-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -27623,7 +27624,8 @@
     "price_range": null,
     "description": "",
     "sources": [
-      "bl-3f65ab7e89-1"
+      "bl-3f65ab7e89-1",
+      "bl-c5e6951c4f-1"
     ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
@@ -38894,6 +38896,326 @@
     "price_range": null,
     "description": "",
     "sources": [],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-63c5c44382",
+    "name": "耕讀園國光店",
+    "category": "family",
+    "city": "台中市",
+    "district": "大里區",
+    "address": "台中市大里區國光路二段223號",
+    "latitude": 24.113661,
+    "longitude": 120.679179,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-ab99211741-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-381788725a",
+    "name": "龍門精緻溫泉民宿",
+    "category": "family",
+    "city": "新北市",
+    "district": "烏來區",
+    "address": "新北市烏來區溫泉街116號",
+    "latitude": 24.859895,
+    "longitude": 121.551568,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-aa8cdec0f2-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-9741c8da52",
+    "name": "詳細圖文:璞石麗緻溫泉會館",
+    "category": "family",
+    "city": "新北市",
+    "district": "烏來區",
+    "address": "新北市烏來區新烏路五段88號",
+    "latitude": 24.875013,
+    "longitude": 121.54667,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-aa8cdec0f2-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-4a11363075",
+    "name": "萬泰豬腳大王",
+    "category": "family",
+    "city": "屏東縣",
+    "district": "萬巒鄉",
+    "address": "屏東縣萬巒鄉村民和路32-1號",
+    "latitude": 22.577528,
+    "longitude": 120.571573,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-08507d6104-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a70ee05a2d",
+    "name": "詳細圖文:樂樂汽車旅館",
+    "category": "family",
+    "city": "屏東縣",
+    "district": "屏東市",
+    "address": "屏東縣屏東市廣東路1110號",
+    "latitude": 22.685305,
+    "longitude": 120.477479,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-08507d6104-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-408044ec71",
+    "name": "圖文:緩慢大鵬灣",
+    "category": "family",
+    "city": "屏東縣",
+    "district": "東港鎮",
+    "address": "屏東縣東港鎮南平路139號",
+    "latitude": 22.438467,
+    "longitude": 120.468893,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-08507d6104-3"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-abcf38cc96",
+    "name": "詳細圖文:墾丁悠活",
+    "category": "family",
+    "city": "屏東縣",
+    "district": "恆春鎮",
+    "address": "屏東縣恆春鎮萬里路27-8號",
+    "latitude": 21.99963,
+    "longitude": 120.702723,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-08507d6104-4"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-82bf7f78d7",
+    "name": "三陽玉府天宮",
+    "category": "family",
+    "city": "台中市",
+    "district": "龍井區",
+    "address": "台中市龍井區竹師路二段112巷50號",
+    "latitude": 24.186924,
+    "longitude": 120.54861,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-5e6a1af09b-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-2aba4196ec",
+    "name": "詳細圖文:鳳凰酒店",
+    "category": "family",
+    "city": "台中市",
+    "district": "中區",
+    "address": "台中市中區民權路162號",
+    "latitude": 24.140776,
+    "longitude": 120.676626,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-5e6a1af09b-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-1c5f2a8030",
+    "name": "詳細圖文:台中悅樂旅店",
+    "category": "family",
+    "city": "台中市",
+    "district": "中區",
+    "address": "台中市中區中山路55號",
+    "latitude": 24.14497,
+    "longitude": 120.674991,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-5e6a1af09b-3"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-094a2002f7",
+    "name": "詳細圖文:麗寶福容",
+    "category": "family",
+    "city": "台中市",
+    "district": "后里區",
+    "address": "台中市后里區福容路8號",
+    "latitude": 24.32442,
+    "longitude": 120.699988,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-5e6a1af09b-4"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-6bba047821",
+    "name": "詳細圖文:台中港酒店",
+    "category": "family",
+    "city": "台中市",
+    "district": "梧棲區",
+    "address": "台中市梧棲區大智路二段388號",
+    "latitude": 24.257755,
+    "longitude": 120.539636,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-5e6a1af09b-5"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-0f7fd67493",
+    "name": "李炸雞逢甲店",
+    "category": "food",
+    "city": "台中市",
+    "district": "西屯區",
+    "address": "台中市西屯區福星路594號",
+    "latitude": 24.175922,
+    "longitude": 120.645469,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-9dd596a359-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-e8c1824091",
+    "name": "Mook木可餐行",
+    "category": "food",
+    "city": "台中市",
+    "district": "西屯區",
+    "address": "台中市西屯區上德里智惠街71巷31號",
+    "latitude": 24.169846,
+    "longitude": 120.644006,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-b77ea017e4-1"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-a5db005bea",
+    "name": "Manyha美力夯大叔",
+    "category": "food",
+    "city": "台中市",
+    "district": "西區",
+    "address": "台中市西區中興里向上北路204號",
+    "latitude": 24.147866,
+    "longitude": 120.660775,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-225603f0d4-2"
+    ],
+    "created_at": "2026-11-15",
+    "updated_at": "2026-11-15",
+    "last_verified_at": "",
+    "confidence_score": 0.5
+  },
+  {
+    "place_id": "pl-3cac14a356",
+    "name": "老葉麵店",
+    "category": "food",
+    "city": "台中市",
+    "district": "西屯區",
+    "address": "台中市西屯區逢福里福星路628號",
+    "latitude": 24.175922,
+    "longitude": 120.645469,
+    "geo_precision": "street",
+    "price_range": null,
+    "description": "",
+    "sources": [
+      "bl-22feb964fa-1"
+    ],
     "created_at": "2026-11-15",
     "updated_at": "2026-11-15",
     "last_verified_at": "",

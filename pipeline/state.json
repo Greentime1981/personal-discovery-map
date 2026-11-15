@@ -1281,6 +1281,7 @@
       "https://dalang.tw/%e5%8f%b0%e5%8c%97%e9%81%8e%e5%b9%b4%e9%a4%90%e5%bb%b3%e6%87%b6%e4%ba%ba%e5%8c%85/",
       "https://dalang.tw/%e6%96%b0%e5%8c%97%e6%b0%91%e5%ae%bf%e6%87%b6%e4%ba%ba%e5%8c%85/",
       "https://dalang.tw/%e7%be%85%e6%9d%b1%e5%92%96%e5%95%a1%e5%bb%b3%e6%87%b6%e4%ba%ba%e5%8c%85/",
+      "https://dalang.tw/%e8%8a%b1%e8%93%ae%e4%b8%8b%e5%8d%88%e8%8c%b6%e6%87%b6%e4%ba%ba%e5%8c%85/",
       "https://dalang.tw/%e8%a9%95%e5%88%86%e6%9c%80%e9%ab%98%e5%8f%b0%e5%8c%97%e7%b4%84%e6%9c%83%e9%a4%90%e5%bb%b3%e6%87%b6%e4%ba%ba%e5%8c%85/",
       "https://dalang.tw/abv-hotpot-skewers/",
       "https://dalang.tw/kinmeilitw/",
@@ -1382,6 +1383,7 @@
       "https://taiwantour.net/matsu-winery/",
       "https://taiwantour.net/matsuwine-attractions/",
       "https://taiwantour.net/mazu-matsu/",
+      "https://taiwantour.net/nangan-day/",
       "https://taiwantour.net/pauselandis/",
       "https://taiwantour.net/shinhwa/",
       "https://taiwantour.net/taichung-news-agency/",
@@ -1600,6 +1602,39 @@
       "https://yoti.life/taitung-tour-84/",
       "https://yoti.life/taitung-tour-85/",
       "https://yoti.life/taitung-tour-86/"
+    ],
+    "https://bunnyann.tw/feed/": [
+      "https://bunnyann.tw/a11-longjing-sanyang-palace/",
+      "https://bunnyann.tw/a11-longmen/",
+      "https://bunnyann.tw/a11-pigfood/",
+      "https://bunnyann.tw/a11-saltboys/",
+      "https://bunnyann.tw/b11-ktytea/"
+    ],
+    "https://liumouth.tw/feed/": [
+      "https://liumouth.tw/18siumei/",
+      "https://liumouth.tw/azhang-bawan/",
+      "https://liumouth.tw/chen-ming-tong/",
+      "https://liumouth.tw/dafeng/",
+      "https://liumouth.tw/diaominasia/",
+      "https://liumouth.tw/lee/",
+      "https://liumouth.tw/manyha/",
+      "https://liumouth.tw/mook/",
+      "https://liumouth.tw/sahansi-steak/",
+      "https://liumouth.tw/ya-noodle/"
+    ],
+    "https://happytravel.tw/feed/": [
+      "https://happytravel.tw/a-one-day-trip-to-xinyi-nantou/",
+      "https://happytravel.tw/dg32steak/",
+      "https://happytravel.tw/miaoli-garlic-vine/",
+      "https://happytravel.tw/sehui-trail/",
+      "https://happytravel.tw/shi-yang/"
+    ],
+    "https://evantravel.tw/feed/": [
+      "https://evantravel.tw/a-bento_vancouver/",
+      "https://evantravel.tw/flixseek/",
+      "https://evantravel.tw/geng_shi_ji/",
+      "https://evantravel.tw/koto_izakaya/",
+      "https://evantravel.tw/pound_steak/"
     ]
   }
 }
