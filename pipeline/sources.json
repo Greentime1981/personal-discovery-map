@@ -248,42 +248,48 @@
       "site": "https://buuz.tw",
       "category": "food",
       "feed": "https://buuz.tw/feed/",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "剎有其食",
       "site": "https://safood.tw",
       "category": "food",
       "feed": "https://safood.tw/feed/",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "艾妮可美味人生",
       "site": "https://anikofoodie.com",
       "category": "food",
       "feed": "https://anikofoodie.com/feed/",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "ifunny 艾方妮的遊樂場",
       "site": "https://ifunny.blog",
       "category": "food",
       "feed": "https://ifunny.blog/feed/",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "阿華田的美食日記",
       "site": "https://huablog.tw",
       "category": "food",
       "feed": "https://huablog.tw/feed/",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "糖糖's 享食生活",
       "site": "https://candylife.tw",
       "category": "food",
       "feed": "https://candylife.tw/feed/",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "曼達愛吃鬼",
@@ -316,7 +322,8 @@
       "site": "https://kuokuo.tw",
       "category": "food",
       "feed": "https://kuokuo.tw/feed/",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "台南好Food遊",
@@ -336,7 +343,8 @@
       "site": "https://etaiwan.blog",
       "category": "food",
       "feed": "https://etaiwan.blog/feed/",
-      "fetch_article": true
+      "fetch_article": true,
+      "github_blocked": true
     },
     {
       "name": "黑糖兄妹食樂主義",
