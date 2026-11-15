@@ -52,6 +52,17 @@ class T(unittest.TestCase):
         )
         self.assertEqual([x["name"] for x in extract_places(gout)], ["新東街米粉湯", "屏東任家涼麵"])
 
+    def test_chapter_timestamps(self):
+        t = (
+            "本集美味店家_\n00:00 開場\n00:56 板橋小籠包\n1 6 : 0 0 - 0 1 : 0 0\n新北市板橋區南雅南路一段79號\n\n"
+            "03:03 板橋王記好吃麻油雞\n17:00-22:00（週一公休）\n新北市板橋區南雅東路8號（勝利百貨前"
+        )
+        self.assertEqual([x["name"] for x in extract_places(t)], ["板橋小籠包", "板橋王記好吃麻油雞"])
+
+    def test_address_not_name(self):
+        r = extract_places("新北市三重區中央北路\n新北市三重區中央北路65號")
+        self.assertIsNone(r[0]["name"])
+
     def test_admin(self):
         self.assertEqual(split_admin("台北市大安區仁愛路"), ("台北市", "大安區"))
         self.assertEqual(split_admin("宜蘭縣羅東鎮中正路1號"), ("宜蘭縣", "羅東鎮"))

@@ -16,11 +16,13 @@ ADDR_RE = re.compile(
 NAME_LABEL_RE = re.compile(r"(?:店名|店家|餐廳|名稱|店舖|店鋪|Restaurant)\s*[:：]\s*(.+)")
 ADDR_LABEL_RE = re.compile(r"^\s*(?:地址|住址|位置|Address|📍)\s*[:：]?\s*", re.I)
 NOISE_RE = re.compile(r"[\U0001F000-\U0001FFFF☀-➿️#＃|｜]+")
-SKIP_NAME_RE = re.compile(r"(地址|住址|位置|電話|專線|營業|時間|公休|價位|價格|日期|期間|參考|http|訂位|菜單|停車|交通|捷運|instagram|facebook|\bIG\b|\bFB\b)", re.I)
+SKIP_NAME_RE = re.compile(r"(地址|住址|位置|電話|專線|營業|時間|公休|價位|價格|日期|期間|參考|名單|取貨|宅配|http|訂位|菜單|停車|交通|捷運|instagram|facebook|\bIG\b|\bFB\b)", re.I)
 # 「(挫冰|冰|季節性)」這類分類標籤：括號內含 | 或 、
 TAG_GROUP_RE = re.compile(r"\([^()]*[|、/][^()]*\)")
 # 營業時間行：🈺（NFKC 後為「営」）、「營業」開頭，或含 11:00、「1 1 : 0 0」這類時間
 HOURS_RE = re.compile(r"^\s*[営營]|\d\s*[:：]\s*\d\s*\d")
+# 「新北市三重區中央北路」這種沒寫門牌的地址，不能當店名
+ADMIN_PREFIX_RE = re.compile(r"^(?:[台臺][北中南東]|新北|桃園|高雄|基隆|新竹|苗栗|彰化|南投|雲林|嘉義|屏東|宜蘭|花蓮|澎湖|金門|連江)[市縣]?[一-鿿]{1,4}?[區鄉鎮市]")
 
 
 def normalize(s: str) -> str:
@@ -65,12 +67,14 @@ def guess_name(lines: list[str], idx: int) -> str | None:
                 return cand
     for j in range(idx - 1, max(-1, idx - 5), -1):
         raw = lines[j].strip()
+        # YouTube 章節時間軸「00:56 板橋小籠包」：去掉時間碼，剩下的是店名
+        raw = re.sub(r"^\d{1,2}:\d{2}(?::\d{2})?\s+(?=\D)", "", raw)
         if HOURS_RE.search(raw):  # 營業時間行，略過往上找
             continue
         if re.fullmatch(r"\(.*\)", raw):  # 整行都是括號說明，略過往上找
             continue
         cand = clean_name(raw)
-        if not cand or SKIP_NAME_RE.search(cand) or ADDR_RE.search(cand):
+        if not cand or SKIP_NAME_RE.search(cand) or ADDR_RE.search(cand) or ADMIN_PREFIX_RE.match(cand):
             continue
         if 2 <= len(cand) <= 30:
             return cand

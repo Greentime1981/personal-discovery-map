@@ -1,54 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- K 的紫色底與立體地圖塊 + 地點針裡放「探」字 -->
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#FF4E8A"/>
-      <stop offset="0.5" stop-color="#FF7A45"/>
-      <stop offset="1" stop-color="#FFC23C"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.15" cy="0.95" r="0.75">
-      <stop offset="0" stop-color="#7A3CFF" stop-opacity="0.85"/>
-      <stop offset="1" stop-color="#7A3CFF" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="shine" cx="0.75" cy="0.1" r="0.6">
-      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.45"/>
-      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#FF4E8A"/>
-      <stop offset="1" stop-color="#7A3CFF"/>
-    </linearGradient>
-    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#5A1A66" flood-opacity="0.35"/>
-    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B2FF7"/><stop offset="1" stop-color="#2E0A6B"/></linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB347"/><stop offset="1" stop-color="#FF6A3D"/></linearGradient>
+    <linearGradient id="pin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF4D6D"/><stop offset="1" stop-color="#C9184A"/></linearGradient>
+    <filter id="sh" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#14002E" flood-opacity="0.55"/></filter>
   </defs>
-
   <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <rect width="512" height="512" rx="112" fill="url(#glow)"/>
-  <rect width="512" height="512" rx="112" fill="url(#shine)"/>
-
-  <!-- 地圖道路 -->
-  <g fill="none" stroke="#FFFFFF" stroke-linecap="round" opacity="0.22">
-    <path d="M-20 360 C 110 300, 180 420, 300 350 S 470 250, 540 300" stroke-width="18"/>
-    <path d="M120 -20 C 150 120, 60 220, 110 330 S 170 470, 140 540" stroke-width="12"/>
-    <path d="M380 -20 C 360 90, 430 160, 400 260" stroke-width="10" stroke-dasharray="2 22"/>
+  <circle cx="256" cy="200" r="170" fill="#FF6A3D" opacity="0.14"/>
+  <g transform="translate(256 352)">
+    <path d="M0 -92L188 0L0 92L-188 0Z" fill="url(#top)"/>
+    <path d="M-188 0L0 92V126L-188 34Z" fill="#E0482B"/>
+    <path d="M188 0L0 92V126L188 34Z" fill="#B8321F"/>
+    <path d="M-94 -46L94 46" stroke="#FFFFFF" stroke-width="11" opacity="0.7" stroke-linecap="round"/>
+    <path d="M94 -46L-62 30" stroke="#FFFFFF" stroke-width="7" opacity="0.5" stroke-linecap="round"/>
+    <ellipse cx="0" cy="-6" rx="46" ry="18" fill="#7A1E12" opacity="0.45"/>
   </g>
-
-  <!-- 地點針 -->
-  <g filter="url(#shadow)">
-    <path d="M256 82c-74 0-134 58-134 132 0 98 134 214 134 214s134-116 134-214c0-74-60-132-134-132z" fill="#FFFFFF"/>
+  <g filter="url(#sh)" transform="translate(256 168)">
+    <path d="M0 -108c-66 0-118 51-118 115 0 86 118 180 118 180s118-94 118-180c0-64-52-115-118-115z" fill="url(#pin)"/>
+    <circle cx="0" cy="4" r="78" fill="#FFFFFF"/>
+    <text x="0" y="40" text-anchor="middle" font-family="Microsoft JhengHei, PingFang TC, Noto Sans TC, sans-serif" font-weight="900" font-size="104" fill="#C9184A">探</text>
   </g>
-  <circle cx="256" cy="214" r="78" fill="url(#core)"/>
-  <!-- 發現之星 -->
-  <path d="M256 160 L270 200 L312 214 L270 228 L256 268 L242 228 L200 214 L242 200 Z" fill="#FFFFFF"/>
-  <circle cx="256" cy="214" r="9" fill="#FFC23C"/>
-
-  <!-- 閃光 -->
-  <g fill="#FFFFFF">
-    <path d="M410 92 L416 110 L434 116 L416 122 L410 140 L404 122 L386 116 L404 110 Z"/>
-    <path d="M440 176 L443 186 L453 189 L443 192 L440 202 L437 192 L427 189 L437 186 Z" opacity="0.85"/>
-    <path d="M92 132 L96 144 L108 148 L96 152 L92 164 L88 152 L76 148 L88 144 Z" opacity="0.8"/>
-  </g>
-
-  <!-- 底部陰影點 -->
-  <ellipse cx="256" cy="446" rx="62" ry="12" fill="#5A1A66" opacity="0.25"/>
 </svg>
