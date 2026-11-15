@@ -1,5 +1,13 @@
 # Personal Discovery Map 個人探索地圖
 
+<img src="public/icon-192.png" width="96" alt="App 圖示">
+
+**手機掃描開啟：** https://greentime1981.github.io/personal-discovery-map/
+
+<img src="docs/qrcode.png" width="260" alt="QR Code">
+
+> 用手機瀏覽器開啟後選「加入主畫面」，就能像 App 一樣使用。
+
 個人用的生活與旅遊探索地圖：輸入目的地，看附近值得去的美食、親子、約會地點與景點，點一下就能開 Google Maps 導航。
 
 目前完成 **第一～三階段**：
@@ -18,7 +26,13 @@
 2. 到本 repo **Settings → Secrets and variables → Actions → New repository secret**，名稱 `YOUTUBE_API_KEY`，貼上金鑰。
 3. 到 **Actions → Update data (YouTube) → Run workflow** 手動跑第一次。之後每天台灣時間 04:00 自動執行。
 
-新增 / 移除頻道或部落格：編輯 `pipeline/sources.json`。改善辨識規則後，可在 Actions 手動執行時勾選 **rebuild** 重新整理全部資料。
+新增 / 移除頻道或部落格：編輯 `pipeline/sources.json`。
+
+### 我的手動清單
+
+不在追蹤清單裡的店家，加到 `pipeline/manual.json` 的 `places`（店名、地址必填；可填分類、推薦人 `by`、備註 `note`）。
+自動抓錯的店名或已歇業的店，加到 `fixes`（用地址對應，可改 `name`、`category`，或 `closed: true`）。
+手動清單在每次更新都會套用，重建資料也不會消失。改善辨識規則後，可在 Actions 手動執行時勾選 **rebuild** 重新整理全部資料。
 
 > ⚠️ `public/data/places.json` 目前只有幾筆**範例地點**（標示為範例、座標為概略值），還沒有部落客 / YouTube / 米其林資料。這些在第三、四階段加入。
 

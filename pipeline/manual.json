@@ -1,0 +1,5 @@
+{
+  "_說明": "我的手動清單：自動蒐集與重建都不會刪除這裡的內容。places = 新增地點（name、address 必填；category 可填 food / family / date / attraction；by = 推薦人；note = 備註）。fixes = 修正自動抓到的地點（用 address 對應；可改 name、category，或 closed: true 表示已歇業並從地圖移除）。",
+  "places": [],
+  "fixes": []
+}

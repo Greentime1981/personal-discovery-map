@@ -53,7 +53,7 @@ export default function PlaceCard(props: Props) {
             <ul className="src-list">
               {contents.map((c) => (
                 <li key={c.content_id}>
-                  {c.source_type === 'youtube' ? '▶ ' : '📝 '}
+                  {c.source_type === 'youtube' ? '▶ ' : c.source_type === 'manual' ? '⭐ ' : '📝 '}
                   {c.source_url ? (
                     <a href={c.source_url} target="_blank" rel="noopener noreferrer">{c.title || c.source_name}</a>
                   ) : (

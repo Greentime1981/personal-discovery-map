@@ -261,6 +261,48 @@ def main():
     place_ids = {p["place_id"] for p in places}
     content_ids = {c["content_id"] for c in contents}
 
+    def add_source(name, address, category, cont):
+        """地理編碼 → 去重（找既有地點或建立新地點）→ 加上一筆推薦來源。回傳地點。"""
+        try:
+            loc = geo.locate(address)
+        except Exception as e:
+            run["errors"].append(f"地理編碼失敗 {address}：{e}")
+            loc = None
+        coords = (loc[0], loc[1]) if loc else None
+        p = find_existing(places, name, address, coords)
+        if p is None:
+            city, district = split_admin(address)
+            # 以地址產生固定 ID：重建資料時 ID 不變，個人收藏不會失效
+            pid = "pl-" + short_hash(key_addr(address))
+            while pid in place_ids:
+                pid += "x"
+            place_ids.add(pid)
+            p = {"place_id": pid, "name": name, "category": category,
+                 "city": city, "district": district, "address": address,
+                 "latitude": coords[0] if coords else None, "longitude": coords[1] if coords else None,
+                 "geo_precision": loc[2] if loc else None,
+                 "price_range": None, "description": "", "sources": [],
+                 "created_at": TODAY, "updated_at": TODAY, "last_verified_at": "",
+                 "confidence_score": 0.8 if loc and loc[2] == "house" else 0.5 if loc else 0.3}
+            places.append(p)
+            run["new_places"] += 1
+            if not loc:
+                run["skipped"].append(f"{name}：查不到座標，暫不顯示在地圖（{address}）")
+        else:
+            run["merged_places"] += 1
+        cont = {**cont, "place_id": p["place_id"]}
+        if cont["content_id"] in content_ids:  # 已存在：更新內容（例如手動清單的備註改了）
+            for i, c in enumerate(contents):
+                if c["content_id"] == cont["content_id"]:
+                    contents[i] = cont
+            return p
+        content_ids.add(cont["content_id"])
+        contents.append(cont)
+        if cont["content_id"] not in p["sources"]:
+            p["sources"].append(cont["content_id"])
+            p["updated_at"] = TODAY
+        return p
+
     def ingest(src_name, category, source_type, cid_prefix, title, url, date, text):
         """處理一支影片 / 一篇文章：擷取地點 → 地理編碼 → 去重 → 建立推薦來源。"""
         found = extract_places(text)
@@ -270,43 +312,10 @@ def main():
             if not f["name"]:
                 run["skipped"].append(f"{src_name}｜{title[:40]}：找不到店名（{f['address']}）")
                 continue
-            try:
-                loc = geo.locate(f["address"])
-            except Exception as e:
-                run["errors"].append(f"地理編碼失敗 {f['address']}：{e}")
-                loc = None
-            coords = (loc[0], loc[1]) if loc else None
-            p = find_existing(places, f["name"], f["address"], coords)
-            if p is None:
-                city, district = split_admin(f["address"])
-                # 以地址產生固定 ID：重建資料時 ID 不變，個人收藏不會失效
-                pid = "pl-" + short_hash(key_addr(f["address"]))
-                while pid in place_ids:
-                    pid += "x"
-                place_ids.add(pid)
-                p = {"place_id": pid, "name": f["name"], "category": category,
-                     "city": city, "district": district, "address": f["address"],
-                     "latitude": coords[0] if coords else None, "longitude": coords[1] if coords else None,
-                     "geo_precision": loc[2] if loc else None,
-                     "price_range": None, "description": "", "sources": [],
-                     "created_at": TODAY, "updated_at": TODAY, "last_verified_at": "",
-                     "confidence_score": 0.8 if loc and loc[2] == "house" else 0.5 if loc else 0.3}
-                places.append(p)
-                run["new_places"] += 1
-                if not loc:
-                    run["skipped"].append(f"{f['name']}：查不到座標，暫不顯示在地圖（{f['address']}）")
-            else:
-                run["merged_places"] += 1
-            cont_id = f"{cid_prefix}-{f['sequence']}"
-            if cont_id in content_ids:
-                continue
-            content_ids.add(cont_id)
-            contents.append({"content_id": cont_id, "place_id": p["place_id"], "source_type": source_type,
-                             "source_name": src_name, "title": title, "source_url": url,
-                             "published_at": date, "summary": "", "original_sequence": f["sequence"]})
-            if cont_id not in p["sources"]:
-                p["sources"].append(cont_id)
-                p["updated_at"] = TODAY
+            add_source(f["name"], f["address"], category, {
+                "content_id": f"{cid_prefix}-{f['sequence']}", "source_type": source_type,
+                "source_name": src_name, "title": title, "source_url": url,
+                "published_at": date, "summary": "", "original_sequence": f["sequence"]})
 
     # ---- YouTube ----
     for ch in (sources.get("youtube", []) if (key or offline_videos is not None) else []):
@@ -362,6 +371,36 @@ def main():
                        title, x["link"], x["date"], text)
                 known.add(x["link"])
             posts_state[src_url] = sorted(known)
+
+    # ---- 我的手動清單（每次都套用；重建資料也不會消失）----
+    manual = load(PIPE / "manual.json", {})
+    for m in manual.get("places", []):
+        addr = normalize(m.get("address", "")).strip()
+        if not m.get("name") or not addr:
+            run["errors"].append(f"手動清單缺少店名或地址：{m}")
+            continue
+        note = m.get("note", "")
+        p = add_source(m["name"], addr, m.get("category", "food"), {
+            "content_id": "manual-" + short_hash(key_addr(addr)), "source_type": "manual",
+            "source_name": m.get("by") or "我的清單", "title": note or "我的清單",
+            "source_url": m.get("url", ""), "published_at": m.get("added", ""),
+            "summary": note, "original_sequence": None})
+        p["name"] = m["name"]  # 以手動填寫的店名為準
+        if m.get("category"):
+            p["category"] = m["category"]
+    for f in manual.get("fixes", []):
+        k = key_addr(normalize(f.get("address", "")))
+        hit = [p for p in places if k and key_addr(p.get("address", "")) == k]
+        if not hit:
+            run["skipped"].append(f"手動修正找不到地點：{f.get('address')}")
+        for p in hit:
+            if f.get("closed"):  # 已歇業：移除地點與其推薦來源
+                places.remove(p)
+                contents[:] = [c for c in contents if c["place_id"] != p["place_id"]]
+                continue
+            for field in ("name", "category"):
+                if f.get(field):
+                    p[field] = f[field]
 
     save(DATA / "places.json", places)
     save(DATA / "contents.json", contents)

@@ -1,1 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1a73e8"/><path d="M32 12c-8 0-14 6-14 14 0 10 14 26 14 26s14-16 14-26c0-8-6-14-14-14zm0 19a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="#fff"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF4E8A"/>
+      <stop offset="0.5" stop-color="#FF7A45"/>
+      <stop offset="1" stop-color="#FFC23C"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.15" cy="0.95" r="0.75">
+      <stop offset="0" stop-color="#7A3CFF" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#7A3CFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shine" cx="0.75" cy="0.1" r="0.6">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF4E8A"/>
+      <stop offset="1" stop-color="#7A3CFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#5A1A66" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="112" fill="url(#glow)"/>
+  <rect width="512" height="512" rx="112" fill="url(#shine)"/>
+
+  <!-- 地圖道路 -->
+  <g fill="none" stroke="#FFFFFF" stroke-linecap="round" opacity="0.22">
+    <path d="M-20 360 C 110 300, 180 420, 300 350 S 470 250, 540 300" stroke-width="18"/>
+    <path d="M120 -20 C 150 120, 60 220, 110 330 S 170 470, 140 540" stroke-width="12"/>
+    <path d="M380 -20 C 360 90, 430 160, 400 260" stroke-width="10" stroke-dasharray="2 22"/>
+  </g>
+
+  <!-- 地點針 -->
+  <g filter="url(#shadow)">
+    <path d="M256 82c-74 0-134 58-134 132 0 98 134 214 134 214s134-116 134-214c0-74-60-132-134-132z" fill="#FFFFFF"/>
+  </g>
+  <circle cx="256" cy="214" r="78" fill="url(#core)"/>
+  <!-- 發現之星 -->
+  <path d="M256 160 L270 200 L312 214 L270 228 L256 268 L242 228 L200 214 L242 200 Z" fill="#FFFFFF"/>
+  <circle cx="256" cy="214" r="9" fill="#FFC23C"/>
+
+  <!-- 閃光 -->
+  <g fill="#FFFFFF">
+    <path d="M410 92 L416 110 L434 116 L416 122 L410 140 L404 122 L386 116 L404 110 Z"/>
+    <path d="M440 176 L443 186 L453 189 L443 192 L440 202 L437 192 L427 189 L437 186 Z" opacity="0.85"/>
+    <path d="M92 132 L96 144 L108 148 L96 152 L92 164 L88 152 L76 148 L88 144 Z" opacity="0.8"/>
+  </g>
+
+  <!-- 底部陰影點 -->
+  <ellipse cx="256" cy="446" rx="62" ry="12" fill="#5A1A66" opacity="0.25"/>
+</svg>
