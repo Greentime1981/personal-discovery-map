@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-11-15T06:41:06+00:00",
+  "run_at": "2026-11-15T07:19:23+00:00",
   "runner": "github",
-  "new_videos": 0,
-  "new_posts": 0,
-  "new_places": 0,
-  "skipped": 0,
+  "new_videos": 3564,
+  "new_posts": 1,
+  "new_places": 32581,
+  "skipped": 59136,
   "errors": [],
   "by_source": {
     "港仔張啟樂的臺灣生活": {
@@ -12,27 +12,27 @@
       "latest": "2026-11-07"
     },
     "痛風老饕易胖體質": {
-      "contents": 748,
+      "contents": 1065,
       "latest": "2026-11-12"
     },
     "CHILL先生一家人": {
-      "contents": 80,
+      "contents": 524,
       "latest": "2026-10-24"
     },
     "肥波開吃啦": {
-      "contents": 18,
+      "contents": 707,
       "latest": "2026-02-20"
     },
     "A/DA阿達": {
-      "contents": 29,
+      "contents": 37,
       "latest": "2026-11-04"
     },
     "波妞食境秀": {
-      "contents": 540,
+      "contents": 1283,
       "latest": "2026-11-12"
     },
     "猴屁的異想世界": {
-      "contents": 10,
+      "contents": 2679,
       "latest": "2026-11-13"
     },
     "丹尼旅遊食記": {
@@ -40,15 +40,15 @@
       "latest": "2026-10-23"
     },
     "大口老師的走跳學堂": {
-      "contents": 17,
+      "contents": 3484,
       "latest": "2026-11-15"
     },
     "Jason's Life": {
-      "contents": 2,
+      "contents": 1497,
       "latest": "2026-11-12"
     },
     "跟著領隊sky玩": {
-      "contents": 12,
+      "contents": 7112,
       "latest": "2026-11-14"
     },
     "Mimi韓の旅遊指南": {
@@ -80,23 +80,23 @@
       "latest": "2026-11-01"
     },
     "小兔小安*旅遊札記": {
-      "contents": 12,
+      "contents": 11808,
       "latest": "2026-11-15"
     },
     "劉先生出一張嘴": {
-      "contents": 6,
+      "contents": 126,
       "latest": "2026-11-13"
     },
     "PEKO の Simple Life": {
-      "contents": 11,
+      "contents": 3587,
       "latest": "2026-11-15"
     },
     "陳小可的吃喝玩樂": {
-      "contents": 21,
+      "contents": 6251,
       "latest": "2026-11-14"
     },
     "瑋瑋＊美食萬歲": {
-      "contents": 4,
+      "contents": 3447,
       "latest": "2026-11-11"
     },
     "霸子。食樂拼圖": {
@@ -120,31 +120,31 @@
       "latest": "2026-11-15"
     },
     "曼達愛吃鬼": {
-      "contents": 21,
-      "latest": "2026-02-17"
+      "contents": 1952,
+      "latest": "2026-11-08"
     },
     "小涼的美食小天地": {
       "contents": 5,
       "latest": "2026-11-13"
     },
     "貝ㄦ貪食怪": {
-      "contents": 1,
+      "contents": 20,
       "latest": "2022-07-22"
     },
     "阿君的玩食天堂": {
-      "contents": 1,
-      "latest": "2026-06-12"
+      "contents": 1252,
+      "latest": "2026-11-14"
     },
     "郭郭的花東走跳生活": {
       "contents": 4,
       "latest": "2025-12-09"
     },
     "高雄美食地圖": {
-      "contents": 18,
+      "contents": 3266,
       "latest": "2026-11-14"
     },
     "黑糖兄妹食樂主義": {
-      "contents": 17,
+      "contents": 478,
       "latest": "2026-09-27"
     },
     "剎有其食": {
@@ -152,7 +152,7 @@
       "latest": "2026-11-13"
     },
     "食神鬍子哥（鬍子哥美食指南）": {
-      "contents": 5,
+      "contents": 6,
       "latest": "2026-10-23"
     },
     "1000cc美食頻道": {
@@ -160,21 +160,46 @@
       "latest": "2025-07-07"
     },
     "周花花，甲飽沒": {
-      "contents": 1,
+      "contents": 4143,
       "latest": "2026-11-11"
     },
     "Nash，神之領域": {
-      "contents": 5,
+      "contents": 6022,
       "latest": "2026-11-15"
     },
     "布雷克的出走旅行視界": {
-      "contents": 10,
+      "contents": 4113,
       "latest": "2026-11-15"
     },
     "大食女 in Wonderland": {
       "contents": 3,
       "latest": "2026-05-27"
+    },
+    "台南好Food遊": {
+      "contents": 1665,
+      "latest": "2026-10-15"
+    },
+    "達浪的日常手札": {
+      "contents": 928,
+      "latest": "2026-11-15"
+    },
+    "Alina 愛琳娜": {
+      "contents": 878,
+      "latest": "2026-11-06"
+    },
+    "冠軍媽咪二個寶": {
+      "contents": 392,
+      "latest": "2026-07-30"
+    },
+    "Yuki's Life": {
+      "contents": 3049,
+      "latest": "2026-10-29"
     }
   },
-  "github_blocked_detected": []
+  "github_blocked_detected": [],
+  "history_posts": 59004,
+  "history_remaining": 1147,
+  "geo_used": 800,
+  "geo_deferred": 176013,
+  "geo_pending": 20853
 }
