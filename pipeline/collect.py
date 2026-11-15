@@ -708,6 +708,10 @@ def main():
         if jobs:
             print(f"  歷史文章：本次處理 {done_count} 篇，剩 {left} 篇下次繼續", flush=True)
 
+    # ---- TGOS 批次比對結果（門牌等級）：取代沒有座標或只有路段概略位置的 ----
+    from tgos import apply_cache  # noqa: E402
+    run["geo_tgos_applied"] = apply_cache(places, geo.cache)
+
     # ---- 補查座標：之前因額度留到下次的地址（已確認查不到的會直接略過，不重複查）----
     filled = 0
     for p in places:
