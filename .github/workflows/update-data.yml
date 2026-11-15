@@ -1,4 +1,4 @@
-name: Update data (YouTube)
+name: Update data (YouTube + blogs)
 
 on:
   schedule:
@@ -27,9 +27,8 @@ jobs:
         run: cd pipeline && python -m unittest test_extract.py
       - name: Check API key
         if: env.YOUTUBE_API_KEY == ''
-        run: echo "::warning::尚未設定 YOUTUBE_API_KEY（Settings → Secrets and variables → Actions），本次略過資料蒐集。"
+        run: echo "::warning::尚未設定 YOUTUBE_API_KEY，本次只處理部落格。"
       - name: Collect
-        if: env.YOUTUBE_API_KEY != ''
         run: python pipeline/collect.py
       - name: Validate
         run: python scripts/validate_data.py
@@ -44,6 +43,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data pipeline
           git commit -m "資料自動更新 $(date -u +%F)"
+          git pull --rebase origin main
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 

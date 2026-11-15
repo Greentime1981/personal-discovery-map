@@ -1,12 +1,135 @@
 {
-  "_說明": "要追蹤的 YouTube 頻道。category 是預設分類（food / family / date / attraction），可自行修改。",
+  "_說明": "要追蹤的 YouTube 頻道與部落格。category 是預設分類（food / family / date / attraction）。fetch_article=true 表示 RSS 只有摘要，會開啟文章頁面只擷取店名與地址（不存全文、照片）。",
   "youtube": [
-    { "channel_id": "UC1JTcPIq1rgaQajsc1j9o_g", "name": "港仔張啟樂的臺灣生活", "category": "food" },
-    { "channel_id": "UCKo5ZM5XmaUO1oUCDJ42RxQ", "name": "痛風老饕易胖體質", "category": "food" },
-    { "channel_id": "UC2cmGxt70KLYyWpE9jQ4qhw", "name": "CHILL先生一家人", "category": "family" },
-    { "channel_id": "UC18jDfM8UIqYfrYGJNStUag", "name": "肥波開吃啦", "category": "food" },
-    { "channel_id": "UCQ6dAn-1lkPAnYmP4fnRNAg", "name": "A/DA阿達", "category": "food" },
-    { "channel_id": "UCiW-H284xzPGkhz20hYeQlA", "name": "波妞食境秀", "category": "food" }
+    {
+      "channel_id": "UC1JTcPIq1rgaQajsc1j9o_g",
+      "name": "港仔張啟樂的臺灣生活",
+      "category": "food"
+    },
+    {
+      "channel_id": "UCKo5ZM5XmaUO1oUCDJ42RxQ",
+      "name": "痛風老饕易胖體質",
+      "category": "food"
+    },
+    {
+      "channel_id": "UC2cmGxt70KLYyWpE9jQ4qhw",
+      "name": "CHILL先生一家人",
+      "category": "family"
+    },
+    {
+      "channel_id": "UC18jDfM8UIqYfrYGJNStUag",
+      "name": "肥波開吃啦",
+      "category": "food"
+    },
+    {
+      "channel_id": "UCQ6dAn-1lkPAnYmP4fnRNAg",
+      "name": "A/DA阿達",
+      "category": "food"
+    },
+    {
+      "channel_id": "UCiW-H284xzPGkhz20hYeQlA",
+      "name": "波妞食境秀",
+      "category": "food"
+    }
   ],
-  "blogs": []
+  "blogs": [
+    {
+      "name": "波比看世界",
+      "site": "https://bobbytravel.tw",
+      "feed": "https://bobbytravel.tw/feed/",
+      "category": "attraction",
+      "fetch_article": true
+    },
+    {
+      "name": "Mimi韓の旅遊指南",
+      "site": "https://mimigo.tw",
+      "feed": "https://mimigo.tw/feed/",
+      "category": "attraction",
+      "fetch_article": true
+    },
+    {
+      "name": "猴屁的異想世界",
+      "site": "https://www.tony60533.com",
+      "feed": "https://www.tony60533.com/feed/",
+      "category": "food",
+      "fetch_article": false
+    },
+    {
+      "name": "跟著尼力吃喝玩樂",
+      "site": "https://nellydyu.tw",
+      "feed": "https://nellydyu.tw/feed/",
+      "category": "food",
+      "fetch_article": false
+    },
+    {
+      "name": "虎麗笑嗨嗨",
+      "site": "https://hoolee.tw",
+      "feed": "https://hoolee.tw/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "熱血玩台南",
+      "site": "https://decing.tw",
+      "feed": "https://decing.tw/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "捲捲和土豆拿鐵",
+      "site": "https://nigi33.tw",
+      "feed": "https://nigi33.tw/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "喵爸喵媽玩轉地球",
+      "site": "https://kimiyo.tw",
+      "feed": "https://kimiyo.tw/feed/",
+      "category": "attraction",
+      "fetch_article": true
+    },
+    {
+      "name": "丹尼旅遊食記",
+      "site": "https://dennyli.com",
+      "feed": "https://dennyli.com/feed/",
+      "category": "food",
+      "fetch_article": false
+    },
+    {
+      "name": "蔡小妞依玲",
+      "site": "https://tsnio.com",
+      "feed": "https://tsnio.com/feed/",
+      "category": "attraction",
+      "fetch_article": true
+    },
+    {
+      "name": "嗯嗯。莉莉嗯",
+      "site": "https://lillian.tw",
+      "feed": "https://lillian.tw/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "Tiss玩味食尚",
+      "site": "https://tisshuang.com",
+      "feed": "https://tisshuang.com/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "大口老師的走跳學堂",
+      "site": "https://bigmouthblog.tw",
+      "feed": "https://bigmouthblog.tw/feed/",
+      "category": "food",
+      "fetch_article": false
+    },
+    {
+      "name": "Yoti．生活（小薛）",
+      "site": "https://yoti.life",
+      "feed": "https://yoti.life/feed/",
+      "category": "food",
+      "fetch_article": true
+    }
+  ]
 }

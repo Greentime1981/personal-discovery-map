@@ -1,4 +1,4 @@
-"""每日資料蒐集：YouTube 頻道 → 規則式地點辨識 → 地理編碼 → 去重 → 更新 JSON。
+"""每日資料蒐集：YouTube 頻道 + 部落格 RSS → 規則式地點辨識 → 地理編碼 → 去重 → 更新 JSON。
 
 用法：
   YOUTUBE_API_KEY=xxx python pipeline/collect.py          # 正式執行（GitHub Actions 用）
@@ -12,6 +12,8 @@
 - 所有失敗原因寫進 log.json。
 """
 import argparse
+import hashlib
+import html
 import json
 import math
 import os
@@ -19,7 +21,11 @@ import re
 import sys
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
+import urllib.robotparser
+import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -30,6 +36,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "public" / "data"
 PIPE = ROOT / "pipeline"
 UA = "personal-discovery-map/0.3 (personal, non-commercial)"
+ARTICLE_DELAY = 3  # 讀文章頁面之間間隔秒數，避免造成對方網站負擔
 BACKFILL_PAGES = 4  # 第一次執行每個頻道最多抓 4×50 支影片
 TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -71,6 +78,69 @@ def fetch_new_videos(channel_id: str, known: set[str], key: str) -> list[dict]:
         if not token:
             break
     return out
+
+
+# ---------- 部落格 RSS ----------
+def html_to_text(h: str) -> str:
+    h = re.sub(r"(?is)<(script|style)[^>]*>.*?</\1>", "", h)
+    h = re.sub(r"(?i)<br\s*/?>|</p>|</div>|</li>|</h\d>|</tr>", "\n", h)
+    return html.unescape(re.sub(r"<[^>]+>", "", h))
+
+
+def short_hash(s: str) -> str:
+    return hashlib.sha1(s.encode("utf-8")).hexdigest()[:10]
+
+
+def fetch_feed(url: str) -> list[dict]:
+    """讀 RSS。只在記憶體中解析文字找地址，不儲存全文與圖片。"""
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        root = ET.fromstring(r.read())
+    out = []
+    for it in root.findall("./channel/item"):
+        enc = it.find("{http://purl.org/rss/1.0/modules/content/}encoded")
+        body = enc.text if enc is not None and enc.text else (it.findtext("description") or "")
+        date = ""
+        try:
+            date = parsedate_to_datetime(it.findtext("pubDate") or "").strftime("%Y-%m-%d")
+        except (TypeError, ValueError):
+            pass
+        out.append({"title": html.unescape(it.findtext("title") or ""), "link": it.findtext("link") or "",
+                    "date": date, "text": html_to_text(body), "full": len(body) > 1500})
+    return out
+
+
+_robots: dict[str, urllib.robotparser.RobotFileParser] = {}
+
+
+def allowed_by_robots(url: str) -> bool:
+    origin = "{0.scheme}://{0.netloc}".format(urllib.parse.urlparse(url))
+    rp = _robots.get(origin)
+    if rp is None:
+        # 自己用本程式的 User-Agent 讀 robots.txt（內建 read() 用預設 UA 常被擋成 403）
+        rp = urllib.robotparser.RobotFileParser(origin + "/robots.txt")
+        try:
+            req = urllib.request.Request(origin + "/robots.txt", headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                rp.parse(r.read().decode("utf-8", "ignore").splitlines())
+        except urllib.error.HTTPError as e:
+            if e.code in (401, 403):
+                rp.disallow_all = True  # 明確拒絕 → 不讀
+            else:
+                rp.allow_all = True  # 沒有 robots.txt → 允許
+        except Exception:
+            rp = None  # 連線問題：本次不判斷
+        _robots[origin] = rp
+    return True if rp is None else rp.can_fetch(UA, url)
+
+
+def fetch_article_text(url: str) -> str:
+    """RSS 只有摘要時：讀一次文章頁面，只在記憶體中取文字找店名地址，不儲存全文與照片。"""
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        page = r.read().decode("utf-8", "ignore")
+    m = re.search(r"(?is)<article\b.*?</article>", page)  # 只取文章本體，避開側欄
+    return html_to_text(m.group(0) if m else page)
 
 
 # ---------- 地理編碼（Nominatim，1 次/秒，結果快取） ----------
@@ -168,15 +238,59 @@ def main():
     offline_videos = load(Path(args.videos_json), {}) if args.videos_json else None
     key = os.environ.get("YOUTUBE_API_KEY", "")
     if offline_videos is None and not key:
-        print("缺少 YOUTUBE_API_KEY（請放在 GitHub Secrets）", file=sys.stderr)
-        return 1
+        print("警告：缺少 YOUTUBE_API_KEY，本次只處理部落格", file=sys.stderr)
 
     run = {"run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "new_videos": 0,
-           "new_places": 0, "merged_places": 0, "skipped": [], "errors": []}
+           "new_posts": 0, "new_places": 0, "merged_places": 0, "skipped": [], "errors": []}
     place_ids = {p["place_id"] for p in places}
     content_ids = {c["content_id"] for c in contents}
 
-    for ch in sources.get("youtube", []):
+    def ingest(src_name, category, source_type, cid_prefix, title, url, date, text):
+        """處理一支影片 / 一篇文章：擷取地點 → 地理編碼 → 去重 → 建立推薦來源。"""
+        found = extract_places(text)
+        if not found:
+            run["skipped"].append(f"{src_name}｜{title[:40]}：內容中沒有地址")
+        for f in found:
+            if not f["name"]:
+                run["skipped"].append(f"{src_name}｜{title[:40]}：找不到店名（{f['address']}）")
+                continue
+            try:
+                loc = geo.locate(f["address"])
+            except Exception as e:
+                run["errors"].append(f"地理編碼失敗 {f['address']}：{e}")
+                loc = None
+            coords = (loc[0], loc[1]) if loc else None
+            p = find_existing(places, f["name"], f["address"], coords)
+            if p is None:
+                city, district = split_admin(f["address"])
+                pid = slug_id("pl", place_ids)
+                place_ids.add(pid)
+                p = {"place_id": pid, "name": f["name"], "category": category,
+                     "city": city, "district": district, "address": f["address"],
+                     "latitude": coords[0] if coords else None, "longitude": coords[1] if coords else None,
+                     "geo_precision": loc[2] if loc else None,
+                     "price_range": None, "description": "", "sources": [],
+                     "created_at": TODAY, "updated_at": TODAY, "last_verified_at": "",
+                     "confidence_score": 0.8 if loc and loc[2] == "house" else 0.5 if loc else 0.3}
+                places.append(p)
+                run["new_places"] += 1
+                if not loc:
+                    run["skipped"].append(f"{f['name']}：查不到座標，暫不顯示在地圖（{f['address']}）")
+            else:
+                run["merged_places"] += 1
+            cont_id = f"{cid_prefix}-{f['sequence']}"
+            if cont_id in content_ids:
+                continue
+            content_ids.add(cont_id)
+            contents.append({"content_id": cont_id, "place_id": p["place_id"], "source_type": source_type,
+                             "source_name": src_name, "title": title, "source_url": url,
+                             "published_at": date, "summary": "", "original_sequence": f["sequence"]})
+            if cont_id not in p["sources"]:
+                p["sources"].append(cont_id)
+                p["updated_at"] = TODAY
+
+    # ---- YouTube ----
+    for ch in (sources.get("youtube", []) if (key or offline_videos is not None) else []):
         cid = ch["channel_id"]
         known = set(state["processed_videos"].get(cid, []))
         try:
@@ -185,54 +299,47 @@ def main():
         except Exception as e:  # 單一頻道失敗不影響其他頻道
             run["errors"].append(f"{ch['name']}：抓取失敗 {e}")
             continue
-
         for v in reversed(videos):  # 由舊到新處理
             run["new_videos"] += 1
-            found = extract_places(v["description"])
-            if not found:
-                run["skipped"].append(f"{ch['name']}｜{v['title'][:40]}：說明中沒有地址")
-            for f in found:
-                if not f["name"]:
-                    run["skipped"].append(f"{ch['name']}｜{v['title'][:40]}：找不到店名（{f['address']}）")
-                    continue
-                try:
-                    loc = geo.locate(f["address"])
-                except Exception as e:
-                    run["errors"].append(f"地理編碼失敗 {f['address']}：{e}")
-                    loc = None
-                coords = (loc[0], loc[1]) if loc else None
-                p = find_existing(places, f["name"], f["address"], coords)
-                if p is None:
-                    city, district = split_admin(f["address"])
-                    pid = slug_id("yt", place_ids)
-                    place_ids.add(pid)
-                    p = {"place_id": pid, "name": f["name"], "category": ch.get("category", "food"),
-                         "city": city, "district": district, "address": f["address"],
-                         "latitude": coords[0] if coords else None, "longitude": coords[1] if coords else None,
-                         "geo_precision": loc[2] if loc else None,
-                         "price_range": None, "description": "", "sources": [],
-                         "created_at": TODAY, "updated_at": TODAY, "last_verified_at": "",
-                         "confidence_score": 0.8 if loc and loc[2] == "house" else 0.5 if loc else 0.3}
-                    places.append(p)
-                    run["new_places"] += 1
-                    if not loc:
-                        run["skipped"].append(f"{f['name']}：查不到座標，暫不顯示在地圖（{f['address']}）")
-                else:
-                    run["merged_places"] += 1
-                cont_id = f"yt-{v['video_id']}-{f['sequence']}"
-                if cont_id in content_ids:
-                    continue
-                content_ids.add(cont_id)
-                contents.append({"content_id": cont_id, "place_id": p["place_id"], "source_type": "youtube",
-                                 "source_name": ch["name"], "title": v["title"],
-                                 "source_url": f"https://www.youtube.com/watch?v={v['video_id']}",
-                                 "published_at": v.get("published_at", ""), "summary": "",
-                                 "original_sequence": f["sequence"]})
-                if cont_id not in p["sources"]:
-                    p["sources"].append(cont_id)
-                    p["updated_at"] = TODAY
+            ingest(ch["name"], ch.get("category", "food"), "youtube", f"yt-{v['video_id']}", v["title"],
+                   f"https://www.youtube.com/watch?v={v['video_id']}", v.get("published_at", ""), v["description"])
             known.add(v["video_id"])
         state["processed_videos"][cid] = sorted(known)
+
+    # ---- 部落格 RSS ----
+    if offline_videos is None:
+        posts_state = state.setdefault("processed_posts", {})
+        for b in sources.get("blogs", []):
+            if not b.get("feed"):
+                continue
+            known = set(posts_state.get(b["feed"], []))
+            try:
+                posts = [x for x in fetch_feed(b["feed"]) if x["link"] not in known]
+            except Exception as e:
+                run["errors"].append(f"{b['name']}：RSS 讀取失敗 {e}")
+                continue
+            for x in reversed(posts):
+                run["new_posts"] += 1
+                text = x["text"]
+                if not x["full"]:
+                    if not b.get("fetch_article"):
+                        run["skipped"].append(f"{b['name']}｜{x['title'][:40]}：RSS 只有摘要，無法取得地址")
+                        known.add(x["link"])
+                        continue
+                    if not allowed_by_robots(x["link"]):
+                        run["skipped"].append(f"{b['name']}｜{x['title'][:40]}：robots.txt 不允許讀取")
+                        known.add(x["link"])
+                        continue
+                    time.sleep(ARTICLE_DELAY)
+                    try:
+                        text = fetch_article_text(x["link"])
+                    except Exception as e:  # 下次再試，不記為已處理
+                        run["errors"].append(f"{b['name']}｜{x['title'][:40]}：文章讀取失敗 {e}")
+                        continue
+                ingest(b["name"], b.get("category", "food"), "blog", "bl-" + short_hash(x["link"]),
+                       x["title"], x["link"], x["date"], text)
+                known.add(x["link"])
+            posts_state[b["feed"]] = sorted(known)
 
     save(DATA / "places.json", places)
     save(DATA / "contents.json", contents)
@@ -240,7 +347,7 @@ def main():
     geo.save()
     meta = load(DATA / "meta.json", {})
     meta["last_updated"] = TODAY
-    meta["note"] = "地點由 YouTube 影片說明中的地址自動整理（規則式，未經 AI 推論）。標示「範例資料」者為未驗證的示範地點。"
+    meta["note"] = "地點由 YouTube 影片說明與部落格文章中的地址自動整理（規則式，未經 AI 推論）。標示「範例資料」者為未驗證的示範地點。"
     save(DATA / "meta.json", meta)
     log.append(run)
     save(PIPE / "log.json", log[-60:])  # 保留最近 60 次

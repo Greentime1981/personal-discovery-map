@@ -53,7 +53,7 @@ GitHub repo（公開）
 |---|---|---|
 | 一 | 地圖、搜尋、分類、範圍、排序、地點資訊卡 | ✅ 完成 |
 | 二 | 收藏、已造訪、備註、Google Maps 導航、目前位置 | ✅ 完成 |
-| 三 | YouTube Data API 蒐集 → 規則式地點辨識 → 地理編碼 → 去重 → 寫入 JSON；「部落客攻略」頁（保留作者原始順序）；每日 GitHub Actions | ✅ 完成（部落格 RSS 待提供清單） |
+| 三 | YouTube Data API + 部落格 RSS 蒐集 → 規則式地點辨識 → 地理編碼 → 去重 → 寫入 JSON；「部落客攻略」頁（保留作者原始順序）；每日 GitHub Actions | ✅ 完成 |
 | 四 | 米其林 / 必比登 / 台灣500碗資料，依縣市、行政區、年度、獎項搜尋 | 待開發 |
 | 五 | 旅遊路線：飯店 + 每日目的地，以「離路線距離」篩選（先用直線距離，不做 AI 行程最佳化） | 待開發 |
 | 六 | GitHub Actions 每日排程、增量更新、錯誤紀錄、資料驗證強化 | 待開發（驗證腳本已先建立） |
@@ -71,6 +71,11 @@ pipeline/sources.json（追蹤的頻道）
   → 寫入 public/data/places.json、contents.json；執行紀錄與失敗原因寫入 pipeline/log.json
   → GitHub Actions（update-data.yml，每天 04:00）commit 後重新部署
 ```
+
+部落格（14 個，見 sources.json）：
+- RSS 有全文的（4 個）直接從 RSS 擷取。
+- RSS 只有摘要的（10 個，`fetch_article: true`）：經使用者同意，對每篇**新文章**讀取一次文章頁面，只在記憶體中擷取店名與地址；不儲存全文與照片，遵守 robots.txt，每篇間隔 3 秒。
+- 資料只保存：店名、地址、文章標題、連結、日期。
 
 注意：YouTube 的公開 RSS（feeds/videos.xml）目前回應 404，因此直接使用官方 Data API。
 Nominatim 對台灣地址多半只能定位到路段（`geo_precision: "street"`），地圖上為概略位置；導航按鈕一律用「店名 + 地址」交給 Google Maps 查詢，所以導航仍會到正確店家。

@@ -1,4 +1,4 @@
-"""python -m unittest pipeline/test_extract.py"""
+"""cd pipeline && python -m unittest test_extract.py"""
 import unittest
 from extract import extract_places, split_admin
 
@@ -22,6 +22,23 @@ class T(unittest.TestCase):
 
     def test_no_address(self):
         self.assertEqual(extract_places("好吃！歡迎訂閱"), [])
+
+    def test_tags_and_headings(self):
+        t = (
+            "夏雪冰棧\n\n（黑糖挫冰、西瓜冰）\n\n位置：高雄市三民區天祥一路155號\n\n"
+            "南海理髮廳（懷舊復古｜冰店｜IG打卡最夯）\n位置：高雄市新興區南海街164號\n\n"
+            "星饗道國際自助餐 在哪裡？\n\n地址： 台中市西屯區福星北路18號\n\n"
+            "阿桃紅豆薏仁(鍋燒、吐司\n地址：高雄市鹽埕區壽星街10號\n\n"
+            "吳家豆花八寶冰（正忠總店）\n位置：高雄市三民區建武路187號"
+        )
+        self.assertEqual(
+            [x["name"] for x in extract_places(t)],
+            ["夏雪冰棧", "南海理髮廳", "星饗道國際自助餐", "阿桃紅豆薏仁", "吳家豆花八寶冰(正忠總店)"],
+        )
+
+    def test_skip_event_lines(self):
+        t = "陽光食園\n活動日期:11/14(六)\n地址：台南市北區育德路66-1號\n\n松山文創園區 官網\n台北市信義區光復南路133號"
+        self.assertEqual([x["name"] for x in extract_places(t)], ["陽光食園", "松山文創園區"])
 
     def test_admin(self):
         self.assertEqual(split_admin("台北市大安區仁愛路"), ("台北市", "大安區"))
