@@ -268,8 +268,47 @@ class Geocoder:
         self.cache[q] = res
         return res
 
+    # ---- 內政部 TGOS 全國門牌地址定位（有 APPId／APIKey 才啟用；門牌等級、每日上限 1 萬筆）----
+    TGOS_URL = os.environ.get("TGOS_URL", "https://addr.tgos.tw/addrws/v40/QueryAddr.asmx/QueryAddr")
+    TGOS_ID = os.environ.get("TGOS_APPID", "")
+    TGOS_KEY = os.environ.get("TGOS_APIKEY", "")
+    tgos_budget = int(os.environ.get("TGOS_BUDGET", "4000"))  # 每次執行上限（每日總額 1 萬，GitHub 與本機共用）
+    tgos_used = 0
+
+    def _tgos(self, address: str):
+        key = "tgos:" + address
+        if key in self.cache:
+            return self.cache[key]
+        if self.offline or not (self.TGOS_ID and self.TGOS_KEY) or self.tgos_used >= self.tgos_budget:
+            return None
+        self.tgos_used += 1
+        q = {"oAPPId": self.TGOS_ID, "oAPIKey": self.TGOS_KEY, "oAddress": address, "oSRS": "EPSG:4326",
+             "oFuzzyType": "2", "oResultDataType": "JSON", "oFuzzyBuffer": "0", "oIsOnlyFullMatch": "false",
+             "oIsSupportPast": "true", "oIsShowCodeBase": "false", "oIsLockCounty": "true", "oIsLockTown": "false",
+             "oIsLockVillage": "false", "oIsLockRoadSection": "false", "oIsLockLane": "false", "oIsLockAlley": "false",
+             "oIsLockArea": "false", "oIsSameNumber_SubNumber": "true", "oCanIgnoreVillage": "true",
+             "oCanIgnoreNeighborhood": "true", "oReturnMaxCount": "1"}
+        req = urllib.request.Request(self.TGOS_URL + "?" + urllib.parse.urlencode(q), headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            raw = r.read().decode("utf-8", "ignore")
+        if raw.lstrip().startswith("<"):  # .asmx 會把 JSON 包在 <string> 裡
+            raw = html.unescape(re.sub(r"<[^>]+>", "", raw))
+        data = json.loads(raw)
+        rows = data.get("AddressList") or []
+        res = None
+        if rows and rows[0].get("X") and rows[0].get("Y"):
+            res = {"lat": round(float(rows[0]["Y"]), 6), "lng": round(float(rows[0]["X"]), 6), "has_house": True}
+        self.cache[key] = res
+        return res
+
     def locate(self, address: str):
         """回傳 (lat, lng, precision) 或 None。precision: house = 門牌、street = 路段概略位置。"""
+        try:
+            t = self._tgos(address)  # 先用 TGOS（門牌等級、台灣官方資料）
+        except Exception:
+            t = None
+        if t:
+            return t["lat"], t["lng"], "house"
         r = self._query(address)
         if r:
             return r["lat"], r["lng"], "house" if r["has_house"] else "street"
@@ -672,7 +711,8 @@ def main():
     # ---- 補查座標：之前因額度留到下次的地址（已確認查不到的會直接略過，不重複查）----
     filled = 0
     for p in places:
-        if p.get("latitude") is None and p.get("address") and "號" in p["address"] and geo.used < geo.budget:
+        if p.get("latitude") is None and p.get("address") and "號" in p["address"] and (
+                geo.used < geo.budget or (geo.TGOS_ID and geo.tgos_used < geo.tgos_budget)):
             try:
                 loc = geo.locate(p["address"])
             except Exception:
@@ -798,6 +838,7 @@ def main():
         "github_blocked_detected": run.get("github_blocked_detected", []),
         "history_posts": run.get("history_posts", 0), "history_remaining": run.get("history_remaining", 0),
         "geo_used": geo.used, "geo_deferred": geo.deferred, "geo_pending": run.get("geo_pending", 0),
+        "tgos_used": geo.tgos_used,
     })
     summary = {k: (len(v) if isinstance(v, list) else v) for k, v in run.items()}
     run["skipped_count"] = len(run["skipped"])

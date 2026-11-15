@@ -25,6 +25,9 @@ jobs:
       changed: ${{ steps.commit.outputs.changed }}
     env:
       YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      TGOS_APPID: ${{ secrets.TGOS_APPID }} # 內政部 TGOS 門牌定位（有設定才啟用）
+      TGOS_APIKEY: ${{ secrets.TGOS_APIKEY }}
+      TGOS_BUDGET: '9000'
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
