@@ -379,6 +379,20 @@
       "feed": "https://joyaijia.tw/feed/",
       "category": "food",
       "fetch_article": true
+    },
+    {
+      "name": "冰淇淋貓的軟爛生活",
+      "site": "https://icecreamcat.tw",
+      "feed": "https://icecreamcat.tw/feed/",
+      "category": "food",
+      "fetch_article": true
+    },
+    {
+      "name": "朱寶妮美食隨筆",
+      "site": "https://bonie.tw",
+      "feed": "https://bonie.tw/feed/",
+      "category": "food",
+      "fetch_article": false
     }
   ]
 }
