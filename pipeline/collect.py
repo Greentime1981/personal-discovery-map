@@ -425,6 +425,50 @@ class PlaceIndex:
         return None
 
 
+def merge_duplicates(places, contents, index=None, refs=(), max_km=0.1) -> int:
+    """最後一道去重：同店名（key_name）且距離 < max_km 的地點合併成一筆。
+
+    為什麼需要：新地點當下查不到座標時無法用距離比對，之後補到座標才發現跟既有地點重疊。
+    以前這種重複會讓 validate_data.py 失敗、整天的資料都不發布。
+    保留推薦來源多的（一樣多就保留較早建立的），推薦紀錄改指向保留的地點。回傳合併筆數。"""
+    groups: dict[str, list] = {}
+    for p in places:
+        if p.get("latitude") is not None:
+            groups.setdefault(key_name(p["name"]), []).append(p)
+    remap: dict[str, dict] = {}
+    for same in groups.values():
+        if len(same) < 2:
+            continue
+        same.sort(key=lambda p: (-len(p.get("sources") or []), p.get("created_at") or "", p["place_id"]))
+        kept: list = []
+        for p in same:
+            keep = next((k for k in kept if km((k["latitude"], k["longitude"]),
+                                               (p["latitude"], p["longitude"])) < max_km), None)
+            if keep is None:
+                kept.append(p)
+                continue
+            remap[p["place_id"]] = keep
+            for s in p.get("sources") or []:
+                if s not in keep["sources"]:
+                    keep["sources"].append(s)
+            if not keep.get("address") and p.get("address"):
+                keep["address"] = p["address"]
+            if not keep.get("district") and p.get("district"):
+                keep["city"], keep["district"] = p.get("city", ""), p["district"]
+            keep["updated_at"] = TODAY
+    if not remap:
+        return 0
+    for rows in (contents, *refs):
+        for c in rows:
+            if c["place_id"] in remap:
+                c["place_id"] = remap[c["place_id"]]["place_id"]
+    for p in [p for p in places if p["place_id"] in remap]:
+        places.remove(p)
+        if index is not None:
+            index.remove(p)
+    return len(remap)
+
+
 # ---------- 主流程 ----------
 def main():
     ap = argparse.ArgumentParser()
@@ -814,6 +858,10 @@ def main():
                        "place_id": p["place_id"], "award_type": e["award_type"], "award_year": e["award_year"],
                        "source_url": e.get("source_url", ""), "verified_at": award_src.get("verified_at", ""),
                        **({"level": e["level"]} if e.get("level") else {})})
+    # ---- 最後去重：補到座標後才發現重疊的同名地點，推薦紀錄與獎項都改指向保留的地點 ----
+    run["dedup_merged"] = merge_duplicates(places, contents, index, refs=[awards])
+    for a in awards:
+        a["award_id"] = "aw-" + short_hash(f"{a['place_id']}|{a['award_type']}|{a['award_year']}")
     # 同一地點同年同獎項只留一筆
     awards = list({a["award_id"]: a for a in awards}.values())
     if award_src or entries:

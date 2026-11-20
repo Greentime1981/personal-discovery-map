@@ -35,7 +35,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Unit tests
-        run: cd pipeline && python -m unittest test_extract.py
+        run: cd pipeline && python -m unittest test_extract.py test_collect.py
       - name: Check API key
         if: env.YOUTUBE_API_KEY == ''
         run: echo "::warning::尚未設定 YOUTUBE_API_KEY，本次只處理部落格。"
@@ -68,6 +68,12 @@ jobs:
           git pull --rebase origin main
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Mark run as failed
+        # 蒐集或驗證失敗時，讓這次執行顯示紅色 ✗（GitHub 會寄信通知），不要看起來像成功
+        if: steps.collect.outcome == 'failure' || steps.validate.outcome == 'failure'
+        run: |
+          echo "::error::資料蒐集或驗證失敗，本次資料未發布（詳見上方步驟與 Issue）"
+          exit 1
 
   deploy:
     needs: collect
