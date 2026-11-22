@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-11-21T00:59:08+00:00",
+  "run_at": "2026-11-21T23:59:32+00:00",
   "runner": "github",
-  "new_videos": 1,
-  "new_posts": 18,
+  "new_videos": 7,
+  "new_posts": 17,
   "new_places": 1,
-  "skipped": 14,
+  "skipped": 16,
   "errors": [],
   "by_source": {
     "港仔張啟樂的臺灣生活": {
@@ -80,7 +80,7 @@
       "latest": "2026-11-01"
     },
     "小兔小安*旅遊札記": {
-      "contents": 11842,
+      "contents": 11866,
       "latest": "2026-11-21"
     },
     "劉先生出一張嘴": {
@@ -88,12 +88,12 @@
       "latest": "2026-11-18"
     },
     "PEKO の Simple Life": {
-      "contents": 3590,
-      "latest": "2026-11-18"
+      "contents": 3591,
+      "latest": "2026-11-21"
     },
     "陳小可的吃喝玩樂": {
-      "contents": 6254,
-      "latest": "2026-11-20"
+      "contents": 6256,
+      "latest": "2026-11-21"
     },
     "瑋瑋＊美食萬歲": {
       "contents": 3447,
@@ -164,12 +164,12 @@
       "latest": "2026-11-19"
     },
     "Nash，神之領域": {
-      "contents": 6537,
-      "latest": "2026-11-20"
+      "contents": 6540,
+      "latest": "2026-11-21"
     },
     "布雷克的出走旅行視界": {
-      "contents": 4129,
-      "latest": "2026-11-20"
+      "contents": 4131,
+      "latest": "2026-11-21"
     },
     "大食女 in Wonderland": {
       "contents": 3,
@@ -209,6 +209,6 @@
   "history_remaining": 0,
   "geo_used": 800,
   "geo_deferred": 0,
-  "geo_pending": 20173,
+  "geo_pending": 19726,
   "tgos_used": 0
 }
