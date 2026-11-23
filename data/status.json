@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-11-21T23:59:32+00:00",
+  "run_at": "2026-11-23T00:31:59+00:00",
   "runner": "github",
-  "new_videos": 7,
-  "new_posts": 17,
-  "new_places": 1,
-  "skipped": 16,
+  "new_videos": 9,
+  "new_posts": 20,
+  "new_places": 3,
+  "skipped": 18,
   "errors": [],
   "by_source": {
     "港仔張啟樂的臺灣生活": {
@@ -40,8 +40,8 @@
       "latest": "2026-10-23"
     },
     "大口老師的走跳學堂": {
-      "contents": 3485,
-      "latest": "2026-11-18"
+      "contents": 3492,
+      "latest": "2026-11-22"
     },
     "Jason's Life": {
       "contents": 1497,
@@ -80,8 +80,8 @@
       "latest": "2026-11-01"
     },
     "小兔小安*旅遊札記": {
-      "contents": 11866,
-      "latest": "2026-11-21"
+      "contents": 11874,
+      "latest": "2026-11-22"
     },
     "劉先生出一張嘴": {
       "contents": 127,
@@ -164,12 +164,12 @@
       "latest": "2026-11-19"
     },
     "Nash，神之領域": {
-      "contents": 6540,
-      "latest": "2026-11-21"
+      "contents": 6544,
+      "latest": "2026-11-22"
     },
     "布雷克的出走旅行視界": {
-      "contents": 4131,
-      "latest": "2026-11-21"
+      "contents": 4137,
+      "latest": "2026-11-22"
     },
     "大食女 in Wonderland": {
       "contents": 3,
@@ -208,7 +208,7 @@
   "history_posts": 0,
   "history_remaining": 0,
   "geo_used": 800,
-  "geo_deferred": 0,
-  "geo_pending": 19726,
+  "geo_deferred": 2,
+  "geo_pending": 19298,
   "tgos_used": 0
 }
