@@ -1,10 +1,10 @@
 {
-  "run_at": "2026-11-24T04:30:30+00:00",
+  "run_at": "2026-11-25T03:14:33+00:00",
   "runner": "github",
   "new_videos": 4,
-  "new_posts": 21,
-  "new_places": 1,
-  "skipped": 11,
+  "new_posts": 22,
+  "new_places": 11,
+  "skipped": 19,
   "errors": [],
   "by_source": {
     "港仔張啟樂的臺灣生活": {
@@ -40,16 +40,16 @@
       "latest": "2026-10-23"
     },
     "大口老師的走跳學堂": {
-      "contents": 3492,
-      "latest": "2026-11-22"
+      "contents": 3493,
+      "latest": "2026-11-24"
     },
     "Jason's Life": {
       "contents": 1497,
       "latest": "2026-11-12"
     },
     "跟著領隊sky玩": {
-      "contents": 7115,
-      "latest": "2026-11-14"
+      "contents": 7117,
+      "latest": "2026-11-24"
     },
     "Mimi韓の旅遊指南": {
       "contents": 16,
@@ -80,8 +80,8 @@
       "latest": "2026-11-01"
     },
     "小兔小安*旅遊札記": {
-      "contents": 11886,
-      "latest": "2026-11-24"
+      "contents": 11896,
+      "latest": "2026-11-25"
     },
     "劉先生出一張嘴": {
       "contents": 127,
@@ -152,24 +152,24 @@
       "latest": "2026-11-13"
     },
     "食神鬍子哥（鬍子哥美食指南）": {
-      "contents": 6,
-      "latest": "2026-10-23"
+      "contents": 17,
+      "latest": "2026-11-24"
     },
     "1000cc美食頻道": {
       "contents": 28,
       "latest": "2025-07-07"
     },
     "周花花，甲飽沒": {
-      "contents": 4306,
-      "latest": "2026-11-19"
+      "contents": 4307,
+      "latest": "2026-11-24"
     },
     "Nash，神之領域": {
-      "contents": 6549,
-      "latest": "2026-11-24"
+      "contents": 6553,
+      "latest": "2026-11-25"
     },
     "布雷克的出走旅行視界": {
-      "contents": 4142,
-      "latest": "2026-11-24"
+      "contents": 4145,
+      "latest": "2026-11-25"
     },
     "大食女 in Wonderland": {
       "contents": 3,
@@ -200,8 +200,8 @@
       "latest": "2026-11-23"
     },
     "朱寶妮美食隨筆": {
-      "contents": 625,
-      "latest": "2026-11-15"
+      "contents": 626,
+      "latest": "2026-11-24"
     }
   },
   "github_blocked_detected": [],
@@ -209,6 +209,6 @@
   "history_remaining": 0,
   "geo_used": 800,
   "geo_deferred": 0,
-  "geo_pending": 18836,
+  "geo_pending": 18387,
   "tgos_used": 0
 }
