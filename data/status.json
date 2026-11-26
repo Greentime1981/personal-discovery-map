@@ -1,11 +1,13 @@
 {
-  "run_at": "2026-11-25T03:14:33+00:00",
+  "run_at": "2026-11-26T02:33:10+00:00",
   "runner": "github",
-  "new_videos": 4,
-  "new_posts": 22,
-  "new_places": 11,
-  "skipped": 19,
-  "errors": [],
+  "new_videos": 2,
+  "new_posts": 21,
+  "new_places": 5,
+  "skipped": 7,
+  "errors": [
+    "跟著領隊sky玩：RSS / sitemap 讀取失敗 not well-formed (invalid token): line 781, column 89"
+  ],
   "by_source": {
     "港仔張啟樂的臺灣生活": {
       "contents": 7,
@@ -24,16 +26,16 @@
       "latest": "2026-02-20"
     },
     "A/DA阿達": {
-      "contents": 37,
-      "latest": "2026-11-04"
+      "contents": 38,
+      "latest": "2026-11-25"
     },
     "波妞食境秀": {
       "contents": 1284,
       "latest": "2026-11-19"
     },
     "猴屁的異想世界": {
-      "contents": 2681,
-      "latest": "2026-11-18"
+      "contents": 2683,
+      "latest": "2026-11-25"
     },
     "丹尼旅遊食記": {
       "contents": 1,
@@ -80,12 +82,12 @@
       "latest": "2026-11-01"
     },
     "小兔小安*旅遊札記": {
-      "contents": 11896,
-      "latest": "2026-11-25"
+      "contents": 11911,
+      "latest": "2026-11-26"
     },
     "劉先生出一張嘴": {
-      "contents": 127,
-      "latest": "2026-11-18"
+      "contents": 128,
+      "latest": "2026-11-25"
     },
     "PEKO の Simple Life": {
       "contents": 3591,
@@ -96,8 +98,8 @@
       "latest": "2026-11-23"
     },
     "瑋瑋＊美食萬歲": {
-      "contents": 3447,
-      "latest": "2026-11-11"
+      "contents": 3460,
+      "latest": "2026-11-25"
     },
     "霸子。食樂拼圖": {
       "contents": 5,
@@ -164,20 +166,20 @@
       "latest": "2026-11-24"
     },
     "Nash，神之領域": {
-      "contents": 6553,
-      "latest": "2026-11-25"
+      "contents": 6557,
+      "latest": "2026-11-26"
     },
     "布雷克的出走旅行視界": {
-      "contents": 4145,
-      "latest": "2026-11-25"
+      "contents": 4150,
+      "latest": "2026-11-26"
     },
     "大食女 in Wonderland": {
       "contents": 3,
       "latest": "2026-05-27"
     },
     "台南好Food遊": {
-      "contents": 1666,
-      "latest": "2026-11-19"
+      "contents": 1667,
+      "latest": "2026-11-25"
     },
     "達浪的日常手札": {
       "contents": 928,
@@ -196,8 +198,8 @@
       "latest": "2026-10-29"
     },
     "冰淇淋貓的軟爛生活": {
-      "contents": 890,
-      "latest": "2026-11-23"
+      "contents": 892,
+      "latest": "2026-11-25"
     },
     "朱寶妮美食隨筆": {
       "contents": 626,
@@ -209,6 +211,6 @@
   "history_remaining": 0,
   "geo_used": 800,
   "geo_deferred": 0,
-  "geo_pending": 18387,
+  "geo_pending": 17893,
   "tgos_used": 0
 }
