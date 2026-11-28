@@ -1,12 +1,12 @@
 {
-  "run_at": "2026-11-27T02:31:52+00:00",
+  "run_at": "2026-11-28T02:20:49+00:00",
   "runner": "github",
-  "new_videos": 8,
-  "new_posts": 22,
-  "new_places": 17,
-  "skipped": 15,
+  "new_videos": 4,
+  "new_posts": 19,
+  "new_places": 2,
+  "skipped": 12,
   "errors": [
-    "跟著領隊sky玩：RSS / sitemap 讀取失敗 not well-formed (invalid token): line 685, column 89"
+    "跟著領隊sky玩：RSS / sitemap 讀取失敗 not well-formed (invalid token): line 1577, column 89"
   ],
   "by_source": {
     "港仔張啟樂的臺灣生活": {
@@ -82,8 +82,8 @@
       "latest": "2026-11-01"
     },
     "小兔小安*旅遊札記": {
-      "contents": 11924,
-      "latest": "2026-11-27"
+      "contents": 11935,
+      "latest": "2026-11-28"
     },
     "劉先生出一張嘴": {
       "contents": 128,
@@ -94,8 +94,8 @@
       "latest": "2026-11-21"
     },
     "陳小可的吃喝玩樂": {
-      "contents": 6258,
-      "latest": "2026-11-26"
+      "contents": 6259,
+      "latest": "2026-11-27"
     },
     "瑋瑋＊美食萬歲": {
       "contents": 3460,
@@ -166,12 +166,12 @@
       "latest": "2026-11-24"
     },
     "Nash，神之領域": {
-      "contents": 6562,
-      "latest": "2026-11-27"
+      "contents": 6565,
+      "latest": "2026-11-28"
     },
     "布雷克的出走旅行視界": {
-      "contents": 4154,
-      "latest": "2026-11-27"
+      "contents": 4158,
+      "latest": "2026-11-28"
     },
     "大食女 in Wonderland": {
       "contents": 3,
@@ -186,8 +186,8 @@
       "latest": "2026-11-15"
     },
     "Alina 愛琳娜": {
-      "contents": 879,
-      "latest": "2026-11-18"
+      "contents": 880,
+      "latest": "2026-11-28"
     },
     "冠軍媽咪二個寶": {
       "contents": 393,
@@ -198,8 +198,8 @@
       "latest": "2026-10-29"
     },
     "冰淇淋貓的軟爛生活": {
-      "contents": 894,
-      "latest": "2026-11-26"
+      "contents": 895,
+      "latest": "2026-11-27"
     },
     "朱寶妮美食隨筆": {
       "contents": 626,
@@ -210,7 +210,7 @@
   "history_posts": 0,
   "history_remaining": 0,
   "geo_used": 800,
-  "geo_deferred": 2,
-  "geo_pending": 17418,
+  "geo_deferred": 3,
+  "geo_pending": 16920,
   "tgos_used": 0
 }
